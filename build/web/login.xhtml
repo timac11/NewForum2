@@ -6,54 +6,16 @@
         <title>Authorization</title>
         <h:outputStylesheet library="css" name="page.css"/>
     </h:head>
-<<<<<<< HEAD
-        <h:form styleClass="header">
+     <h:body styleClass="page-body">   
+    <h:form styleClass="header">
                 <h4 class="title"> TEAM FORUM </h4>
-                <h:commandButton value="Logout" rendered="#{loginBean.isLogged==true}" action="logout.xhtml?faces-redirect=true" styleClass="header-button"/><br/>
+                <h:commandButton value="Logout" action="logout.xhtml?faces-redirect=true" styleClass="header-button"  rendered="#{loginBean.isLogged==true}"/><br/>
         </h:form>
-        <h:body styleClass="page-body">
+       
         <h:form styleClass="feed">
             <div class="login-div1">
                 <p>
                     <p><a class="navigation-ref" href="index.xhtml"> Main Page </a></p>
-=======
-<<<<<<< HEAD
-    <h:body>
-        <h:outputText value="Enter your login and password"/>
-        <h:form>
-            <h:commandButton value="Main Page" action="index.xhtml?faces-redirect=true"/><br/>
-            <h:panelGrid columns="3">
-                <h:outputLabel value="Username"/>
-                <h:inputText value="#{loginBean.name}" requiredMessage="Please, fill this field"/>
-                <h:message for="username" class="error_message"/>
-                
-                <h:outputLabel value="Password"/>
-                <h:inputSecret value="#{loginBean.password}" id="password" requiredMessage="Please, fill this field"/>
-                <h:message for="password" class="error_message"/>
-                
-                
-             
-                 <h:commandButton id="mybutton" value="Login" binding="#{loginBean.mybutton}"  action="#{loginBean.login()}"/>
-                
-            </h:panelGrid>
-       
-            
-                 
-=======
-    <h:body styleClass="page-body">
-        
-        <h:form styleClass="header">
-                <h4 class='title'> TEAM FORUM </h4>
-                <h:commandButton rendered="#{loginBean.isLogged==true}" value="Logout" 
-                action="logout.xhtml?faces-redirect=true" styleClass="header-button"/><br/>
->>>>>>> origin/master
-        </h:form>
-        
-        <h:form styleClass="feed">
-            <div class="login-div1">
-                <p>
-                    <p><a class="navigation-ref" href="index.xhtml"> /Main Page </a></p>
->>>>>>> origin/master
                     <h:commandButton value="Main Page" action="index.xhtml?faces-redirect=true" styleClass="index-button"/><br/> 
                 </p>
                 <h:outputText value="Enter your login and password"/>
@@ -63,11 +25,7 @@
                     <h:message for="username" class="error_message"/>
                 </p>
                 <p>
-<<<<<<< HEAD
                     <h:outputLabel value="Password "/>
-=======
-                    <h:outputLabel value="Password"/>
->>>>>>> origin/master
                     <h:inputSecret value="#{loginBean.password}" id="password" requiredMessage="Please, fill this field"/>
                     <h:message for="password" class="error_message"/>
                 </p>
@@ -76,11 +34,6 @@
                 </p>
             </div>
         </h:form>
-<<<<<<< HEAD
         </h:body>
-=======
-        
-    </h:body>
->>>>>>> origin/master
 </html>
 

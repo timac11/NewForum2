@@ -6,11 +6,12 @@
         <title>Authorization</title>
         <h:outputStylesheet library="css" name="page.css"/>
     </h:head>
-        <h:form styleClass="header">
+     <h:body styleClass="page-body">   
+    <h:form styleClass="header">
                 <h4 class="title"> TEAM FORUM </h4>
-                <h:commandButton value="Logout" rendered="#{loginBean.isLogged==true}" action="logout.xhtml?faces-redirect=true" styleClass="header-button"/><br/>
+                <h:commandButton value="Logout" action="logout.xhtml?faces-redirect=true" styleClass="header-button"  rendered="#{loginBean.isLogged==true}"/><br/>
         </h:form>
-        <h:body styleClass="page-body">
+       
         <h:form styleClass="feed">
             <div class="login-div1">
                 <p>

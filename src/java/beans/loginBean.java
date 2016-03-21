@@ -37,7 +37,10 @@ public class loginBean implements Serializable {
     public UIComponent getMybutton() {
     return mybutton;
     }
-     
+     public void setIsLogged(boolean isLogg) {
+     isLogged=isLogg;
+    } 
+    
     
     public boolean getIsLogged() {
         return isLogged;
@@ -94,7 +97,7 @@ public class loginBean implements Serializable {
        }
     }
     
-    public loginBean() {
+    public  loginBean() {
     }
     
 }
