@@ -22,15 +22,16 @@
                 <p>
                     <h:outputLabel value="Username"/>
                     <h:inputText value="#{loginBean.name}" requiredMessage="Please, fill this field"/>
-                    <h:message for="username" class="error_message"/>
+                    <h:message for="username" class="error_message"  />
                 </p>
                 <p>
                     <h:outputLabel value="Password "/>
                     <h:inputSecret value="#{loginBean.password}" id="password" requiredMessage="Please, fill this field"/>
-                    <h:message for="password" class="error_message"/>
+                    <h:message for="password" class="error_message" />
                 </p>
                 <p>
-                    <h:commandButton value="Login" action="#{loginBean.login()}" styleClass="index-button"/>
+                    <h:commandButton value="Login" styleClass="index-button" action="#{loginBean.login()}"  id="mybutton" binding="#{loginBean.mybutton}" />        
+                    <p><h:message for="mybutton" styleClass="page-body"/> </p>
                 </p>
             </div>
         </h:form>

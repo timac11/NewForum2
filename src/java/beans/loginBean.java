@@ -84,16 +84,16 @@ public class loginBean implements Serializable {
            FacesMessage msg = new FacesMessage("Invalid username. Try again");
            FacesContext context = FacesContext.getCurrentInstance();
            context.addMessage(mybutton.getClientId(context), msg);
-           return "login.xhtml";
+         return "login.xhtml";
        }
        if(this.password.equals(s2)){
-           return "forum.xhtml";
+          return "forum.xhtml";
        }
        else{
            FacesMessage msg = new FacesMessage("Invalid password. Try again");
            FacesContext context = FacesContext.getCurrentInstance();
            context.addMessage(mybutton.getClientId(context), msg);
-           return "login.xhtml";
+         return "login.xhtml";
        }
     }
     
