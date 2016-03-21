@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Authorization</title>
+        <h:outputStylesheet library="css" name="page.css"/>
+    </h:head>
+        <h:form styleClass="header">
+                <h4 class="title"> TEAM FORUM </h4>
+                <h:commandButton value="Logout" rendered="#{loginBean.isLogged==true}" action="logout.xhtml?faces-redirect=true" styleClass="header-button"/><br/>
+        </h:form>
+        <h:body styleClass="page-body">
+        <h:form styleClass="feed">
+            <div class="login-div1">
+                <p>
+                    <p><a class="navigation-ref" href="index.xhtml"> Main Page </a></p>
+                    <h:commandButton value="Main Page" action="index.xhtml?faces-redirect=true" styleClass="index-button"/><br/> 
+                </p>
+                <h:outputText value="Enter your login and password"/>
+                <p>
+                    <h:outputLabel value="Username"/>
+                    <h:inputText value="#{loginBean.name}" requiredMessage="Please, fill this field"/>
+                    <h:message for="username" class="error_message"/>
+                </p>
+                <p>
+                    <h:outputLabel value="Password "/>
+                    <h:inputSecret value="#{loginBean.password}" id="password" requiredMessage="Please, fill this field"/>
+                    <h:message for="password" class="error_message"/>
+                </p>
+                <p>
+                    <h:commandButton value="Login" action="#{loginBean.login()}" styleClass="index-button"/>
+                </p>
+            </div>
+        </h:form>
+        </h:body>
+</html>
+
