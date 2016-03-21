@@ -7,7 +7,6 @@ package beans;
 
 import DAO.Factory;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.Date;
@@ -96,7 +95,7 @@ public class signUpBean implements Serializable{
     
     private String createSecretCode(){
         Random r = new Random();
-        String code =Integer.toString(r.nextInt());
+        String code =Integer.toString(Math.abs(r.nextInt()));
         return code;
     }
     
