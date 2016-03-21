@@ -2,47 +2,59 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
     <h:head>
         <title>Registration</title>
     </h:head>
     <h:body>
-        <h:outputText value="Create a new user. Enter your login and password"/>
-            <h:form>
-                <h:commandButton value="Main Page" action="index.xhtml?faces-redirect=true"/><br/>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="Username"/>
-                    <h:inputText value="#{signUpBean.name}" title="Username" tabindex="1" required="true" requiredMessage="Username is required"/>
-                   
-                    <h:outputLabel value="Password"/>
-                    <h:inputText value="#{signUpBean.password}" />
-   
-                    <h:outputLabel value="Repeat password"/>
-                    <h:inputText value="#{signUpBean.repeatPassword}"/>
-                    
-                </h:panelGrid>
-                <table>
-                    <tr>
-                        <td><h:outputLabel value="Enter your email and we send you a secret code to complete registration"/></td>
-                        <td><h:inputText value="#{signUpBean.email}"
-                        size="20" required="true" label="Email"/></td>
-                      
-                    </tr>
-                    <tr>
-                        <td>
-                            <h:commandButton value="SendMessage" action="#{signUpBean.sendEmailMess()}"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><h:outputLabel value="Please, enter your code from message there for verification"/></td>
-                        <td><h:inputText value="#{signUpBean.inputCode}"/></td>
-                    </tr>
-                </table>
-                <p>
-                    <h:commandButton value="Verification" action="#{signUpBean.verification()}"/>
-                    <h:commandButton id="mybutton" value="Create account" binding="#{signUpBean.mybutton}"  action="#{signUpBean.create()}"/>
-                </p>
-            </h:form>
+        <ui:composition template="/resources/templates/commonLayout.xhtml">
+            <ui:define name="feed">
+                    <h:form>
+                       <div class="login-div1">
+                            <p>
+                                <a class="navigation-ref" href="index.xhtml"> /Main Page </a>
+                            </p>
+                            <h:outputText value="Create a new user. Enter your login and password"/>
+                            <p>
+                                <h:outputLabel value="Username  "/>
+                                <h:inputText value="#{signUpBean.name}" title="Username" tabindex="1" required="true" requiredMessage="Username is required"/>
+                            </p>
+                            <p>
+                                <h:outputLabel value="Password  "/>
+                                <h:inputText value="#{signUpBean.password}" />
+                            </p>
+                            <p>
+                            <h:outputLabel value="Repeat password  "/>
+                            <h:inputText value="#{signUpBean.repeatPassword}"/>
+                            </p>
+                        
+                        <table>
+                            <tr>
+                                <td><h:outputLabel value="Enter your email and we send you a secret code to complete registration"/></td>
+                                <td><h:inputText value="#{signUpBean.email}"
+                                accesskey="" size="20" required="true" label="Email"/></td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                <h:commandButton value="SendMessage" action="#{signUpBean.sendEmailMess()}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><h:outputLabel value="Please, enter your code from message there for verification"/></td>
+                                <td><h:inputText value="#{signUpBean.inputCode}"/></td>
+                             </tr>
+                        </table>
+                        <p>
+                            <h:commandButton value="Verification" action="#{signUpBean.verification()}"/>
+                            <h:commandButton id="mybutton" value="Create account" binding="#{signUpBean.mybutton}"  action="#{signUpBean.create()}"/>
+                        </p>
+                            </div>
+                    </h:form>
+            </ui:define>    	
+        </ui:composition>
     </h:body>
 </html>
 
