@@ -31,6 +31,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import logic.User;
+import static logic.hash_password.md5Apache;
 
 @ManagedBean(name = "signUpBean")
 @SessionScoped
@@ -43,7 +44,7 @@ public class signUpBean implements Serializable{
     private String email;
     private String secretCode;
     private UIComponent mybutton;
-    private static long id=5;
+    private static long id=7;
     public void setMybutton(UIComponent mybutton) {
     this.mybutton = mybutton;
     }
@@ -139,12 +140,12 @@ public class signUpBean implements Serializable{
         if(inputCode.equals(secretCode)) {
              Locale.setDefault(Locale.ENGLISH);
              User s1 = new User();
-             s1.setId(++id);
+             //s1.setId(++id);
              s1.setName(this.getName());
-             s1.setPassword(this.getPassword());
+             s1.setPassword(md5Apache(this.getPassword(),this.name,this.email));
              s1.setRights("User");
              s1.setEmail(this.email);
-             Date d = new Date(19000l);
+             Date d = new Date(199);
             
             
              s1.setDate(d);

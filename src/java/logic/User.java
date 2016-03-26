@@ -19,9 +19,10 @@ import org.hibernate.annotations.GenericGenerator;
 @Table( name = "USERS")
 public class User  {
 //private static final long serialVersionUID = -1798070786993154676L;
-    @Id    
+   @Id    
    @Column(name="USER_ID")    
-  // @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")  
     private long  id;
     @Column(name = "USER_NAME")    
     private String name;

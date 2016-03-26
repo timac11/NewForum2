@@ -39,7 +39,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                <h:commandButton value="SendMessage" action="#{signUpBean.sendEmailMess()}"/>
+                                <h:commandButton value="SendMessage" action="#{signUpBean.sendEmailMess()}" id="mybutton" binding="#{signUpBean.mybutton}"/>
                                 </td>
                             </tr>
                             <tr>
@@ -49,7 +49,7 @@
                         </table>
                         <p>
                             <h:commandButton value="Verification" action="#{signUpBean.verification()}"/>
-                            <h:commandButton id="mybutton" value="Create account" binding="#{signUpBean.mybutton}"  action="#{signUpBean.create()}"/>
+                            <p><h:message for="mybutton" styleClass="page-body"/> </p>
                         </p>
                             </div>
                     </h:form>

@@ -52,9 +52,6 @@ public class UsersDAOimpl implements UsersDAO {
              List <User> users = new ArrayList<User>();
             try {
                 session = HibernateUtil.getSessionFactory().openSession();
-                 //Criteria crit = session.createCriteria(User.class);
-                 //crit.setMaxResults(50);
-                // List users =crit.list();
                 users = session.createCriteria(User.class)
                         .add ( Restrictions.eq("id", id)).list();
             } catch (Exception e) {
@@ -64,7 +61,13 @@ public class UsersDAOimpl implements UsersDAO {
                     session.close();
                 }
             }
+            if(!users.isEmpty()){
             return users.get(0);
+      }
+            else {
+                User u = new User();    
+                return u;
+            }
       }
 
       public List<User> getAllUsers() throws SQLException {

@@ -1,0 +1,111 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 3, 2016, 10:40:18 PM
+    Author     : Mary
+*/
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&subset=latin,cyrillic);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700);
+*{
+    font-family: 'Roboto Slab', sans-serif; font-weight: 300;  /* Семейство шрифтов */    
+}
+
+html{
+    height: 100%;
+}
+
+.page-body{
+    background-color: #D7EFE8; 
+    height: 100%;
+}
+/* background-color: #669BBA; */
+.header{
+    background-color: cadetblue;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    height: 60px;
+    padding-left: 10%;
+    box-shadow: 0 0 10px -1px;
+    border: 0px solid black;
+} 
+.title{
+    font-family: 'Roboto Slab', sans-serif; font-weight: 700;
+    color: cornsilk;
+    width: 300px;
+    border: 0px solid black;
+    float: left;
+}
+.header-button{
+    background-color: #68ACAD;
+    color: cornsilk;
+    float: right;
+    height: 60px;
+    width: 60px;
+    margin: 0px;
+    border: 0px solid black;
+    box-shadow: 0 0 6px -1px #588182;
+}
+.feed{
+    background-color: #FFFFFF;
+    width: 900px;
+    height: 95%;
+    margin: auto;
+    margin-top: 80px;
+    padding-top: 10px;
+    box-shadow: 0 0 3px -1px;
+}
+
+.navigation-ref{
+    text-decoration: none;        
+}
+
+.index-div1{
+    background-color: white;
+    text-align: center;
+    float:right;
+    width: 400px;
+    margin-top: 30px;
+    margin-right: 40px;
+    border: 0px solid black;
+}
+
+.index-div2{
+    background-color: white;
+    text-align: justify;
+    margin-top: 40px;
+    border: 0px solid black;
+}
+
+.index-button{
+    background-color: gold;
+    text-align: center;
+    border: 1px black;
+    width: 70px;
+    height: 25px;
+    margin-top: 20px; 
+    padding: 0px;
+    box-shadow: 0 0 3px -1px;
+}
+
+.index-imagebox{
+    position: static;
+    float: left;
+    border: 0px solid  black;
+    width: 400px; 
+    margin-top: 30px;
+    margin-left: 40px;
+}
+
+.login-div1{
+       margin: 40px;
+       text-align: left;       
+   }
+
+.clear {
+    clear: left; /* Отмена обтекания */
+   }

@@ -16,6 +16,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import logic.User;
+import static logic.hash_password.md5Apache;
 
 /**
  *
@@ -74,11 +75,13 @@ public class loginBean implements Serializable {
        Locale.setDefault(Locale.ENGLISH);
        String  s1 = null;
        String  s2 = null;
+       String  s3=null;
        User user;
        user = Factory.getInstance().getUserDAO().getUserByName(this.name);
        if (!user.getName().equals("")){
            s1 = user.getName();
            s2 = user.getPassword();
+           s3 = user.getEmail();
        }
        else{ 
            FacesMessage msg = new FacesMessage("Invalid username. Try again");
@@ -86,7 +89,7 @@ public class loginBean implements Serializable {
            context.addMessage(mybutton.getClientId(context), msg);
          return "login.xhtml";
        }
-       if(this.password.equals(s2)){
+       if((md5Apache(this.password,s1,s3)).equals(s2)){
           return "forum.xhtml";
        }
        else{
@@ -99,5 +102,6 @@ public class loginBean implements Serializable {
     
     public  loginBean() {
     }
+
     
 }

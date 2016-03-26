@@ -3,52 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/E:/Git_directory/geniusesForum/web/login.xhtml</file>
-=======
-<<<<<<< HEAD
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/src/java/beans/signUpBean.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/src/java/DAO/Factory.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/src/java/DAO/UsersDAO.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/src/java/hibernate.cfg.xml</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/web/signUp.xhtml</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/web/WEB-INF/dispatcher-servlet.xml</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/web/forum.xhtml</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/src/java/DAOimpl/UsersDAOimpl.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/src/java/logic/Topic.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/web/resources/css/page.css</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/src/java/logic/User.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/src/java/logic/Message.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/web/topic.xhtml</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/src/java/DAO/TopicsDAO.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/src/java/beans/loginBean.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/src/java/filters/loginFilter.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/web/index.xhtml</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/src/java/DAOimpl/MessageDAOimpl.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/web/WEB-INF/jsp/index.jsp</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/web/WEB-INF/applicationContext.xml</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/src/java/DAO/NewClass.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/src/java/util/HibernateUtil.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/web/redirect.jsp</file>
-=======
->>>>>>> origin/master
-            <file>file:/E:/Git_directory/geniusesForum/src/java/beans/signUpBean.java</file>
-            <file>file:/E:/Git_directory/geniusesForum/web/forum.xhtml</file>
-            <file>file:/E:/Git_directory/geniusesForum/web/signUp.xhtml</file>
-            <file>file:/E:/Git_directory/geniusesForum/web/resources/css/page.css</file>
-            <file>file:/E:/Git_directory/geniusesForum/web/redirect.jsp</file>
-            <file>file:/E:/Git_directory/geniusesForum/web/WEB-INF/dispatcher-servlet.xml</file>
-            <file>file:/E:/Git_directory/geniusesForum/src/java/logic/User.java</file>
-            <file>file:/E:/Git_directory/geniusesForum/src/java/beans/loginBean.java</file>
-            <file>file:/E:/Git_directory/geniusesForum/src/java/DAOimpl/UsersDAOimpl.java</file>
-            <file>file:/E:/Git_directory/geniusesForum/web/WEB-INF/applicationContext.xml</file>
-            <file>file:/E:/Git_directory/geniusesForum/web/topic.xhtml</file>
-            <file>file:/E:/Git_directory/geniusesForum/nbproject/build-impl.xml</file>
-            <file>file:/E:/Git_directory/geniusesForum/web/WEB-INF/web.xml</file>
-            <file>file:/E:/Git_directory/geniusesForum/web/logout.xhtml</file>
-            <file>file:/E:/Git_directory/geniusesForum/web/index.xhtml</file>
->>>>>>> origin/master
+            <file>file:/E:/Git_directory/NewForum2/src/java/beans/loginBean.java</file>
+            <file>file:/E:/Git_directory/NewForum2/src/java/DAOimpl/UsersDAOimpl.java</file>
+            <file>file:/E:/Git_directory/NewForum2/web/WEB-INF/applicationContext.xml</file>
+            <file>file:/E:/Git_directory/NewForum2/web/forum.xhtml</file>
+            <file>file:/E:/Git_directory/NewForum2/web/logout.xhtml</file>
+            <file>file:/E:/Git_directory/NewForum2/web/signUp.xhtml</file>
+            <file>file:/E:/Git_directory/NewForum2/web/login.xhtml</file>
+            <file>file:/E:/Git_directory/NewForum2/src/java/DAOimpl/MessageDAOimpl.java</file>
+            <file>file:/E:/Git_directory/NewForum2/web/WEB-INF/web.xml</file>
+            <file>file:/E:/Git_directory/NewForum2/web/index.xhtml</file>
+            <file>file:/E:/Git_directory/NewForum2/src/java/beans/signUpBean.java</file>
+            <file>file:/E:/Git_directory/NewForum2/web/redirect.jsp</file>
         </group>
     </open-files>
 </project-private>

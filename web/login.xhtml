@@ -26,7 +26,8 @@
                         <h:message for="password" class="error_message"/>
                     </p>
                     <p>
-                        <h:commandButton value="Login" action="#{loginBean.login()}" styleClass="index-button"/>
+                        <h:commandButton value="Login" action="#{loginBean.login()}" styleClass="index-button" id="mybutton" binding="#{loginBean.mybutton}" />        
+                        <p><h:message for="mybutton" styleClass="page-body"/> </p>
                     </p>
                 </div>
                 
