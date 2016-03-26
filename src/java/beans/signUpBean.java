@@ -44,11 +44,18 @@ public class signUpBean implements Serializable{
     private String email;
     private String secretCode;
     private UIComponent mybutton;
+    private boolean isLogged = false;
     private static long id=7;
     public void setMybutton(UIComponent mybutton) {
     this.mybutton = mybutton;
     }
 
+    public void setIsLogged(boolean bool){
+        isLogged = bool;
+    } 
+    public boolean getIsLogged(){
+        return isLogged;
+    }
     public UIComponent getMybutton() {
         return mybutton;
     }
@@ -133,7 +140,8 @@ public class signUpBean implements Serializable{
         } catch (MessagingException e) {
                 throw new RuntimeException(e);
         }
-    }
+    this.isLogged = true;
+        }
     }
     
     public String verification() throws SQLException{

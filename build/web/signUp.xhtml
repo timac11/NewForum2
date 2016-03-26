@@ -39,16 +39,16 @@
                             </tr>
                             <tr>
                                 <td>
-                                <h:commandButton value="SendMessage" action="#{signUpBean.sendEmailMess()}" id="mybutton" binding="#{signUpBean.mybutton}"/>
+                                <h:commandButton value="Create acount" action="#{signUpBean.sendEmailMess()}" id="mybutton" binding="#{signUpBean.mybutton}"/>
                                 </td>
                             </tr>
                             <tr>
-                                <td><h:outputLabel value="Please, enter your code from message there for verification"/></td>
-                                <td><h:inputText value="#{signUpBean.inputCode}"/></td>
+                                <td><h:outputLabel value="Please, enter your code from message there for verification" rendered="#{signUpBean.isLogged==true}"/></td>
+                                <td><h:inputText value="#{signUpBean.inputCode}" rendered="#{signUpBean.isLogged==true}"/></td>
                              </tr>
                         </table>
                         <p>
-                            <h:commandButton value="Verification" action="#{signUpBean.verification()}"/>
+                            <h:commandButton value="Verification" action="#{signUpBean.verification()}" rendered="#{signUpBean.isLogged==true}"/>
                             <p><h:message for="mybutton" styleClass="page-body"/> </p>
                         </p>
                             </div>
