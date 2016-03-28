@@ -17,7 +17,7 @@ import java.util.Arrays;
  */
 @ManagedBean(name = "topicBean")
 @SessionScoped
-public class topicBean implements Serializable {
+public class TopicBean implements Serializable {
     
     public class Topics{
         String topicName;
@@ -46,7 +46,7 @@ public class topicBean implements Serializable {
 
     
     
-    public topicBean() {
+    public TopicBean() {
         
     }
     
