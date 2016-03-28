@@ -3,21 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/DAOimpl/MessageDAOimpl.java</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/hibernate.cfg.xml</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/index.xhtml</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/signUp.xhtml</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/resources/templates/commonHeader.xhtml</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/resources/css/common-style.css</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/forum.xhtml</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/resources/templates/commonFooter.xhtml</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/DAO/MessagesDAO.java</file>
             <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/DAOimpl/UsersDAOimpl.java</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/resources/templates/commonLayout.xhtml</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/login.xhtml</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/beans/loginBean.java</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/resources/templates/commonFeed.xhtml</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/filters/loginFilter.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/filters/LoginFilter.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/index.xhtml</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/resources/templates/commonHeader.xhtml</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/signUp.xhtml</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/DAO/UsersDAO.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/secured/topic.xhtml</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/beans/LoginBean.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/beans/SignUpBean.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/helpers/PageNavigation.java</file>
         </group>
     </open-files>
 </project-private>

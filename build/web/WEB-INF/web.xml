@@ -27,7 +27,7 @@
     </context-param>
     <filter>
         <filter-name>LoginFilter</filter-name>
-        <filter-class>filters.loginFilter</filter-class>
+        <filter-class>filters.LoginFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>

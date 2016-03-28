@@ -43,12 +43,12 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><h:outputLabel value="Please, enter your code from message there for verification" rendered="#{signUpBean.isLogged==true}"/></td>
-                                <td><h:inputText value="#{signUpBean.inputCode}" rendered="#{signUpBean.isLogged==true}"/></td>
+                                <td><h:outputLabel value="Please, enter your code from message there for verification" rendered="#{signUpBean.isSended==true}"/></td>
+                                <td><h:inputText value="#{signUpBean.inputCode}" rendered="#{signUpBean.isSended==true}"/></td>
                              </tr>
                         </table>
                         <p>
-                            <h:commandButton value="Verification" action="#{signUpBean.verification()}" rendered="#{signUpBean.isLogged==true}"/>
+                            <h:commandButton value="Verification" action="#{signUpBean.verification()}" rendered="#{signUpBean.isSended==true}"/>
                             <p><h:message for="mybutton" styleClass="page-body"/> </p>
                         </p>
                             </div>
