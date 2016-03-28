@@ -90,7 +90,8 @@ public class loginBean implements Serializable {
          return "login.xhtml";
        }
        if((md5Apache(this.password,s1,s3)).equals(s2)){
-          return "forum.xhtml";
+           isLogged=true;
+          return "secured/forum.xhtml";
        }
        else{
            FacesMessage msg = new FacesMessage("Invalid password. Try again");

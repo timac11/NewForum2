@@ -40,24 +40,25 @@ public class loginFilter implements Filter{
         C. If request for logout and there's session,remove the session and redirect to login.xhtml
         */
         if(session==null || !session.getIsLogged()){
-            if(url.indexOf("forum.xhtml")>=0 || url.indexOf("logout.xhtml")>=0){
+           // if(url.indexOf("forum.xhtml")>=0 || url.indexOf("logout.xhtml")>=0){
                 resp.sendRedirect(req.getServletContext().getContextPath()+"/login.xhtml");
-            }
-            else chain.doFilter(request, response);
+           // }
+           // else chain.doFilter(request, response);
         }
-        else{
-            if(url.indexOf("signUp.xhtml")>=0 || url.indexOf("login.xhtml")>=0){
-                resp.sendRedirect(req.getServletContext().getContextPath()+"/forum.xhtml");
-            }
-            else if(url.indexOf("logout.xhtml") >=0){
-                //req.getSession().removeAttribute("loginBean");
-                session.logout();
-                resp.sendRedirect(req.getServletContext().getContextPath()+"/index.xhtml");
-            }
-            else{
-                chain.doFilter(request, response);
-            }
-        }
+        chain.doFilter(request, response);
+//        else{
+//            if(url.indexOf("signUp.xhtml")>=0 || url.indexOf("login.xhtml")>=0){
+//                resp.sendRedirect(req.getServletContext().getContextPath()+"/forum.xhtml");
+//            }
+//            else if(url.indexOf("logout.xhtml") >=0){
+//                //req.getSession().removeAttribute("loginBean");
+//                session.logout();
+//                resp.sendRedirect(req.getServletContext().getContextPath()+"/index.xhtml");
+//            }
+//            else{
+//                chain.doFilter(request, response);
+//            }
+//        }
     }
 
     @Override
