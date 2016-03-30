@@ -8,7 +8,7 @@
     </h:head>
     <h:body>
         <h:form>
-            <h:dataTable value="#{forumBean.messFromTop}" var="message"
+            <h:dataTable value="#{forumBean.messageFromTop}" var="message"
                          styleClass="order-table"
                          headerClass="order-table-header"
                          rowClasses="order-table-odd-row,order-table-even-row">
@@ -16,7 +16,19 @@
                     <!-- column header -->
                     <f:facet name="header">Creator</f:facet>
                     <!-- row record --> 
-                    #{}
+                    #{message.USER_NAME}
+                </h:column>
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">Message</f:facet>
+                    <!-- row record --> 
+                    #{message.MESSAGE}
+                </h:column>
+                <h:column>
+                    <!-- column header -->
+                    <f:facet name="header">Date</f:facet>
+                    <!-- row record --> 
+                    #{message.DATE_T}
                 </h:column>
             </h:dataTable>
         </h:form>

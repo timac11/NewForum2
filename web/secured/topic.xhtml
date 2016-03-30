@@ -10,7 +10,7 @@
         <h:form>
             <h:dataTable value="#{forumBean.topicsFromSect}" var="topic">
                 <h:column>
-                    <h:outputLink style="text-decoration: none" value="messages.xhtml?topic_id = #{topic.TOPIC_ID}">#{topic.TOPIC_NAME}</h:outputLink>
+                    <h:outputLink style="text-decoration: none" value="messages.xhtml?topic_id=#{topic.TOPIC_ID}">#{topic.TOPIC_NAME}</h:outputLink>
                 </h:column>
             </h:dataTable>
         </h:form>

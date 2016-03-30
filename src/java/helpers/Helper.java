@@ -48,9 +48,9 @@ public class Helper {
             crs.populate(rs);
             return crs;
         } catch(SQLException se){
-            se.printStackTrace();
+            System.out.println(se);
         }catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e);
         }finally{
             //finally block used to close resources
             try {
