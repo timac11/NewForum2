@@ -91,7 +91,7 @@ public class LoginBean implements Serializable {
         }
         if ((md5Apache(this.password, s1, s3)).equals(s2)) {
             isLogged = true;
-            return PageNavigation.toForum;
+            return PageNavigation.toIndex;
         } else {
             FacesMessage msg = new FacesMessage("Invalid password. Try again");
             FacesContext context = FacesContext.getCurrentInstance();

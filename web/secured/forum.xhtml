@@ -5,50 +5,53 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       >
     <h:head>
-       <title>Forum</title>
-   </h:head>
-   <h:body>
-       <ui:composition template="/resources/templates/commonLayout.xhtml">
+        <title>Forum</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/resources/templates/commonLayout.xhtml">
             <ui:define name="feed">
-                    <p>
-                        <a class="navigation-ref" href="index.xhtml"> /Main Page </a>
-                    </p>
-       <h3>Hello from Forum!</h3>
-        <h:form>
-           
-             
-            
-        </h:form>
-            
+                <p>
+                    <a class="navigation-ref" href="index.xhtml"> /Main Page </a>
+                </p>
+                <h3>Hello from Forum!</h3>
+                <h3>Select a section</h3>
+                <h:form>
+                    
+                    <h:dataTable value="#{forumBean.allSections}" var="section">
+                        <h:column>
+                            <h:outputLink style="text-decoration: none" value="topic.xhtml?section_id=#{section.SECTION_ID}">#{section.SECTION_NAME}</h:outputLink>
+                        </h:column>
+                    </h:dataTable>
 
-             
-             <button type="submit" onclick='PopUpShow();' value="Submit" Class="index-button">ADD</button>
-             
-             <div class="b-popup" id="popup1">
-             <div class="b-popup-content">
-             <h:outputLabel value="Name of section"/>
 
-             <h:outputLabel value="Decription of this section"/>
-             <a href="javascript:PopUpHide()">Hide popup</a>
-             </div>
-            </div> 
-            
-       <script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
-        <script>
-               $(document).ready(function(){
-                //Скрыть PopUp при загрузке страницы    
-                PopUpHide();
-                });
-                //Функция отображения PopUp
-                function PopUpShow(){
-                $("#popup1").show();
-                }
-                //Функция скрытия PopUp
-                 function PopUpHide(){
-                $("#popup1").hide();
-                }
-        </script> 
-        </ui:define>    	
+                    <button type="submit" onclick='PopUpShow();' value="Submit" Class="index-button">ADD</button>
+
+                    <div class="b-popup" id="popup1">
+                        <div class="b-popup-content">
+                            <h:outputLabel value="Name of section"/>
+
+                            <h:outputLabel value="Decription of this section"/>
+                            <a href="javascript:PopUpHide()">Hide popup</a>
+                        </div>
+                    </div> 
+
+                    <script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
+                    <script>
+                        $(document).ready(function () {
+                            //Скрыть PopUp при загрузке страницы    
+                            PopUpHide();
+                        });
+                        //Функция отображения PopUp
+                        function PopUpShow() {
+                            $("#popup1").show();
+                        }
+                        //Функция скрытия PopUp
+                        function PopUpHide() {
+                            $("#popup1").hide();
+                        }
+                    </script> 
+                </h:form> 
+            </ui:define>    	
         </ui:composition>
-         </h:body>
+    </h:body>
 </html>

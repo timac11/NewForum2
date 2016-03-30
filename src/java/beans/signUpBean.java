@@ -38,7 +38,7 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class SignUpBean implements Serializable {
 
-    @ManagedProperty(value="#{loginBean}")
+    @ManagedProperty(value = "#{loginBean}")
     private LoginBean loginBean;
     private String name;
     private String password;
@@ -54,9 +54,10 @@ public class SignUpBean implements Serializable {
         return isSended;
     }
 
-    public void setLoginBean(LoginBean loginBean){
+    public void setLoginBean(LoginBean loginBean) {
         this.loginBean = loginBean;
     }
+
     public void setMybutton(UIComponent mybutton) {
         this.mybutton = mybutton;
     }
@@ -138,7 +139,7 @@ public class SignUpBean implements Serializable {
                 // message.setText("<i>Hello</i> Dear friend, it's a code for verification : " + secretCode);
                 message.setContent("<span style=\"font-family:Lucida Sans Unicode; font-weight: bold; font-style:italic; font-size:20px;font-variant:small-caps; color:CornflowerBlue\"><i><h2>Hello Dear friend!</h2></i><h3>it's a code for verification :</h3>" + secretCode + "</span>", "text/html");
                 Transport.send(message);
-                isSended=true;
+                isSended = true;
                 System.out.println("Done");
 
             } catch (MessagingException e) {
@@ -204,8 +205,8 @@ public class SignUpBean implements Serializable {
         }
         return true;
     }
-    
-    private void doLogin(){
+
+    private void doLogin() {
         loginBean.setIsLogged(true);
         loginBean.setName(name);
         loginBean.setPassword(password);
