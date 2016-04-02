@@ -28,6 +28,7 @@ public class ForumBean implements Serializable {
     public ResultSet getTopicsFromSect() {
         Map<String, String> parameters = Helper.getQueryMap();
         String section_id = parameters.get("section_id");
+        //String sqlQuery = "SELECT * FROM TOPICS WHERE SECTION_ID =  :?" + section_id; Доделать. Вынести в отдельный класс запросы и параметр доделать
         String sqlQuery = "SELECT * FROM TOPICS WHERE SECTION_ID = " + section_id;
         return Helper.workWithDB(sqlQuery);
     }
@@ -35,7 +36,9 @@ public class ForumBean implements Serializable {
     public ResultSet getMessageFromTop() {
         Map<String, String> parameters = Helper.getQueryMap();
         String topic_id = parameters.get("topic_id");
-        String sqlQuery = "SELECT u.USER_NAME as USER_NAME, m.MESSAGE as MESSAGE,m.DATE_T as DATE_T FROM USERS u, MESSAGES m WHERE m.TOPIC_ID = " + topic_id + " AND m.USER_ID = u.USER_ID ORDER BY m.DATE_T";
+        String sqlQuery = "SELECT u.USER_NAME as USER_NAME, m.MESSAGE as MESSAGE,m.DATE_T "
+                + "as DATE_T FROM USERS u, MESSAGES m WHERE m.TOPIC_ID = " + topic_id + 
+                " AND m.USER_ID = u.USER_ID ORDER BY m.DATE_T";
         return Helper.workWithDB(sqlQuery);
     }
 

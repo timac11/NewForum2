@@ -67,7 +67,7 @@ public class LoginBean implements Serializable {
         isLogged = false;
         name = null;
         password = null;
-        return PageNavigation.toIndex;
+        return PageNavigation.redirectToIndex;
     }
 
     public String login() throws SQLException {
