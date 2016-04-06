@@ -96,3 +96,34 @@ html{
     border-radius:5px;
     box-shadow: 0px 0px 10px #000;
 }
+
+.sidebar {
+ background: cadetblue; 
+ width: 180px; 
+ font-size:12px;
+ text-align: center;
+ height: 200px;
+ position: fixed; /* Фиксированное положение */
+ right: 10px; /* Расстояние от правого края окна браузера */
+ top: 13%; /* Расстояние сверху */
+ padding: 10px; /* Поля вокруг текста */
+ box-shadow: 0 0 10px -1px;
+ border: 0px solid black;
+}
+.sidebar-button{
+    position: fixed;
+    right: 70px; /* Расстояние от правого края окна браузера */
+    top: 33%; /* Расстояние сверху */
+    padding: 10px; /* Поля вокруг текста */
+    background-color: gold;
+    text-align: center;
+    border: 1px black;
+    width: 70px;
+    height: 25px;
+    margin-top: 5px; 
+    padding: 0px;
+    box-shadow: 0 0 3px -1px;
+}
+.sidebar-window{
+    height: 40px;
+}

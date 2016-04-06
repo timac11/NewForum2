@@ -8,13 +8,14 @@ import org.hibernate.Session;
 import util.HibernateUtil;
 import DAO.UsersDAO;
 import java.beans.Expression;
+import logic.Section;
 import logic.User;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
 public class UsersDAOimpl implements UsersDAO {
     
-    public void addUser(User stud) throws SQLException {
+    public void addUser (User stud) throws SQLException {
             Session session = null;
             try {
                 session = HibernateUtil.getSessionFactory().openSession();
@@ -144,6 +145,8 @@ public class UsersDAOimpl implements UsersDAO {
             }
             return studs.get(0);
       }
+
+
       
 
 }

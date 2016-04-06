@@ -7,6 +7,7 @@ package DAO;
 
 import java.sql.SQLException;
 import java.util.List;
+import logic.Section;
 
 import logic.User;
 
@@ -18,4 +19,6 @@ public interface UsersDAO {
     public void deleteUser(User user) throws SQLException;//удалить 
     public User getUserByName (String name) throws SQLException;// поиск по имени юзера 
     public User getUserByMale (String male) throws SQLException;
+
+   
 }

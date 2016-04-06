@@ -19,7 +19,7 @@ public class Helper {
 
     //  Database credentials
     static final String USER = "SYSTEM";
-    static final String PASS = "jhfg51";
+    static final String PASS = "52415";
     
     public static Map<String, String> getQueryMap() {
         HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
@@ -66,5 +66,36 @@ public class Helper {
         }
         return null;
     }
-
+    
+    public static void addToDB(String sqlQuery) {
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn.setAutoCommit(true);
+            int a;
+            a = stmt.executeUpdate("INSERT INTO SECTIONS(SECTION_ID, SECTION_NAME ,USER_ID ,DATE_T) VALUES(3,'asdf',2,'23-APR-16')");
+            //stmt.executeQuery("COMMIT");
+            conn.commit();
+//conn.setAutoCommit(true);
+            System.out.println(a);
+        } catch(SQLException se){
+            System.out.println(se);
+        }catch (Exception e) {
+            System.out.println(e);
+        }finally{
+           
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+    }
 }
