@@ -19,7 +19,7 @@ public class Helper {
 
     //  Database credentials
     static final String USER = "SYSTEM";
-    static final String PASS = "52415";
+    static final String PASS = "jhfg51";
     
     public static Map<String, String> getQueryMap() {
         HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
