@@ -7,12 +7,17 @@
     </h:head>
     <h:body>
         <h3>Select a topic</h3>
-        <h:form>
+        <h:form id="main">
             <h:dataTable value="#{forumBean.topicsFromSect}" var="topic">
                 <h:column>
                     <h:outputLink style="text-decoration: none" value="messages.xhtml?topic_id=#{topic.TOPIC_ID}">#{topic.TOPIC_NAME}</h:outputLink>
                 </h:column>
             </h:dataTable>
+            <h:panelGrid columns="3">
+                <h:commandButton value="Previous" action="#{forumBean.previousPage()}"/>
+                <h:outputText value="Page #{forumBean.pageTopics + 1}"/>
+                <h:commandButton value="Next" action="#{forumBean.nextPage()}"/>
+            </h:panelGrid>
         </h:form>
     </h:body>
 </html>

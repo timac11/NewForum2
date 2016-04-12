@@ -3,20 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Git_directory/NewForum2/src/java/beans/SignUpBean.java</file>
-            <file>file:/E:/Git_directory/NewForum2/src/java/DAOimpl/UsersDAOimpl.java</file>
-            <file>file:/E:/Git_directory/NewForum2/src/java/filters/LoginFilter.java</file>
-            <file>file:/E:/Git_directory/NewForum2/web/secured/forum.xhtml</file>
-            <file>file:/E:/Git_directory/NewForum2/web/login.xhtml</file>
-            <file>file:/E:/Git_directory/NewForum2/web/resources/templates/commonFeed.xhtml</file>
-            <file>file:/E:/Git_directory/NewForum2/src/java/beans/LoginBean.java</file>
-            <file>file:/E:/Git_directory/NewForum2/web/resources/templates/commonFooter.xhtml</file>
-            <file>file:/E:/Git_directory/NewForum2/src/java/beans/ForumBean.java</file>
-            <file>file:/E:/Git_directory/NewForum2/src/java/DAOimpl/SectionDAOimpl.java</file>
-            <file>file:/E:/Git_directory/NewForum2/web/resources/templates/commonHeader.xhtml</file>
-            <file>file:/E:/Git_directory/NewForum2/src/java/logic/User.java</file>
-            <file>file:/E:/Git_directory/NewForum2/src/java/logic/Section.java</file>
-            <file>file:/E:/Git_directory/NewForum2/web/resources/css/common-style.css</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/filters/LoginFilter.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/beans/ForumBean.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/secured/forum.xhtml</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/helpers/Helper.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/secured/topics.xhtml</file>
         </group>
     </open-files>
 </project-private>

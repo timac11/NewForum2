@@ -31,6 +31,12 @@
                     #{message.DATE_T}
                 </h:column>
             </h:dataTable>
+            
+            <h:panelGrid id="messages" columns="3">
+                <h:commandButton value="Previous" action="#{forumBean.previousPage()}"/>
+                <h:outputText value="Page #{forumBean.pageMessages + 1}"/>
+                <h:commandButton value="Next" action="#{forumBean.nextPage()}"/>
+            </h:panelGrid>
         </h:form>
     </h:body>
 </html>

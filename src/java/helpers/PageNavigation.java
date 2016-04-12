@@ -12,5 +12,6 @@ public class PageNavigation {
     public static final String redirectToIndex = "/index.xhtml?faces-redirect=true";
     public static final String toForum = "secured/forum.xhtml";
     public static final String redirectToForum = "secured/forum.xhtml?faces-redirect=true";
-    public static final String toTopic = "secured/topic.xhtml";
+    public static final String toTopic = "secured/topics.xhtml";
+    public static final String redirectToTopic = "secured/topics.xhtml?faces-redirect=true";
 }

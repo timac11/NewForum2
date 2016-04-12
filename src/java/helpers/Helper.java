@@ -2,6 +2,7 @@ package helpers;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -24,6 +25,7 @@ public class Helper {
     public static Map<String, String> getQueryMap() {
         HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         String query = req.getQueryString();
+        if(query==null) return null;
         String[] params = query.split("&");
         Map<String, String> map = new HashMap<String, String>();
         for (String param : params) {
@@ -33,17 +35,20 @@ public class Helper {
         }
         return map;
     }
-    public static ResultSet workWithDB(String sqlQuery) {
+    public static ResultSet workWithDB(String sqlQuery,String ... param) {
         Connection conn = null;
-        Statement stmt = null;
+        PreparedStatement  pstmt = null;
         try {
             //STEP 1: Register JDBC driver
             Class.forName(JDBC_DRIVER);
             //STEP 2: Open a connection
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             //STEP 3: Execute a query
-            stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sqlQuery);
+            pstmt = conn.prepareStatement(sqlQuery);
+            for(int i = 0;i<param.length;i++){
+                pstmt.setString(i+1, param[i]);
+            }
+            ResultSet rs = pstmt.executeQuery();
             CachedRowSet crs= new com.sun.rowset.CachedRowSetImpl();
             crs.populate(rs);
             return crs;
@@ -51,18 +56,6 @@ public class Helper {
             System.out.println(se);
         }catch (Exception e) {
             System.out.println(e);
-        }finally{
-            //finally block used to close resources
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }//end finally try
         }
         return null;
     }
