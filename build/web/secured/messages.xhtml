@@ -32,10 +32,12 @@
                 </h:column>
             </h:dataTable>
             
-            <h:panelGrid id="messages" columns="3">
-                <h:commandButton value="Previous" action="#{forumBean.previousPage()}"/>
+            <h:panelGrid columns="3">
+                <h:commandButton rendered="#{forumBean.pageMessages>0}" value="Previous" 
+                                 action="#{forumBean.previousPage(forumBean.isMessag())}"/>
                 <h:outputText value="Page #{forumBean.pageMessages + 1}"/>
-                <h:commandButton value="Next" action="#{forumBean.nextPage()}"/>
+                <h:commandButton rendered="#{forumBean.lastPageMess==false}" value="Next" 
+                                 action="#{forumBean.nextPage(forumBean.isMessag())}"/>
             </h:panelGrid>
         </h:form>
     </h:body>

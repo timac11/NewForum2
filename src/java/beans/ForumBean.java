@@ -17,6 +17,8 @@ import java.sql.*;
 import helpers.*;
 import java.io.IOException;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
@@ -31,16 +33,33 @@ import static logic.hash_password.md5Apache;
 @SessionScoped
 public class ForumBean implements Serializable {
 
+    private final String forCheckLastPage = "SELECT COUNT(*) FROM TOPICS";
     private String name;
     private String section_id;
     private String topic_id;
 
     //Колличество выводимых на страницу сообщений - топиков.
     private final int amountString = 10;
-    //Для прогрузки по countOnPage из базы данных.При увеличении выгружает следующие 10
+    //Для прогрузки по amountOnPage строк из базы данных.При увеличении выгружает следующие 10
     private int pageTopics = 0;
     private int pageMessages = 0;
+    private boolean lastPageTop=false;
+    private boolean lastPageMess=false;
 
+    public boolean isLastPageTop() {
+        return lastPageTop;
+    }
+
+    public boolean isLastPageMess() {
+        return lastPageMess;
+    }
+
+    public String isTopics(){
+        return "TOPICS";
+    }
+    public String isMessag(){
+        return "MESSAGES";
+    }
     public void setSection_id(int pageTopics) {
         this.pageTopics = pageTopics;
     }
@@ -97,8 +116,11 @@ public class ForumBean implements Serializable {
         if (parameters != null) {
             section_id = parameters.get("section_id");
         }
-        String sqlQuery = "SELECT sort.* FROM (SELECT * FROM TOPICS WHERE SECTION_ID = ? ORDER BY DATE_T) sort "
-                + "WHERE rownum > ? AND rownum <= ?";
+        String sqlQuery = "SELECT * "
+                + "FROM ( SELECT sort.*,rownum rn "
+                + "FROM (SELECT * "
+                + "FROM TOPICS WHERE SECTION_ID = ? ORDER BY DATE_T) sort) "
+                + "WHERE rn BETWEEN ? AND ?";
         return Helper.workWithDB(sqlQuery, section_id, Integer.toString(pageTopics * amountString), Integer.toString((pageTopics + 1) * amountString));
     }
 
@@ -111,22 +133,38 @@ public class ForumBean implements Serializable {
         return Helper.workWithDB(sqlQuery, topic_id, Integer.toString(pageMessages * amountString), Integer.toString((pageMessages + 1) * amountString));
     }
 
-    public void nextPage() throws IOException {
-        pageTopics++;
+    public void nextPage(String table){
+        ResultSet rs= Helper.workWithDB(forCheckLastPage);
+        int count = 0;
+        try {
+            count = rs.getInt(0);
+        } catch (SQLException ex) {
+            Logger.getLogger(ForumBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(table.equals(isTopics())){
+            pageTopics++;
+            lastPageTop = (pageTopics+1)*amountString > count;
+        }else if(table.equals(isMessag())){
+            pageMessages++;
+            lastPageMess = (pageMessages+1)*amountString > count;
+        }
         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-        ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI()); 
+        try { 
+            ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
+        } catch (IOException ex) {
+            Logger.getLogger(ForumBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    public void previousPage() {
-        if (true) {
-            pageTopics--;
-            FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("main");
+    public void previousPage(String table) {
+        if (table.equals(isTopics())) pageTopics--;
+        else pageMessages--;
+        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+        try { 
+            ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
+        } catch (IOException ex) {
+            Logger.getLogger(ForumBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-//        else if(from.equals("messages")){
-//            pageMessages--;
-//            FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("messages");
-//        }
-
     }
 
     public ForumBean() {
