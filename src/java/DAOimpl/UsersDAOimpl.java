@@ -13,17 +13,18 @@ import logic.User;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
-public class UsersDAOimpl implements UsersDAO {
+public  class UsersDAOimpl implements UsersDAO {
     
-    public void addUser (User stud) throws SQLException {
+    public boolean addUser (User stud) throws SQLException {
             Session session = null;
             try {
                 session = HibernateUtil.getSessionFactory().openSession();
                 session.beginTransaction();
                 session.save(stud);
                 session.getTransaction().commit();
+                return true;
             } catch (Exception e) {
-      //        JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка I/O", JOptionPane.OK_OPTION);
+                return false;
             } finally {
                 if (session != null && session.isOpen()) {
                     session.close();
@@ -39,7 +40,7 @@ public class UsersDAOimpl implements UsersDAO {
                 session.update(stud);
                 session.getTransaction().commit();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка I/O", JOptionPane.OK_OPTION);
+                //The method is not used
             } finally {
                 if (session != null && session.isOpen()) {
                     session.close();
@@ -56,7 +57,8 @@ public class UsersDAOimpl implements UsersDAO {
                 users = session.createCriteria(User.class)
                         .add ( Restrictions.eq("id", id)).list();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка I/O", JOptionPane.OK_OPTION);
+                User u = new User("_");
+                return u;
             } finally {
                 if (session != null && session.isOpen()) {
                     session.close();
@@ -78,7 +80,7 @@ public class UsersDAOimpl implements UsersDAO {
                 session = HibernateUtil.getSessionFactory().openSession();
                 studs = session.createCriteria(User.class).list();
             } catch (Exception e) {
-                //JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка I/O", JOptionPane.OK_OPTION);
+                //The method is not used
             } finally {
                 if (session != null && session.isOpen()) {
                     session.close();
@@ -95,15 +97,15 @@ public class UsersDAOimpl implements UsersDAO {
                 session.delete(stud);
                 session.getTransaction().commit();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка I/O", JOptionPane.OK_OPTION);
+                // the method is not used
             } finally {
                 if (session != null && session.isOpen()) {
                     session.close();
                 }
             }
       }  
-      public User getUserByName (String name) throws SQLException{
-                  Session session = null;
+      public  User getUserByName (String name) throws SQLException{
+            Session session = null;
             List<User> studs = new ArrayList<User>();
             try {
                 session = HibernateUtil.getSessionFactory().openSession();
@@ -111,7 +113,8 @@ public class UsersDAOimpl implements UsersDAO {
                         .add ( Restrictions.eq("name", name))
                         .list();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка I/O", JOptionPane.OK_OPTION);
+               User u = new User("_");
+               return u;
             } finally {
                 if (session != null && session.isOpen()) {
                     session.close();
@@ -133,7 +136,7 @@ public class UsersDAOimpl implements UsersDAO {
                         .add ( Restrictions.eq("email", mail))
                         .list();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка I/O", JOptionPane.OK_OPTION);
+                // The method is not used
             } finally {
                 if (session != null && session.isOpen()) {
                     session.close();

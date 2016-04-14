@@ -44,7 +44,9 @@ public class User  {
     public User (){
     name = "";
     };
-
+    public User (String s){
+    name = s;
+    }
     public String getEmail(){
         return this.email;
     }

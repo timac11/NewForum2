@@ -20,7 +20,7 @@ public class Helper {
 
     //  Database credentials
     static final String USER = "SYSTEM";
-    static final String PASS = "jhfg51";
+    static final String PASS = "52415";
     
     public static Map<String, String> getQueryMap() {
         HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
@@ -59,6 +59,8 @@ public class Helper {
         }
         return null;
     }
+    
+
     
     public static void addToDB(String sqlQuery) {
         Connection conn = null;

@@ -13,5 +13,5 @@ import logic.Section;
  * @author aser 2014
  */
 public interface SectionsDAO {
-     public void addSection (Section section)throws SQLException;
+     public boolean addSection (Section section)throws SQLException;
 }

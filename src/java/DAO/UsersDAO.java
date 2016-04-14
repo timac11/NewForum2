@@ -12,13 +12,13 @@ import logic.Section;
 import logic.User;
 
 public interface UsersDAO {
-    public void addUser(User user) throws SQLException;   //добавить 
+    public boolean addUser(User user) throws SQLException;   //добавить 
     public void updateUser(User user) throws SQLException;//обновить 
     public User getUserById(long id) throws SQLException;    //получить по id
     public List getAllUsers() throws SQLException;              //получить всех
     public void deleteUser(User user) throws SQLException;//удалить 
     public User getUserByName (String name) throws SQLException;// поиск по имени юзера 
     public User getUserByMale (String male) throws SQLException;
-
+    
    
 }

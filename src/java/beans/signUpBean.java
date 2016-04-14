@@ -159,9 +159,13 @@ public class SignUpBean implements Serializable {
             s1.setEmail(this.email);
             Date d = new Date(199);
             s1.setDate(d);
-            Factory.getInstance().getUserDAO().addUser(s1);
+            if (Factory.getInstance().getUserDAO().addUser(s1)){
             doLogin();
             return PageNavigation.toIndex;
+            }
+            else {
+                return "error-page.xhtml";
+            }
         } else {
             return PageNavigation.toLogin;
         }
@@ -193,6 +197,12 @@ public class SignUpBean implements Serializable {
         }
         if (!Factory.getInstance().getUserDAO().getUserByName(this.name).getName().equals("")) {
             FacesMessage msg = new FacesMessage("Sorry, this nick is used. Try again");
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(mybutton.getClientId(context), msg);
+            return false;
+        }
+        if (!Factory.getInstance().getUserDAO().getUserByName(this.name).getName().equals("_")) {
+            FacesMessage msg = new FacesMessage("Sorry, system error. Try again");
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(mybutton.getClientId(context), msg);
             return false;

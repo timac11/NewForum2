@@ -21,7 +21,7 @@ import org.hibernate.criterion.Restrictions;
 
 public class SectionDAOimpl implements SectionsDAO {
 
-    public void addSection (Section section) throws SQLException {
+    public boolean addSection (Section section) throws SQLException {
         Session session;
         session = null;
             try {
@@ -29,8 +29,9 @@ public class SectionDAOimpl implements SectionsDAO {
                 session.beginTransaction();
                 session.save(section);
                 session.getTransaction().commit();
+                return true;
             } catch (Exception e) {
-             //   JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка I/O", JOptionPane.OK_OPTION);
+                return false;
             } finally {
                 if (session != null && session.isOpen()) {
                     session.close();

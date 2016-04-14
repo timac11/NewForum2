@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package beans;
-
+import DAOimpl.UsersDAOimpl;
 import DAO.Factory;
 import DAO.Factory_sect;
 import DAOimpl.SectionDAOimpl;
@@ -19,10 +19,13 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import logic.Section;
+import logic.User;
 import static logic.hash_password.md5Apache;
 
 /**
@@ -45,7 +48,7 @@ public class ForumBean implements Serializable {
     private int pageMessages = 0;
     private boolean lastPageTop=false;
     private boolean lastPageMess=false;
-
+    private UIComponent mybutton;
     public boolean isLastPageTop() {
         return lastPageTop;
     }
@@ -87,15 +90,29 @@ public class ForumBean implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+    
+    public void setMybutton(UIComponent mybutton) {
+        this.mybutton = mybutton;
+    }
 
+    public UIComponent getMybutton() {
+        return mybutton;
+    }
     public void addNewSection() throws SQLException {
         Locale.setDefault(Locale.ENGLISH);
         Section sect = new Section();
         sect.setName(this.getName());
-        sect.setUser_id(12L);
-        Date d = new Date(199);
+        //sect.setUser_id((UsersDAOimpl.getUserByName(nameUser)).getId());
+        sect.setUser_id(1L);
+        Date d = new Date(System.currentTimeMillis());
         sect.setDate(d);
-        Factory_sect.getInstance().getSectionDAO().addSection(sect);
+        if (!Factory_sect.getInstance().getSectionDAO().addSection(sect)){
+        FacesMessage msg = new FacesMessage("Sorry, system error. Try again");
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(mybutton.getClientId(context), msg);
+      
+        };
+     
     }
 
     public String setNewSection() {
