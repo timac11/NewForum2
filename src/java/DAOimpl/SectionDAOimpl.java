@@ -38,4 +38,26 @@ public class SectionDAOimpl implements SectionsDAO {
                 }
             }
     }
+     public  Section getSectionByName (String name) throws SQLException{
+            Session session = null;
+            List<Section> studs = new ArrayList<Section>();
+            try {
+                session = HibernateUtil.getSessionFactory().openSession();
+                studs = session.createCriteria(Section.class)
+                        .add ( Restrictions.eq("name", name))
+                        .list();
+            } catch (Exception e) {
+               Section u = new Section("");
+               return u;
+            } finally {
+                if (session != null && session.isOpen()) {
+                    session.close();
+                }
+            }
+            if (studs.isEmpty()){
+            Section u = new Section();    
+            return u;
+            }
+            return studs.get(0);
+      }
 }

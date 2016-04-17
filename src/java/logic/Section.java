@@ -36,7 +36,12 @@ public class Section  {
     private Date date;
    
     public Section (){
+    this.name = "";
     }   
+
+    public Section(String s) {
+    this.name = s;
+    }
 
      public long getId(){
        return this.id;

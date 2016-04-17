@@ -98,19 +98,25 @@ public class ForumBean implements Serializable {
     public UIComponent getMybutton() {
         return mybutton;
     }
-    public void addNewSection() throws SQLException {
+    public void addNewSection(String s) throws SQLException {
         Locale.setDefault(Locale.ENGLISH);
+        if (!((Factory_sect.getInstance().getSectionDAO().getSectionByName(this.name)).getName().equals(""))){
+        FacesMessage msg = new FacesMessage("Sorry, this section there is. Try again");
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(mybutton.getClientId(context), msg);      
+        }
+        else{
         Section sect = new Section();
         sect.setName(this.getName());
-        //sect.setUser_id((UsersDAOimpl.getUserByName(nameUser)).getId());
-        sect.setUser_id(1L);
+        sect.setUser_id((Factory.getInstance().getUserDAO().getUserByName(s)).getId());
+        //sect.setUser_id(1L);
         Date d = new Date(System.currentTimeMillis());
         sect.setDate(d);
         if (!Factory_sect.getInstance().getSectionDAO().addSection(sect)){
         FacesMessage msg = new FacesMessage("Sorry, system error. Try again");
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(mybutton.getClientId(context), msg);
-      
+        }
         };
      
     }

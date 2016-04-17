@@ -201,7 +201,7 @@ public class SignUpBean implements Serializable {
             context.addMessage(mybutton.getClientId(context), msg);
             return false;
         }
-        if (!Factory.getInstance().getUserDAO().getUserByName(this.name).getName().equals("_")) {
+        if (Factory.getInstance().getUserDAO().getUserByName(this.name).getName().equals("_")) {
             FacesMessage msg = new FacesMessage("Sorry, system error. Try again");
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(mybutton.getClientId(context), msg);

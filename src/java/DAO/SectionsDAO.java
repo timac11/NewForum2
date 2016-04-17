@@ -14,4 +14,5 @@ import logic.Section;
  */
 public interface SectionsDAO {
      public boolean addSection (Section section)throws SQLException;
+     public Section getSectionByName (String name) throws SQLException;
 }

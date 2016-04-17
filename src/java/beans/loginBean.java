@@ -40,8 +40,7 @@ public class LoginBean implements Serializable {
     }
     
     public void setId() throws SQLException{
-        //id = (UsersDAOimpl.getUserByName(this.name)).getId();
-          id=1L;
+        id = (Factory.getInstance().getUserDAO().getUserByName(this.name)).getId();
     }
     
     public UIComponent getMybutton() {
