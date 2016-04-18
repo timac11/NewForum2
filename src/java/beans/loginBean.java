@@ -39,9 +39,6 @@ public class LoginBean implements Serializable {
         return this.id;
     }
     
-    public void setId() throws SQLException{
-        id = (Factory.getInstance().getUserDAO().getUserByName(this.name)).getId();
-    }
     
     public UIComponent getMybutton() {
         return mybutton;
@@ -75,6 +72,7 @@ public class LoginBean implements Serializable {
         isLogged = false;
         name = null;
         password = null;
+        id = 0;
         return PageNavigation.redirectToIndex;
     }
 
@@ -103,6 +101,7 @@ public class LoginBean implements Serializable {
         else return "Error-page.xhtml";
         if ((md5Apache(this.password, s1, s3)).equals(s2)) {
             isLogged = true;
+            id = (Factory.getInstance().getUserDAO().getUserByName(this.name)).getId();
             return PageNavigation.toIndex;
         } else {
             FacesMessage msg = new FacesMessage("Invalid password. Try again");
