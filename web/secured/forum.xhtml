@@ -19,8 +19,8 @@
                 <h:form>
                     <p>
                      <h:outputLabel value="Please, enter new section"/>
-                     <h:inputText value="#{forumBean.name}" requiredMessage="Please, fill this field"/>
-                     <h:commandButton value="ADD" action="#{forumBean.addNewSection(loginBean.name)}" id="mybutton" binding="#{forumBean.mybutton}" />
+                     <h:inputText value="#{forumBean.nameNewSection}" requiredMessage="Please, fill this field"/>
+                     <h:commandButton value="ADD" action="#{forumBean.addNewSection(loginBean.id)}" id="mybutton" binding="#{forumBean.mybutton}" />
                      <p><h:message for="mybutton" styleClass="page-body"/> </p>
                     </p>
                     <h:dataTable value="#{forumBean.allSections}" var="section">

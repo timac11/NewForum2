@@ -15,6 +15,6 @@
     <property name="hibernate.connection.autocommit">false</property>
     <property name="current_session_context_class">thread</property>
     <mapping class="logic.User"/>
-    
+    <mapping class="logic.Section"/> 
   </session-factory>
 </hibernate-configuration>

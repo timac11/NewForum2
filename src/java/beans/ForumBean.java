@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package beans;
+
 import DAOimpl.UsersDAOimpl;
 import DAO.Factory;
 import DAO.Factory_sect;
@@ -36,8 +37,8 @@ import static logic.hash_password.md5Apache;
 @SessionScoped
 public class ForumBean implements Serializable {
 
-    private final String forCheckLastPage = "SELECT COUNT(*) FROM TOPICS";
-    private String name;
+    private WorkDB workDB;
+    private String nameNewSection;
     private String section_id;
     private String topic_id;
 
@@ -46,9 +47,22 @@ public class ForumBean implements Serializable {
     //Для прогрузки по amountOnPage строк из базы данных.При увеличении выгружает следующие 10
     private int pageTopics = 0;
     private int pageMessages = 0;
-    private boolean lastPageTop=false;
-    private boolean lastPageMess=false;
+
+    private boolean lastPageTop = false;
+    private boolean lastPageMess = false;
+    private boolean itSearch = false;
+    private String textSearch;
+
+    public String getTextSearch() {
+        return textSearch;
+    }
+
+    public void setTextSearch(String textSearch) {
+        this.textSearch = textSearch;
+    }
+
     private UIComponent mybutton;
+
     public boolean isLastPageTop() {
         return lastPageTop;
     }
@@ -57,12 +71,14 @@ public class ForumBean implements Serializable {
         return lastPageMess;
     }
 
-    public String isTopics(){
+    public String isTopics() {
         return "TOPICS";
     }
-    public String isMessag(){
+
+    public String isMessag() {
         return "MESSAGES";
     }
+
     public void setSection_id(int pageTopics) {
         this.pageTopics = pageTopics;
     }
@@ -83,14 +99,18 @@ public class ForumBean implements Serializable {
         this.pageMessages = pageMessages;
     }
 
-    public String getName() {
-        return this.name;
+    public boolean isItSearch() {
+        return itSearch;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getNameNewSection() {
+        return nameNewSection;
     }
-    
+
+    public void setNameNewSection(String nameNewSection) {
+        this.nameNewSection = nameNewSection;
+    }
+
     public void setMybutton(UIComponent mybutton) {
         this.mybutton = mybutton;
     }
@@ -98,96 +118,136 @@ public class ForumBean implements Serializable {
     public UIComponent getMybutton() {
         return mybutton;
     }
-    public void addNewSection(String s) throws SQLException {
-        Locale.setDefault(Locale.ENGLISH);
-        if (!((Factory_sect.getInstance().getSectionDAO().getSectionByName(this.name)).getName().equals(""))){
-        FacesMessage msg = new FacesMessage("Sorry, this section there is. Try again");
-        FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(mybutton.getClientId(context), msg);      
-        }
-        else{
-        Section sect = new Section();
-        sect.setName(this.getName());
-        sect.setUser_id((Factory.getInstance().getUserDAO().getUserByName(s)).getId());
-        //sect.setUser_id(1L);
-        Date d = new Date(System.currentTimeMillis());
-        sect.setDate(d);
-        if (!Factory_sect.getInstance().getSectionDAO().addSection(sect)){
-        FacesMessage msg = new FacesMessage("Sorry, system error. Try again");
-        FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(mybutton.getClientId(context), msg);
-        }
-        };
-     
-    }
 
-    public String setNewSection() {
-        // Date d = new Date();
-        System.out.println("asdas");
-        String Query = "INSERT INTO SECTIONS(SECTION_ID, SECTION_NAME ,USER_ID ,DATE_T) VALUES(3,'asdf',2,'2-APR-16')";
-        Helper.addToDB(Query);
-        return "/secured/forum.xhtml";
+    public void addNewSection(long user_id) throws SQLException {
+        Locale.setDefault(Locale.ENGLISH);
+        if (!((Factory_sect.getInstance().getSectionDAO().getSectionByName(this.nameNewSection)).getName().equals(""))) {
+            FacesMessage msg = new FacesMessage("Sorry, this section there is. Try again");
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(mybutton.getClientId(context), msg);
+        } else {
+            Section sect = new Section();
+            sect.setName(this.nameNewSection);
+            sect.setUser_id(user_id);
+            //sect.setUser_id(1L);
+            Date d = new Date(System.currentTimeMillis());
+            sect.setDate(d);
+            if (!Factory_sect.getInstance().getSectionDAO().addSection(sect)) {
+                FacesMessage msg = new FacesMessage("Sorry, system error. Try again");
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(mybutton.getClientId(context), msg);
+            }
+        }
+
     }
 
     public ResultSet getAllSections() {
-        String sqlQuery = "SELECT * FROM SECTIONS";
-        return Helper.workWithDB(sqlQuery);
+        connect();
+        return resultSet("S");
     }
 
     public ResultSet getTopicsFromSect() {
+        connect();
         Map<String, String> parameters = Helper.getQueryMap();
         if (parameters != null) {
             section_id = parameters.get("section_id");
         }
-        String sqlQuery = "SELECT * "
-                + "FROM ( SELECT sort.*,rownum rn "
-                + "FROM (SELECT * "
-                + "FROM TOPICS WHERE SECTION_ID = ? ORDER BY DATE_T) sort) "
-                + "WHERE rn BETWEEN ? AND ?";
-        return Helper.workWithDB(sqlQuery, section_id, Integer.toString(pageTopics * amountString), Integer.toString((pageTopics + 1) * amountString));
+        if (itSearch && getUrl().contains("topics")) {
+            return resultSet("TFSS", section_id, Integer.toString(pageTopics * amountString),
+                    Integer.toString((pageTopics + 1) * amountString),textSearch);
+        } else {
+            return resultSet("TFS", section_id, Integer.toString(pageTopics * amountString),
+                    Integer.toString((pageTopics + 1) * amountString));
+        }
     }
 
     public ResultSet getMessageFromTop() {
+        connect();
         Map<String, String> parameters = Helper.getQueryMap();
-        String topic_id = parameters.get("topic_id");
-        String sqlQuery = "SELECT sort.* FROM (SELECT u.USER_NAME as USER_NAME, m.MESSAGE as MESSAGE,m.DATE_T as DATE_T "
-                + "FROM USERS u, MESSAGES m WHERE m.TOPIC_ID = ? AND m.USER_ID = u.USER_ID ORDER BY m.DATE_T) sort "
-                + "WHERE rownum > ? AND rownum <= ?";
-        return Helper.workWithDB(sqlQuery, topic_id, Integer.toString(pageMessages * amountString), Integer.toString((pageMessages + 1) * amountString));
+        if (parameters != null) {
+            topic_id = parameters.get("topic_id");
+        }
+        if (itSearch && getUrl().contains("messages")) {
+            return resultSet("MFTS", topic_id, Integer.toString(pageMessages * amountString),
+                    Integer.toString((pageMessages + 1) * amountString),textSearch);
+        } else {
+            return resultSet("MFT", topic_id, Integer.toString(pageMessages * amountString),
+                    Integer.toString((pageMessages + 1) * amountString));
+        }
+
     }
 
-    public void nextPage(String table){
-        ResultSet rs= Helper.workWithDB(forCheckLastPage);
+    public void nextPage(String table) {
         int count = 0;
+        ResultSet rs = (table.equals(isTopics())) ? resultSet("NPT") : resultSet("NPM");
         try {
-            count = rs.getInt(0);
+            if (rs != null) {
+                rs.beforeFirst();
+                rs.last();
+                count = rs.getRow();
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ForumBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if(table.equals(isTopics())){
+        if (table.equals(isTopics())) {
             pageTopics++;
-            lastPageTop = (pageTopics+1)*amountString > count;
-        }else if(table.equals(isMessag())){
+            lastPageTop = (pageTopics + 1) * amountString > count;
+        } else if (table.equals(isMessag())) {
             pageMessages++;
-            lastPageMess = (pageMessages+1)*amountString > count;
+            lastPageMess = (pageMessages + 1) * amountString > count;
         }
+        redirect();
+    }
+
+    public void previousPage(String table) {
+        if (table.equals(isTopics())) {
+            pageTopics--;
+            lastPageTop = false;
+        } else {
+            pageMessages--;
+            lastPageMess = false;
+        }
+        redirect();
+    }
+
+    public void search() {
+        itSearch = true;
+        redirect();
+    }
+
+    private void connect() {
+        if (workDB == null) {
+            workDB = new WorkDB();
+            try {
+                workDB.createPreparedStatements();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ForumBean.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ForumBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    private ResultSet resultSet(String id_preparedStatement, String... params) {
+        try {
+            return workDB.resultOfQuery(id_preparedStatement, params);
+        } catch (SQLException ex) {
+            Logger.getLogger(ForumBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    private void redirect() {
         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-        try { 
+        try {
             ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
         } catch (IOException ex) {
             Logger.getLogger(ForumBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void previousPage(String table) {
-        if (table.equals(isTopics())) pageTopics--;
-        else pageMessages--;
-        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-        try { 
-            ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
-        } catch (IOException ex) {
-            Logger.getLogger(ForumBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private String getUrl() {
+        return ((HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest()).getRequestURI();
     }
 
     public ForumBean() {
