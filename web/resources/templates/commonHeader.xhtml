@@ -13,7 +13,12 @@ and open the template in the editor.
         <ui:composition>
             <h4 class='title'> TEAM FORUM </h4>
             <h:commandButton rendered="#{loginBean.isLogged==true}" value="Logout" 
-                             action="#{loginBean.logout()}" styleClass="header-button"/><br/>
+                             action="#{loginBean.logout()}" styleClass="header-button"/>
+            <h:commandButton rendered="#{loginBean.isLogged==true}" value="My profile " 
+                             action="#{userBean.getUserFromDB(loginBean.name)}" styleClass="header-button1"/>
+            <h:commandButton rendered="#{loginBean.isLogged==true}" value="Search" 
+                             action="#{loginBean.logout()}" styleClass="header-button-search"/>
+            <h:inputText value="Search.." rendered="#{loginBean.isLogged==true}" styleClass="header-search"/><br></br>
         </ui:composition>        
     </body>
 </html>

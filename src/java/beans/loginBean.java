@@ -114,7 +114,9 @@ public class LoginBean implements Serializable {
             return "pageError.";
         }
         }
-
+    public String profile(){
+    return "profile.xhtml";
+    }
     public LoginBean() {
     }
 

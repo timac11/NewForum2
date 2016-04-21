@@ -1,27 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package beans;
 
 import DAO.Factory;
-import DAOimpl.UsersDAOimpl;
+import java.io.Serializable;
 import java.sql.SQLException;
-import javax.inject.Named;
-import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import logic.User;
-import oracle.net.aso.s;
 
-/**
- *
- * @author aser 2014
- */
 @ManagedBean(name = "userBean")
 @SessionScoped
-public class UserBean {
+public class UserBean implements Serializable {
     private String nick;
     private String name;
     private String sname;
@@ -36,7 +23,7 @@ public class UserBean {
    // user = UsersDAOimpl.getUserByName(s);
    // }
     public String getRights (){
-        return this.rights;
+        return UsFromDb.getRights();
     }
     public void setRights (){
         this.rights = UsFromDb.getRights();
@@ -47,20 +34,20 @@ public class UserBean {
     }
     
     public String getEmail(){
-        return this.email;
+        return UsFromDb.getEmail();
     }
     public void setNick (String s){
         this.nick = UsFromDb.getName();
     }
     
     public String getNick (){
-        return this.nick;
+        return UsFromDb.getRights();
     }
-    public void setName (String s){
+    public void setName (){
         this.name = UsFromDb.getName();
     }
     public String getName (){
-        return this.name;
+        return UsFromDb.getName();
     }
    public void setSname (String s){
        this.sname = s;
@@ -68,8 +55,9 @@ public class UserBean {
    public String getSname(){
        return this.sname;
    }
-   public void getUserFromDB(String s) throws SQLException{    
+   public String getUserFromDB(String s) throws SQLException{    
    UsFromDb = Factory.getInstance().getUserDAO().getUserByName(s);
+   return "/secured/profile.xhtml";
    }
 
 }
