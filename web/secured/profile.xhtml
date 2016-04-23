@@ -10,34 +10,46 @@
     <h:body>
         <ui:composition template="/resources/templates/commonLayout.xhtml">
             <ui:define name="feed">
-                <p>
-                    <a class="navigation-ref" href="index.xhtml"> /Main Page </a>
-                </p>
-                <h3>Profile of user :</h3>
-                <h:form>
+
+                <div class ="profile-head">
                     <p>
+                         Profile of user 
                     </p>
-                    <h:dataTable var="section">
-                    <h:column>
-                    </h:column>
-                    </h:dataTable>
+                </div>
+                <div class="profile-inform">
                     <p>
-                    <h:outputLabel value="Username  "/>
-                    <h:outputText value="#{userBean.name}"/>
+                    <h:outputLabel value="Username:"/>
+                    <h:outputText styleClass="profile-inform1" value="#{userBean.name}"/>
                     </p>
                     <p>
-                    <h:outputLabel value ="Email  "/>
-                    <h:outputText value = "#{userBean.email}"/>
+                        <h:outputLabel  value ="Email:"/>
+                    <h:outputText styleClass="profile-inform1" value = "#{userBean.email}"/>
                     </p>
                     <p>
-                    <h:outputLabel value ="rights  "/>
-                    <h:outputText value = "#{userBean.rights}"/>    
+                    <h:outputLabel value ="Rights:"/>
+                    <h:outputText styleClass="profile-inform1" value = "#{userBean.rights}"/>    
                     </p>
                     <p>
-                    <h:outputLabel value ="Name  "/>
-                    <h:inputText value = "#{userBean.name}"/>    
+                    <h:outputLabel value ="Security:   "/>
+                    <h:commandButton  value="Change password " action ="#{userBean.inspectCheck()}" styleClass="profile-inform2"/>    
                     </p>
-                </h:form> 
+                </div> 
+                    
+                <div class="change-pas">
+                    <h:outputText value="Repeat password" rendered="#{userBean.check==true}" />
+                    <h:inputText value ="#{userBean.rpassword}" rendered="#{userBean.check==true}" />     
+                    <h:commandButton value="Change old password" rendered="#{userBean.check==true}" action="#{userBean.inspection()}" id="mybutton" binding="#{userBean.mybutton}"/>
+                    <p><h:message for="mybutton" styleClass="page-body"/> </p>
+                  
+                     <p>
+                         <h:inputText value ="#{userBean.newpassword1}" rendered="#{userBean.equa==true}" /> 
+                         <h:outputText value="Enter new password" rendered="#{userBean.equa==true}" />
+                         <h:inputText value ="#{userBean.newpassword2}" rendered="#{userBean.equa==true}" /> 
+                         <h:outputText value="Repeat password" rendered="#{userBean.equa==true}" />
+                         <h:commandButton value="Change password" action="#{userBean.inspection2()}" rendered="#{userBean.equa==true}"/>
+                         <p><h:message for="mybutton" styleClass="page-body"/> </p>
+                     </p>
+                </div>
 
             </ui:define>    	
         </ui:composition>

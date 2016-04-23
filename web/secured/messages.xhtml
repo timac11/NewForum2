@@ -2,11 +2,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <h:outputStylesheet library="css" name="table-style.css"  />
+        <h:outputStylesheet library="css" name="common-style.css"  />
     </h:head>
     <h:body>
+        <ui:composition template="/resources/templates/commonLayout2.xhtml">
+            <ui:define name="feed">
         <h:form>
             <h:dataTable value="#{forumBean.messageFromTop}" var="message"
                          styleClass="order-table"
@@ -40,6 +44,8 @@
                                  action="#{forumBean.nextPage(forumBean.isMessag())}"/>
             </h:panelGrid>
         </h:form>
-    </h:body>
+        </ui:define>    	
+        </ui:composition>
+                </h:body>
 </html>
 

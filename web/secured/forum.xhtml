@@ -17,27 +17,20 @@
                 <h3>Hello from Forum!</h3>
                 <h3>Select a section</h3>
                 <h:form>
-                    <p>
-                     <h:outputLabel value="Please, enter new section"/>
-                     <h:inputText value="#{forumBean.nameNewSection}" requiredMessage="Please, fill this field"/>
-                     <h:commandButton value="ADD" action="#{forumBean.addNewSection(loginBean.id)}" id="mybutton" binding="#{forumBean.mybutton}" />
-                     <p><h:message for="mybutton" styleClass="page-body"/> </p>
-                    </p>
                     <h:dataTable value="#{forumBean.allSections}" var="section">
                         <h:column>
                             <h:outputLink style="text-decoration: none" value="topics.xhtml?section_id=#{section.SECTION_ID}">#{section.SECTION_NAME}</h:outputLink>
                         </h:column>
                     </h:dataTable>
                 </h:form> 
-                 
-                <h:form styleClass="sidebar"> 
-                
-                    <p> 
-                  Please, inter you theme if you would like create new  
-                  
-                 <br/>
-                     </p> 
-                  </h:form>
+                <div class="bottom">     
+                <p>
+                     <h:outputLabel value="Please, enter new section"/>
+                     <h:inputText value="#{forumBean.nameNewSection}" requiredMessage="Please, fill this field"/>
+                     <h:commandButton styleClass="bottom-add" value="ADD" action="#{forumBean.addNewSection(loginBean.id)}" id="mybutton" binding="#{forumBean.mybutton}" />
+                     <p><h:message for="mybutton" styleClass="page-body"/> </p>
+                    </p>
+                </div>
             </ui:define>    	
         </ui:composition>
     </h:body>

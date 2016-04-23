@@ -1,11 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Topics</title>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+     <h:head>
+        <h:outputStylesheet library="css" name="table-style.css"  />
+        <h:outputStylesheet library="css" name="common-style.css"  />
     </h:head>
     <h:body>
+        <ui:composition template="/resources/templates/commonLayout2.xhtml">
+            <ui:define name="feed">
         <h3>Select a topic</h3>
         <h:form id="main">
             <h:dataTable value="#{forumBean.topicsFromSect}" var="topic">
@@ -21,6 +25,16 @@
                                  action="#{forumBean.nextPage(forumBean.isTopics())}"/>
             </h:panelGrid>
         </h:form>
-    </h:body>
+            <div class="bottom">     
+                <p>
+                     <h:outputLabel value="Please, enter new topic"/>
+                     <h:inputText value="#{forumBean.nameNewSection}" requiredMessage="Please, fill this field"/>
+                     <h:commandButton styleClass="bottom-add" value="ADD" action="#{forumBean.addNewSection(loginBean.id)}" id="mybutton" binding="#{forumBean.mybutton}" />
+                     <p><h:message for="mybutton" styleClass="page-body"/> </p>
+                    </p>
+            </div>
+            </ui:define>    	
+        </ui:composition>
+        </h:body>
 </html>
 
