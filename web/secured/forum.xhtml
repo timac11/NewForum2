@@ -11,18 +11,24 @@
     <h:body>
         <ui:composition template="/resources/templates/commonLayout.xhtml">
             <ui:define name="feed">
-                <p>
-                    <a class="navigation-ref" href="index.xhtml"> /Main Page </a>
-                </p>
-                <h3>Hello from Forum!</h3>
-                <h3>Select a section</h3>
-                <h:form>
-                    <h:dataTable value="#{forumBean.allSections}" var="section">
-                        <h:column>
-                            <h:outputLink style="text-decoration: none" value="topics.xhtml?section_id=#{section.SECTION_ID}">#{section.SECTION_NAME}</h:outputLink>
-                        </h:column>
-                    </h:dataTable>
-                </h:form> 
+                
+                <div  class="navigation-div">
+                   <h:link value=" /main page" outcome="/index.xhtml?faces-redirect=true" styleClass="navigation-ref"/> 
+                </div>
+                
+                <h3 align="center">Hello from Forum!</h3>
+                
+                <div class="forum-sections">
+                    <h3>Select a section</h3>
+                    <h:form>
+                        <h:dataTable value="#{forumBean.allSections}" var="section">
+                            <h:column>
+                                <h:outputLink style="text-decoration: none" value="topics.xhtml?section_id=#{section.SECTION_ID}">#{section.SECTION_NAME}</h:outputLink>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form> 
+                </div>
+                
                 <div class="bottom">     
                 <p>
                      <h:outputLabel value="Please, enter new section"/>
@@ -31,6 +37,7 @@
                      <p><h:message for="mybutton" styleClass="page-body"/> </p>
                     </p>
                 </div>
+                
             </ui:define>    	
         </ui:composition>
     </h:body>

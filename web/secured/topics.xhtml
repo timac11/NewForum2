@@ -10,29 +10,40 @@
     <h:body>
         <ui:composition template="/resources/templates/commonLayout2.xhtml">
             <ui:define name="feed">
-        <h3>Select a topic</h3>
-        <h:form id="main">
-            <h:dataTable value="#{forumBean.topicsFromSect}" var="topic">
-                <h:column>
-                    <h:outputLink style="text-decoration: none" value="messages.xhtml?topic_id=#{topic.TOPIC_ID}">#{topic.TOPIC_NAME}</h:outputLink>
-                </h:column>
-            </h:dataTable>
-            <h:panelGrid columns="3">
-                <h:commandButton rendered="#{forumBean.pageTopics>0}" value="Previous" 
-                                 action="#{forumBean.previousPage(forumBean.isTopics())}"/>
-                <h:outputText value="Page #{forumBean.pageTopics + 1}"/>
-                <h:commandButton rendered="#{forumBean.lastPageTop==false}" value="Next" 
-                                 action="#{forumBean.nextPage(forumBean.isTopics())}"/>
-            </h:panelGrid>
-        </h:form>
-            <div class="bottom">     
-                <p>
-                     <h:outputLabel value="Please, enter new topic"/>
-                     <h:inputText value="#{forumBean.nameNewSection}" requiredMessage="Please, fill this field"/>
-                     <h:commandButton styleClass="bottom-add" value="ADD" action="#{forumBean.addNewSection(loginBean.id)}" id="mybutton" binding="#{forumBean.mybutton}" />
-                     <p><h:message for="mybutton" styleClass="page-body"/> </p>
+                
+                <div class="navigation-div">
+                    <h:link value=" /main page" outcome="/index.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
+                    <h:link value=" /forum" outcome="forum.xhtml?faces-redirect=true" styleClass="navigation-ref"/>    
+                </div>
+                
+                <div class="forum-sections">
+                    <h>Section: Животные</h>
+                    <h3>Select a topic</h3>
+                    <h:form id="main">
+                        <h:dataTable value="#{forumBean.topicsFromSect}" var="topic">
+                            <h:column>
+                                <h:outputLink style="text-decoration: none" value="messages.xhtml?topic_id=#{topic.TOPIC_ID}">#{topic.TOPIC_NAME}</h:outputLink>
+                            </h:column>
+                        </h:dataTable>
+                        <h:panelGrid columns="3">
+                            <h:commandButton rendered="#{forumBean.pageTopics>0}" value="Previous" 
+                                         action="#{forumBean.previousPage(forumBean.isTopics())}"/>
+                            <h:outputText value="Page #{forumBean.pageTopics + 1}"/>
+                            <h:commandButton rendered="#{forumBean.lastPageTop==false}" value="Next" 
+                                         action="#{forumBean.nextPage(forumBean.isTopics())}"/>
+                        </h:panelGrid>
+                    </h:form>
+                </div>
+                
+                <div class="bottom">     
+                    <p>
+                        <h:outputLabel value="Please, enter new topic"/>
+                        <h:inputText value="#{forumBean.nameNewSection}" requiredMessage="Please, fill this field"/>
+                        <h:commandButton styleClass="bottom-add" value="ADD" action="#{forumBean.addNewSection(loginBean.id)}" id="mybutton" binding="#{forumBean.mybutton}" />
+                        <p><h:message for="mybutton" styleClass="page-body"/> </p>
                     </p>
-            </div>
+                </div>
+                
             </ui:define>    	
         </ui:composition>
         </h:body>

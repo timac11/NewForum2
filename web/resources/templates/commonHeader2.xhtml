@@ -15,7 +15,7 @@ and open the template in the editor.
             <h:commandButton rendered="#{loginBean.isLogged==true}" value="Logout" 
                              action="#{loginBean.logout()}" styleClass="header-button"/>
             <h:commandButton rendered="#{loginBean.isLogged==true}" value="My profile " 
-                             action="#{userBean.getUserFromDB(loginBean.name)}" styleClass="header-button1"/>
+                             action="#{userBean.getUserFromDB(loginBean.name)}" styleClass="header-button"/>
             <h:commandButton rendered="#{loginBean.isLogged==true}" value="Search" 
                              action="#{loginBean.logout()}" styleClass="header-button-search"/>
             <h:inputText value="Search.." rendered="#{loginBean.isLogged==true}" styleClass="header-search"/><br></br>

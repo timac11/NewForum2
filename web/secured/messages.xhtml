@@ -11,41 +11,50 @@
     <h:body>
         <ui:composition template="/resources/templates/commonLayout2.xhtml">
             <ui:define name="feed">
-        <h:form>
-            <h:dataTable value="#{forumBean.messageFromTop}" var="message"
+                <h:form>
+                
+                <div class="navigation-div">
+                    <h:link value="/main page" outcome="/index.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
+                    <h:link value=" /forum" outcome="forum.xhtml?faces-redirect=true" styleClass="navigation-ref"/> 
+                    <h:link value=" /topics" outcome="topics.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
+                </div>
+                
+                    
+                    <h:dataTable value="#{forumBean.messageFromTop}" var="message"
                          styleClass="order-table"
                          headerClass="order-table-header"
                          rowClasses="order-table-odd-row,order-table-even-row">
-                <h:column>
-                    <!-- column header -->
-                    <f:facet name="header">Creator</f:facet>
-                    <!-- row record --> 
-                    #{message.USER_NAME}
-                </h:column>
-                <h:column>
-                    <!-- column header -->
-                    <f:facet name="header">Message</f:facet>
-                    <!-- row record --> 
-                    #{message.MESSAGE}
-                </h:column>
-                <h:column>
-                    <!-- column header -->
-                    <f:facet name="header">Date</f:facet>
-                    <!-- row record --> 
-                    #{message.DATE_T}
-                </h:column>
-            </h:dataTable>
+                        <h:column>
+                            <!-- column header -->
+                            <f:facet name="header">Creator</f:facet>
+                            <!-- row record --> 
+                            #{message.USER_NAME}
+                        </h:column>
+                        <h:column>
+                            <!-- column header -->
+                            <f:facet name="header">Message</f:facet>
+                            <!-- row record --> 
+                            #{message.MESSAGE}
+                        </h:column>
+                        <h:column>
+                            <!-- column header -->
+                            <f:facet name="header">Date</f:facet>
+                            <!-- row record --> 
+                            #{message.DATE_T}
+                        </h:column>
+                    </h:dataTable>
             
-            <h:panelGrid columns="3">
-                <h:commandButton rendered="#{forumBean.pageMessages>0}" value="Previous" 
-                                 action="#{forumBean.previousPage(forumBean.isMessag())}"/>
-                <h:outputText value="Page #{forumBean.pageMessages + 1}"/>
-                <h:commandButton rendered="#{forumBean.lastPageMess==false}" value="Next" 
-                                 action="#{forumBean.nextPage(forumBean.isMessag())}"/>
-            </h:panelGrid>
-        </h:form>
-        </ui:define>    	
+                    <h:panelGrid columns="3">
+                        <h:commandButton rendered="#{forumBean.pageMessages>0}" value="Previous" 
+                                         action="#{forumBean.previousPage(forumBean.isMessag())}"/>
+                        <h:outputText value="Page #{forumBean.pageMessages + 1}"/>
+                        <h:commandButton rendered="#{forumBean.lastPageMess==false}" value="Next" 
+                                         action="#{forumBean.nextPage(forumBean.isMessag())}"/>
+                    </h:panelGrid>
+                    
+                </h:form>
+            </ui:define>    	
         </ui:composition>
-                </h:body>
+    </h:body>
 </html>
 
