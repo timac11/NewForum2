@@ -7,23 +7,33 @@
     <h:head>
         <h:outputStylesheet library="css" name="table-style.css"  />
         <h:outputStylesheet library="css" name="common-style.css"  />
+        <title>Conversation</title>
     </h:head>
     <h:body>
         <ui:composition template="/resources/templates/commonLayout2.xhtml">
             <ui:define name="feed">
                 <h:form>
-                
-                <div class="navigation-div">
-                    <h:link value="/main page" outcome="/index.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
-                    <h:link value=" /forum" outcome="forum.xhtml?faces-redirect=true" styleClass="navigation-ref"/> 
-                    <h:link value=" /topics" outcome="topics.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
-                </div>
-                
-                    
+
+                    <h:link outcome="/index.xhtml?faces-redirect=true">    
+                        <h:graphicImage value="/resources/images/home3.png" styleClass="navigation-img"/>
+                    </h:link>
+                    <div class="navigation-block">
+                        <div class="navigation-div">
+                            <h:link value="/ main page" outcome="/index.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
+                        </div>
+                        <div class="navigation-div">
+                            <h:link value="/ forum" outcome="forum.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
+                        </div>
+                        <div class="navigation-div">
+                            <h:link value="/ topics" outcome="topics.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
+                        </div>
+                    </div>
+
+
                     <h:dataTable value="#{forumBean.messageFromTop}" var="message"
-                         styleClass="order-table"
-                         headerClass="order-table-header"
-                         rowClasses="order-table-odd-row,order-table-even-row">
+                                 styleClass="order-table"
+                                 headerClass="order-table-header"
+                                 rowClasses="order-table-odd-row,order-table-even-row">
                         <h:column>
                             <!-- column header -->
                             <f:facet name="header">Creator</f:facet>
@@ -43,7 +53,7 @@
                             #{message.DATE_T}
                         </h:column>
                     </h:dataTable>
-            
+
                     <h:panelGrid columns="3">
                         <h:commandButton rendered="#{forumBean.pageMessages>0}" value="Previous" 
                                          action="#{forumBean.previousPage(forumBean.isMessag())}"/>
@@ -51,7 +61,7 @@
                         <h:commandButton rendered="#{forumBean.lastPageMess==false}" value="Next" 
                                          action="#{forumBean.nextPage(forumBean.isMessag())}"/>
                     </h:panelGrid>
-                    
+
                 </h:form>
             </ui:define>    	
         </ui:composition>

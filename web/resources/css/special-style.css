@@ -7,10 +7,13 @@ and open the template in the editor.
     Created on : Mar 3, 2016, 10:40:18 PM
     Author     : Mary
 */
-@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&subset=latin,cyrillic);
+/*@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&subset=latin,cyrillic);
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700);
+*/
+/* *{
+    font-family: 'Roboto Slab', sans-serif; font-weight: 300;  /* Семейство шрифтов} */ 
 *{
-    font-family: 'Roboto Slab', sans-serif; font-weight: 300;  /* Семейство шрифтов */    
+    font-family: sans-serif;
 }
 
 /*----------------------- Index page style ---------------------------------- */
@@ -23,7 +26,6 @@ and open the template in the editor.
     margin-right: 40px;
     border: 0px solid black;
 }
-
 .index-div2{
     background-color: white;
     text-align: justify;
@@ -45,7 +47,6 @@ and open the template in the editor.
     background-color: #FFDD32;
     box-shadow: 0 0 8px -1px;
 }
-
 .index-imagebox{
     position: static;
     float: left;
@@ -54,7 +55,6 @@ and open the template in the editor.
     margin-top: 30px;
     margin-left: 40px;
 }
-
 .clear {
     clear: left; /* Отмена обтекания */
    }
@@ -63,7 +63,6 @@ and open the template in the editor.
        margin: 40px;
        text-align: left;       
    }
-
 /*----------------------- User's profile page style ------------------------- */  
 .profile-head{
     float: right;
@@ -106,34 +105,91 @@ and open the template in the editor.
     text-align: center;
     font-size: 14px;
 }
-/*---------------------------- Forum page style ----------------------------- */
+/*---------------------------- Navigation style ----------------------------- */
 .navigation-ref{
-    text-decoration: #68ACAD none;
+    text-decoration: none;
     border: 0px;
     font-family: monospace;
     font-size: medium;
     color:  steelblue;
+    vertical-align: middle;
 }
 .navigation-ref:visited{
-    text-decoration: #68ACAD none;
+    text-decoration: none;
+    color:  steelblue;
+}
+.navigation-ref:hover{
+    text-decoration: underline;
+    color:  steelblue;
 }
 .navigation-div{
     background-color: #F8F8F6;
-    height: 25px;
-    width: 200px;
-    margin-top: 20px;
-    margin-left: 40px;
-    margin-right: 40px;
+    padding-left: 5px;
+    padding-right: 5px;
+    display: inline-block;
+    vertical-align:  middle;
     border: 0px solid cadetblue;
+}
+.navigation-block{
+    background-color: #F8F8F6;
+    display: inline-block;
+    height: 25px;
+    margin-left: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
     box-shadow: 0 0 4px -2px;
+    border: 0px solid black;
+}
+.navigation-img{
+    float: left;
+    border: 0px solid black;
+}
+/*---------------------------- Forum page style ----------------------------- */
+.forum-ref{
+    text-decoration: none;
+    font-weight: bold;
+    color:  steelblue;
+    position: absolute;
+    top: 5px;
+    left: 60px;
+}
+.forum-ref:visited{
+    color:  steelblue;
+}
+.forum-note{
+    position: absolute;
+    bottom: 3px;
+    left: 60px;
+    color: #666666;
+    font-family: monospace;
 }
 .forum-sections{
     margin: 30px;
-    padding-left: 30px;
-    padding-right: 30px;
     padding-bottom: 50px;
-    border: 2px solid  #E5E5E5;    
+    border: 1px solid  #E5E5E5;    
 }
+.forum-table{
+    width: 100%;
+    border: 0px solid  #E5E5E5;
+}
+.forum-cell{
+    background-color: #F8F8F6;
+    position: relative;
+    width: auto;
+    height: 70px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid  #E5E5E5;   
+}
+.forum-decoration{
+    background-color: lavender;
+    float: left;
+    display: inline-block;
+    width: 40px;
+    height: 70px;
+    border: 0px solid  black;    
+}
+
 
 /*---------------------------- Sidebar page style --------------------------- */
 .sidebar {

@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.sql.rowset.CachedRowSet;
+import logic.QueryStore;
 
 public class WorkDB {
 
@@ -31,7 +32,7 @@ public class WorkDB {
     private final String DB_URL = "jdbc:oracle:thin:@localhost:1521:xe";
     //  Database credentials
     private final String USER = "SYSTEM";
-    private final String PASS = "52415";
+    private final String PASS = "oracle7755";
     Connection conn;
     PreparedStatement selectSection;
     PreparedStatement selectTopicFromSect;
@@ -40,6 +41,8 @@ public class WorkDB {
     PreparedStatement selectMessFromTopSearch;
     PreparedStatement forNextPageTop;
     PreparedStatement forNextPageMess;
+    // новые селекты, текст запроса вынесен в отдельный класс
+    PreparedStatement selectSectionsInfo;
 
     public void createPreparedStatements() throws ClassNotFoundException, SQLException {
         //STEP 1: Register JDBC driver
@@ -54,6 +57,8 @@ public class WorkDB {
         forNextPageMess = conn.prepareStatement(forNextPageMess_str);
         selectTopicFromSectSearch = conn.prepareStatement(selectTopicFromSectSearch_str);
         selectMessFromTopSearch = conn.prepareStatement(selectMessFromTopSearch_str);
+        /// текст запроса вынесен в класс QueryStore
+        selectSectionsInfo = conn.prepareStatement(QueryStore.getSectionsInfoQuery());
     }
     
     public ResultSet resultOfQuery(String id_preparedStatement,String... params) throws SQLException{
@@ -79,6 +84,9 @@ public class WorkDB {
                 break;
             case "NPM":
                 pstmt = forNextPageMess;
+                break;
+            case "SI":
+                pstmt = selectSectionsInfo;
                 break;
             default:
                 return null;

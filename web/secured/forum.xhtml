@@ -7,30 +7,44 @@
     
     <h:head>
         <h:outputStylesheet library="css" name="common-style.css"  />
+        <title>Forum</title>
     </h:head>
     <h:body>
         <ui:composition template="/resources/templates/commonLayout.xhtml">
             <ui:define name="feed">
                 
-                <div  class="navigation-div">
-                   <h:link value=" /main page" outcome="/index.xhtml?faces-redirect=true" styleClass="navigation-ref"/> 
+                <h:link outcome="/index.xhtml?faces-redirect=true">
+                    <h:graphicImage value="/resources/images/home3.png" styleClass="navigation-img"/>
+                </h:link>                
+                <div class="navigation-block">
+                    <div  class="navigation-div">
+                       <h:link value="/ main page" outcome="/index.xhtml?faces-redirect=true" styleClass="navigation-ref"/> 
+                    </div>
                 </div>
+                <div  class="clear"/>
                 
-                <h3 align="center">Hello from Forum!</h3>
+                <h3 align="center"> List of forum sections: </h3>
                 
                 <div class="forum-sections">
-                    <h3>Select a section</h3>
                     <h:form>
-                        <h:dataTable value="#{forumBean.allSections}" var="section">
+                        <h:dataTable value="#{forumBean.sectionsInfo}" var="section" styleClass="forum-table">
+
                             <h:column>
-                                <h:outputLink style="text-decoration: none" value="topics.xhtml?section_id=#{section.SECTION_ID}">#{section.SECTION_NAME}</h:outputLink>
+                                <div class="forum-cell">
+                                    <div class="forum-decoration"/>
+                                    <h:outputLink styleClass="forum-ref" value="topics.xhtml?section_id=#{section.SECTION_ID}">
+                                    #{section.SECTION_NAME}      
+                                    </h:outputLink> 
+                                    <div class="forum-note">topics:#{section.SECTION_TOPICS}   messages:#{section.SECTION_Messages}   latest:## </div>
+                                </div>    
+                                <div class="clear"/>
                             </h:column>
                         </h:dataTable>
                     </h:form> 
                 </div>
                 
                 <div class="bottom">     
-                <p>
+                    <p>
                      <h:outputLabel value="Please, enter new section"/>
                      <h:inputText value="#{forumBean.nameNewSection}" requiredMessage="Please, fill this field"/>
                      <h:commandButton styleClass="bottom-add" value="ADD" action="#{forumBean.addNewSection(loginBean.id)}" id="mybutton" binding="#{forumBean.mybutton}" />

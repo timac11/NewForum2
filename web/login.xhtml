@@ -11,9 +11,11 @@
             <ui:define name="feed">
                 
                 <div class="login-div1">
-                    <p>
-                        <a class="navigation-ref" href="index.xhtml"> /Main Page </a>
-                    </p>
+                    
+                    <div  class="navigation-div">
+                        <h:link value=" /main page" outcome="/index.xhtml?faces-redirect=true" styleClass="navigation-ref"/> 
+                    </div>
+                    
                     <h:outputText value="Enter your login and password"/>
                     <p>
                         <h:outputLabel value="Username"/>
