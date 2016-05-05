@@ -145,6 +145,11 @@ public class ForumBean implements Serializable {
         connect();
         return resultSet("S");
     }
+    
+    public ResultSet getSectionsInfo() {
+        connect();
+        return resultSet("SI");
+    }
 
     public ResultSet getTopicsFromSect() {
         connect();
