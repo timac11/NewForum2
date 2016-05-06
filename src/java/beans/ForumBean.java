@@ -146,66 +146,96 @@ public class ForumBean implements Serializable {
 //        connect();
 //        return resultSet("S");
 //    }
-    
     public ResultSet getSectionsInfo() {
         connect();
         return resultSet("SI");
     }
-    
+
     public ResultSet getTopicsInfo() throws SQLException {
         connect();
         return resultSet("TI", getCurrentSectionID());
     }
-    
+
     //// НЕ РАБОТАЕТ ЕСЛИ ВЕРНУТЬСЯ НА СТРАНИЦУ СЕКЦИЙ ИЗ ТОПИКОВ! =(
-    public String getCurrentSectionName() throws SQLException{
+    public String getCurrentSectionName() throws SQLException {
         connect();
         Map<String, String> parameters = Helper.getQueryMap();
         if (parameters != null) {
             section_id = parameters.get("section_id");
-            ResultSet rs = resultSet("CSN",section_id);
+        }
+        ResultSet rs = resultSet("CSN", section_id);
+        if (rs != null) {
             rs.next();
             return rs.getString("SECTION_NAME");
-        }else{
+        } else {
             return "NO QUERY_MAP";
         }
+//        if (parameters != null) {
+//            section_id = parameters.get("section_id");
+//            ResultSet rs = resultSet("CSN",section_id);
+//            rs.next();
+//            return rs.getString("SECTION_NAME");
+//        }else{
+//            return "NO QUERY_MAP";
+//        }
     }
-    
-    public String getCurrentSectionID() throws SQLException{
+
+    public String getCurrentSectionID() throws SQLException {
         connect();
         Map<String, String> parameters = Helper.getQueryMap();
         if (parameters != null) {
             section_id = parameters.get("section_id");
-            return section_id;
-        }else{
-            return "NO QUERY_MAP";
         }
+
+        return section_id;
+
+//        if (parameters != null) {
+//            section_id = parameters.get("section_id");
+//            return section_id;
+//        }else{
+//            return "NO QUERY_MAP";
+//        }
     }
-        
-    public String getCurrentTopicName() throws SQLException{
+
+    public String getCurrentTopicName() throws SQLException {
         connect();
         Map<String, String> parameters = Helper.getQueryMap();
         if (parameters != null) {
             topic_id = parameters.get("topic_id");
-            ResultSet rs = resultSet("CTN",topic_id);
+        }
+        ResultSet rs = resultSet("CTN", topic_id);
+        if (rs != null) {
             rs.next();
             return rs.getString("TOPIC_NAME");
-        }else{
+        } else {
             return "NO QUERY_MAP";
         }
+
+//        if (parameters != null) {
+//            topic_id = parameters.get("topic_id");
+//            ResultSet rs = resultSet("CTN",topic_id);
+//            rs.next();
+//            return rs.getString("TOPIC_NAME");
+//        }else{
+//            return "NO QUERY_MAP";
+//        }
     }
-    
-    public String getCurrentTopicID() throws SQLException{
+
+    public String getCurrentTopicID() throws SQLException {
         connect();
         Map<String, String> parameters = Helper.getQueryMap();
         if (parameters != null) {
             topic_id = parameters.get("topic_id");
-            return topic_id;
-        }else{
-            return "NO QUERY_MAP";
         }
+        return topic_id;
+//        if (parameters != null) {
+//            topic_id = parameters.get("topic_id");
+//            return topic_id;
+//        }else{
+//            return "NO QUERY_MAP";
+//        }
     }
-    
+
 //    public ResultSet getTopicsFromSect() {
 //        connect();
 //        Map<String, String> parameters = Helper.getQueryMap();
@@ -220,7 +250,6 @@ public class ForumBean implements Serializable {
 //                    Integer.toString((pageTopics + 1) * amountString));
 //        }
 //    }
-    
     public ResultSet getTopicsFromSect() {
         connect();
         Map<String, String> parameters = Helper.getQueryMap();
@@ -228,8 +257,8 @@ public class ForumBean implements Serializable {
             section_id = parameters.get("section_id");
         }
         if (itSearch && !textSearch.trim().equals("") && getUrl().contains("topics")) {
-            return resultSet("TFSS", section_id, Integer.toString(pageTopics * amountString),
-                    Integer.toString((pageTopics + 1) * amountString),textSearch.toLowerCase());
+            return resultSet("TFSS", section_id, textSearch.toLowerCase(), Integer.toString(pageTopics * amountString),
+                    Integer.toString((pageTopics + 1) * amountString));
         } else {
             return resultSet("TFS", section_id, Integer.toString(pageTopics * amountString),
                     Integer.toString((pageTopics + 1) * amountString));
@@ -243,8 +272,8 @@ public class ForumBean implements Serializable {
             topic_id = parameters.get("topic_id");
         }
         if (itSearch && !textSearch.trim().equals("") && getUrl().contains("messages")) {
-            return resultSet("MFTS", topic_id, Integer.toString(pageMessages * amountString),
-                    Integer.toString((pageMessages + 1) * amountString),textSearch);
+            return resultSet("MFTS", topic_id, textSearch.toLowerCase(), Integer.toString(pageMessages * amountString),
+                    Integer.toString((pageMessages + 1) * amountString));
         } else {
             return resultSet("MFT", topic_id, Integer.toString(pageMessages * amountString),
                     Integer.toString((pageMessages + 1) * amountString));

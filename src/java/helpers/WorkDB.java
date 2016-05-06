@@ -22,8 +22,19 @@ public class WorkDB {
             + "FROM USERS u, MESSAGES m "
             + "WHERE m.TOPIC_ID = ? AND m.USER_ID = u.USER_ID ORDER BY m.DATE_T) sort) "
             + "WHERE rn BETWEEN ? AND ?";
-    private String selectTopicFromSectSearch_str = selectTopicFromSect_str + " AND REGEXP_LIKE (LOWER(TOPIC_NAME),?)";
-    private String selectMessFromTopSearch_str = selectMessFromTop_str + " AND REGEXP_LIKE (LOWER(MESSAGE),?)";			
+    private String selectTopicFromSectSearch_str = "SELECT * "
+            + "FROM ( SELECT sort.*,rownum rn "
+            + "FROM (SELECT * "
+            + "FROM TOPICS WHERE SECTION_ID = ?"
+            + " AND REGEXP_LIKE (LOWER(TOPIC_NAME),?) ORDER BY DATE_T) sort) "
+            + "WHERE rn BETWEEN ? AND ?";
+    private String selectMessFromTopSearch_str = "SELECT * "
+            + "FROM (SELECT sort.*,rownum rn "
+            + "FROM (SELECT u.USER_NAME as USER_NAME, m.MESSAGE as MESSAGE,m.DATE_T as DATE_T "
+            + "FROM USERS u, MESSAGES m "
+            + "WHERE m.TOPIC_ID = ? AND m.USER_ID = u.USER_ID"
+            + " AND REGEXP_LIKE (LOWER(MESSAGE),?) ORDER BY m.DATE_T) sort) "
+            + "WHERE rn BETWEEN ? AND ?";			
     private String forNextPageTop_str = "SELECT * FROM TOPICS";
     private String forNextPageMess_str = "SELECT * FROM MESSAGES";
 
