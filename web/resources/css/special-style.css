@@ -148,6 +148,7 @@ and open the template in the editor.
 .forum-ref{
     text-decoration: none;
     font-weight: bold;
+    font-size: larger;
     color:  steelblue;
     position: absolute;
     top: 5px;
@@ -156,12 +157,20 @@ and open the template in the editor.
 .forum-ref:visited{
     color:  steelblue;
 }
+.forum-ref:hover{
+    text-decoration: underline;
+}
 .forum-note{
     position: absolute;
     bottom: 3px;
     left: 60px;
     color: #666666;
     font-family: monospace;
+}
+.forum-text{
+    color: black;
+    font-family: monospace;
+    font-size: larger;
 }
 .forum-sections{
     margin: 30px;
@@ -171,6 +180,7 @@ and open the template in the editor.
 .forum-table{
     width: 100%;
     border: 0px solid  #E5E5E5;
+    padding-bottom: 20px;
 }
 .forum-cell{
     background-color: #F8F8F6;
@@ -188,6 +198,58 @@ and open the template in the editor.
     width: 40px;
     height: 70px;
     border: 0px solid  black;    
+}
+/*---------------------------- Topics page style ----------------------------- */
+.topics-ref{
+    text-decoration: none;
+    font-weight: bold;
+    color:  steelblue;
+    position: absolute;
+    top: 5px;
+    left: 60px;
+}
+.topics-ref:visited{
+    color:  steelblue;
+}
+.topics-ref:hover{
+    text-decoration: underline;
+}
+.topics-decoration{
+    background-color: lavender;
+    float: left;
+    display: inline-block;
+    width: 40px;
+    height: 60px;
+    border: 0px solid  black;    
+}
+.topics-cell{
+    background-color: #F8F8F6;
+    position: relative;
+    width: auto;
+    height: 60px;
+    margin-top: 0px;
+    border: 1px solid  #E5E5E5;   
+}
+/*---------------------------- Messages page style -------------------------- */
+.messages-sections{
+    padding-bottom: 10px;
+    border: 1px solid  #E5E5E5;     
+}
+.messages-cell1{
+    background-color: #F8F8F6;
+    position: relative;
+    width: auto;
+    height: 60px;
+    margin-top: 0px;
+    border: 1px solid  #E5E5E5;   
+}
+.messages-cell2{
+    background-color: #F9F9F9;
+    position: relative;
+    width: auto;
+    height: 60px;
+    margin-top: 0px;
+    border: 1px solid  #E5E5E5;   
 }
 
 

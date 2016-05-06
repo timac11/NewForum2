@@ -24,17 +24,29 @@
                     </div>
                 </div>
                
-                <div class="forum-sections">
-                    <h>Section: Животные</h>
-                    <h3>Select a topic:</h3>
-                    <h:form id="main">
-                        <h:dataTable value="#{forumBean.topicsFromSect}" var="topic">
+                <h3 align="center"> Section: #{forumBean.currentSectionName}</h3>
+                <div class="forum-text" align="center">Select an existing topic or start a new one</div>
+                
+                <h:form id="main">
+                    <div class="forum-sections">
+                        
+                        <h:dataTable value="#{forumBean.topicsInfo}" var="topic" styleClass="forum-table"> 
+                            
                             <h:column>
-                                <h:outputLink style="text-decoration: none" value="messages.xhtml?topic_id=#{topic.TOPIC_ID}">
+                                <div class="topics-cell">
+                                <div class="topics-decoration"/>
+                                <h:outputLink styleClass="topics-ref" 
+                                              value="messages.xhtml?topic_id=#{topic.TOPIC_ID}&amp;section_id=#{forumBean.currentSectionID}">
                                     #{topic.TOPIC_NAME}
                                 </h:outputLink>
+                                <div class="forum-note">messages:#{topic.MESSAGES}  latest:#{topic.LATEST}  creator:#{topic.CREATOR}</div>
+                                </div>
                             </h:column>
+                             
                         </h:dataTable>
+                        
+                    </div>
+                                
                         <h:panelGrid columns="3">
                             <h:commandButton rendered="#{forumBean.pageTopics>0}" value="Previous" 
                                          action="#{forumBean.previousPage(forumBean.isTopics())}"/>
@@ -42,8 +54,10 @@
                             <h:commandButton rendered="#{forumBean.lastPageTop==false}" value="Next" 
                                          action="#{forumBean.nextPage(forumBean.isTopics())}"/>
                         </h:panelGrid>
-                    </h:form>
-                </div>
+                                
+                </h:form>
+                    
+                
                 
                 <div class="bottom">     
                     <p>

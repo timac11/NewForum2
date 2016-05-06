@@ -43,6 +43,9 @@ public class WorkDB {
     PreparedStatement forNextPageMess;
     // новые селекты, текст запроса вынесен в отдельный класс
     PreparedStatement selectSectionsInfo;
+    PreparedStatement selectCurrentSectionName;
+    PreparedStatement selectCurrentTopicName;
+    PreparedStatement selectTopicsInfo;
 
     public void createPreparedStatements() throws ClassNotFoundException, SQLException {
         //STEP 1: Register JDBC driver
@@ -57,8 +60,12 @@ public class WorkDB {
         forNextPageMess = conn.prepareStatement(forNextPageMess_str);
         selectTopicFromSectSearch = conn.prepareStatement(selectTopicFromSectSearch_str);
         selectMessFromTopSearch = conn.prepareStatement(selectMessFromTopSearch_str);
-        /// текст запроса вынесен в класс QueryStore
+        
+        //// текст запроса вынесен в класс QueryStore
         selectSectionsInfo = conn.prepareStatement(QueryStore.getSectionsInfoQuery());
+        selectCurrentSectionName = conn.prepareStatement(QueryStore.getCurrentSectionNameQuery());
+        selectCurrentTopicName = conn.prepareStatement(QueryStore.getCurrentTopicNameQuery());
+        selectTopicsInfo = conn.prepareStatement(QueryStore.getTopicsInfoQuery());
     }
     
     public ResultSet resultOfQuery(String id_preparedStatement,String... params) throws SQLException{
@@ -87,6 +94,15 @@ public class WorkDB {
                 break;
             case "SI":
                 pstmt = selectSectionsInfo;
+                break;
+            case "CSN":
+                pstmt = selectCurrentSectionName;
+                break;
+            case "TI":
+                pstmt = selectTopicsInfo;
+                break;
+            case "CTN":
+                pstmt = selectCurrentTopicName;
                 break;
             default:
                 return null;

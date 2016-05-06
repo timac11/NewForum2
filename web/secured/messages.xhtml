@@ -25,34 +25,42 @@
                             <h:link value="/ forum" outcome="forum.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
                         </div>
                         <div class="navigation-div">
-                            <h:link value="/ topics" outcome="topics.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
+                            <h:link value="/ topics" outcome="topics.xhtml?section_id=#{forumBean.currentSectionID}" styleClass="navigation-ref"/>
                         </div>
                     </div>
+                    
+                    <h3 align="center"> Topic: #{forumBean.currentTopicName}</h3>
+                    
+                    <div class="messages-sections">
+                        
+                        <h:dataTable value="#{forumBean.messageFromTop}" var="message"
+                                     styleClass="order-table"
+                                     headerClass="order-table-header"
+                                     rowClasses="order-table-odd-row,order-table-even-row">
+                            <div class="messages-sections">
+                            
+                            <h:column class="messages-cell1">
+                                    <div class="messages-cell1">
+                                    <!-- column header -->
+                                    <f:facet name="header">Author</f:facet>
+                                    <!-- row record --> 
+                                    #{message.USER_NAME}
+                                    </div>
+                            </h:column>
+                            <h:column class="messages-cell2">
+                                    <div class="messages-cell">
+                                    <!-- column header -->
+                                    <f:facet name="header">Message</f:facet>
+                                    <!-- row record --> 
+                                    #{message.MESSAGE}
+                                    </div>
+                            </h:column>
+                            </div>
+                            
 
-
-                    <h:dataTable value="#{forumBean.messageFromTop}" var="message"
-                                 styleClass="order-table"
-                                 headerClass="order-table-header"
-                                 rowClasses="order-table-odd-row,order-table-even-row">
-                        <h:column>
-                            <!-- column header -->
-                            <f:facet name="header">Creator</f:facet>
-                            <!-- row record --> 
-                            #{message.USER_NAME}
-                        </h:column>
-                        <h:column>
-                            <!-- column header -->
-                            <f:facet name="header">Message</f:facet>
-                            <!-- row record --> 
-                            #{message.MESSAGE}
-                        </h:column>
-                        <h:column>
-                            <!-- column header -->
-                            <f:facet name="header">Date</f:facet>
-                            <!-- row record --> 
-                            #{message.DATE_T}
-                        </h:column>
-                    </h:dataTable>
+                        </h:dataTable>
+                        
+                    </div>
 
                     <h:panelGrid columns="3">
                         <h:commandButton rendered="#{forumBean.pageMessages>0}" value="Previous" 

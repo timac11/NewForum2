@@ -17,6 +17,7 @@ import java.util.Map;
 import java.sql.*;
 import helpers.*;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -141,30 +142,84 @@ public class ForumBean implements Serializable {
 
     }
 
-    public ResultSet getAllSections() {
-        connect();
-        return resultSet("S");
-    }
+//    public ResultSet getAllSections() {
+//        connect();
+//        return resultSet("S");
+//    }
     
     public ResultSet getSectionsInfo() {
         connect();
         return resultSet("SI");
     }
-
-    public ResultSet getTopicsFromSect() {
+    
+    public ResultSet getTopicsInfo() throws SQLException {
+        connect();
+        return resultSet("TI", getCurrentSectionID());
+    }
+    
+    //// НЕ РАБОТАЕТ ЕСЛИ ВЕРНУТЬСЯ НА СТРАНИЦУ СЕКЦИЙ ИЗ ТОПИКОВ! =(
+    public String getCurrentSectionName() throws SQLException{
         connect();
         Map<String, String> parameters = Helper.getQueryMap();
         if (parameters != null) {
             section_id = parameters.get("section_id");
-        }
-        if (itSearch && getUrl().contains("topics")) {
-            return resultSet("TFSS", section_id, Integer.toString(pageTopics * amountString),
-                    Integer.toString((pageTopics + 1) * amountString),textSearch);
-        } else {
-            return resultSet("TFS", section_id, Integer.toString(pageTopics * amountString),
-                    Integer.toString((pageTopics + 1) * amountString));
+            ResultSet rs = resultSet("CSN",section_id);
+            rs.next();
+            return rs.getString("SECTION_NAME");
+        }else{
+            return "NO QUERY_MAP";
         }
     }
+    
+    public String getCurrentSectionID() throws SQLException{
+        connect();
+        Map<String, String> parameters = Helper.getQueryMap();
+        if (parameters != null) {
+            section_id = parameters.get("section_id");
+            return section_id;
+        }else{
+            return "NO QUERY_MAP";
+        }
+    }
+        
+    public String getCurrentTopicName() throws SQLException{
+        connect();
+        Map<String, String> parameters = Helper.getQueryMap();
+        if (parameters != null) {
+            topic_id = parameters.get("topic_id");
+            ResultSet rs = resultSet("CTN",topic_id);
+            rs.next();
+            return rs.getString("TOPIC_NAME");
+        }else{
+            return "NO QUERY_MAP";
+        }
+    }
+    
+    public String getCurrentTopicID() throws SQLException{
+        connect();
+        Map<String, String> parameters = Helper.getQueryMap();
+        if (parameters != null) {
+            topic_id = parameters.get("topic_id");
+            return topic_id;
+        }else{
+            return "NO QUERY_MAP";
+        }
+    }
+    
+//    public ResultSet getTopicsFromSect() {
+//        connect();
+//        Map<String, String> parameters = Helper.getQueryMap();
+//        if (parameters != null) {
+//            section_id = parameters.get("section_id");
+//        }
+//        if (itSearch && getUrl().contains("topics")) {
+//            return resultSet("TFSS", section_id, Integer.toString(pageTopics * amountString),
+//                    Integer.toString((pageTopics + 1) * amountString),textSearch);
+//        } else {
+//            return resultSet("TFS", section_id, Integer.toString(pageTopics * amountString),
+//                    Integer.toString((pageTopics + 1) * amountString));
+//        }
+//    }
 
     public ResultSet getMessageFromTop() {
         connect();
