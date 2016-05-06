@@ -22,8 +22,8 @@ public class WorkDB {
             + "FROM USERS u, MESSAGES m "
             + "WHERE m.TOPIC_ID = ? AND m.USER_ID = u.USER_ID ORDER BY m.DATE_T) sort) "
             + "WHERE rn BETWEEN ? AND ?";
-    private String selectTopicFromSectSearch_str = selectTopicFromSect_str + " AND REGEXP_LIKE (TOPIC_NAME,?)";
-    private String selectMessFromTopSearch_str = selectMessFromTop_str + " AND REGEXP_LIKE (MESSAGE,?)";
+    private String selectTopicFromSectSearch_str = selectTopicFromSect_str + " AND REGEXP_LIKE (LOWER(TOPIC_NAME),?)";
+    private String selectMessFromTopSearch_str = selectMessFromTop_str + " AND REGEXP_LIKE (LOWER(MESSAGE),?)";			
     private String forNextPageTop_str = "SELECT * FROM TOPICS";
     private String forNextPageMess_str = "SELECT * FROM MESSAGES";
 
@@ -32,7 +32,7 @@ public class WorkDB {
     private final String DB_URL = "jdbc:oracle:thin:@localhost:1521:xe";
     //  Database credentials
     private final String USER = "SYSTEM";
-    private final String PASS = "oracle7755";
+    private final String PASS = "jhfg51";
     Connection conn;
     PreparedStatement selectSection;
     PreparedStatement selectTopicFromSect;

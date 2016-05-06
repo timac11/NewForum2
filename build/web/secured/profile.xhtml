@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <h:head>
+        <h:outputStylesheet library="css" name="common-style.css"  />
+        <title>Profile</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/resources/templates/commonLayout.xhtml">
+            <ui:define name="feed">
+                
+                <h:link outcome="/index.xhtml?faces-redirect=true">
+                    <h:graphicImage value="/resources/images/home3.png" styleClass="navigation-img"/>
+                </h:link>
+                <div class="navigation-block">
+                    <div  class="navigation-div">
+                       <h:link value="/ main page" outcome="/index.xhtml?faces-redirect=true" styleClass="navigation-ref"/> 
+                    </div>
+                </div>
+
+                <div class ="profile-head">
+                    <p>
+                         Profile of user 
+                    </p>
+                </div>
+                <div class="profile-inform">
+                    <p>
+                    <h:outputLabel value="Username:"/>
+                    <h:outputText styleClass="profile-inform1" value="#{userBean.name}"/>
+                    </p>
+                    <p>
+                        <h:outputLabel  value ="Email:"/>
+                    <h:outputText styleClass="profile-inform1" value = "#{userBean.email}"/>
+                    </p>
+                    <p>
+                    <h:outputLabel value ="Rights:"/>
+                    <h:outputText styleClass="profile-inform1" value = "#{userBean.rights}"/>    
+                    </p>
+                    <p>
+                    <h:outputLabel value ="Security:   "/>
+                    <h:commandButton  value="Change password " action ="#{userBean.inspectCheck()}" styleClass="profile-inform2"/>    
+                    </p>
+                </div> 
+                    
+                <div class="change-pas">
+                    <h:outputText value="Repeat password" rendered="#{userBean.check==true}" />
+                    <h:inputText value ="#{userBean.rpassword}" rendered="#{userBean.check==true}" />     
+                    <h:commandButton value="Change old password" rendered="#{userBean.check==true}" action="#{userBean.inspection()}" id="mybutton" binding="#{userBean.mybutton}"/>
+                    <p><h:message for="mybutton" styleClass="page-body"/> </p>
+                  
+                     <p>
+                         <h:inputText value ="#{userBean.newpassword1}" rendered="#{userBean.equa==true}" /> 
+                         <h:outputText value="Enter new password" rendered="#{userBean.equa==true}" />
+                         <h:inputText value ="#{userBean.newpassword2}" rendered="#{userBean.equa==true}" /> 
+                         <h:outputText value="Repeat password" rendered="#{userBean.equa==true}" />
+                         <h:commandButton value="Change password" action="#{userBean.inspection2()}" rendered="#{userBean.equa==true}"/>
+                         <p><h:message for="mybutton" styleClass="page-body"/> </p>
+                     </p>
+                </div>
+
+            </ui:define>    	
+        </ui:composition>
+    </h:body>
+</html>

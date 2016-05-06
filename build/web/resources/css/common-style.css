@@ -7,10 +7,14 @@ and open the template in the editor.
     Created on : Mar 3, 2016, 10:40:18 PM
     Author     : Mary
 */
-@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&subset=latin,cyrillic);
+/*@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&subset=latin,cyrillic);
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700);
+/**{
+/*    font-family: 'Roboto Slab', sans-serif; font-weight: 300;}  /* Семейство шрифтов 
+*/    
+
 *{
-    font-family: 'Roboto Slab', sans-serif; font-weight: 300;  /* Семейство шрифтов */    
+    font-family: Areal;
 }
 
 html{
@@ -33,97 +37,115 @@ html{
     box-shadow: 0 0 10px -1px;
     border: 0px solid black;
 } 
-.title{
-    font-family: 'Roboto Slab', sans-serif; font-weight: 700;
-    color: cornsilk;
-    width: 300px;
+.bottom{
+    background-color: cadetblue;
+    text-align: center;
+    position: fixed;
+    bottom:0px;
+    right: 0px;
+    left: 0px;
+    height: 50px;
+    padding-left: 10%;
+    box-shadow: 0 0 5px -1px;
     border: 0px solid black;
-    float: left;
+    margin-top: 5px;
+} 
+.bottom-add{
+    background-color: #68ACAD;
+    color: cornsilk;
+    height: 30px;
+    width: 60px;
+    border: 0px solid black;
+    box-shadow: 0 0 6px -1px #588182;
+}
+.title{
+    /* font-family: 'Roboto Slab', sans-serif; font-weight: 700; */
+    font-size: larger;
+    font-weight: bolder;
+    text-decoration: none;
+    color: cornsilk;
+}
+.title-block{
+    width: 300px;
+    margin-top: 17px;
+    border: 0px solid black;
+    float: left;  
 }
 .header-button{
     background-color: #68ACAD;
     color: cornsilk;
     float: right;
     height: 60px;
-    width: 60px;
-    margin: 0px;
+    width: 100px;
+    margin-bottom: 5px;
+    margin-left: 2px;
+    border: 0px solid black;
+    box-shadow: 0 0 3px -1px #588182;
+}
+.header-button:hover{
+    background-color: #6FB7B7;
+    box-shadow: 0 0 5px 2px #588182;
+}
+
+.header-button1{
+    background-color: #68ACAD;
+    color: cornsilk;
+    float: right;
+    height: 60px;
+    width: 100px;
+    margin-right:0px;
     border: 0px solid black;
     box-shadow: 0 0 6px -1px #588182;
 }
+.header-button-search{
+    background-color: #68ACAD;
+    color: cornsilk;
+    float: right;
+    height: 25px;
+    width: 60px;
+    margin-right:65px;
+    margin-top: 18px;
+    margin-bottom: 28px;
+    border: 0px solid black;
+    box-shadow: 0 0 6px -1px #588182;
+}
+
+.header-search{
+    float: right;
+    margin-top:20px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    border: 0px solid black;
+    box-shadow: 0 0 6px -1px #588182;
+}
+
+.navigation{
+    background-color: #68ACAD;
+    color: cornsilk;
+    float: right;
+    height: 60px;
+    width: 120px;
+    margin-right:0px;
+    border: 0px solid black;
+    box-shadow: 0 0 6px -1px #588182;
+    text-align: center;
+}
+
 .feed{
     background-color: #FFFFFF;
     width: 900px;
-    height: 95%;
+    height: auto;
     margin: auto;
     margin-top: 80px;
-    padding-top: 10px;
+    padding-top: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 60px;
     box-shadow: 0 0 3px -1px;
-}
-
-.navigation-ref{
-    text-decoration: none;        
 }
 
 .clear {
     clear: left; /* Отмена обтекания */
    }
-  *{
-    font-family: Areal;
-}
-.b-container{
-    width:200px;
-    height:150px;
-    background-color: #ccc;
-    margin:0px auto;
-    padding:10px;
-    font-size:30px;
-    color: #fff;
-}
-.b-popup{
-    width:100%;
-    min-height:100%;
-    background-color: rgba(0,0,0,0.5);
-    overflow:hidden;
-    position:fixed;
-    top:0px;
-}
-.b-popup .b-popup-content{
-    margin:40px auto 0px auto;
-    width:100px;
-    height: 100px;
-    padding:100px;
-    background-color: #c5c5c5;
-    border-radius:5px;
-    box-shadow: 0px 0px 10px #000;
-}
 
-.sidebar {
- background: cadetblue; 
- width: 180px; 
- font-size:12px;
- text-align: center;
- height: 200px;
- position: fixed; /* Фиксированное положение */
- right: 10px; /* Расстояние от правого края окна браузера */
- top: 13%; /* Расстояние сверху */
- padding: 10px; /* Поля вокруг текста */
- box-shadow: 0 0 10px -1px;
- border: 0px solid black;
-}
-.sidebar-button{
-    position: fixed;
-    right: 70px; /* Расстояние от правого края окна браузера */
-    top: 33%; /* Расстояние сверху */
-    padding: 10px; /* Поля вокруг текста */
-    background-color: gold;
-    text-align: center;
-    border: 1px black;
-    width: 70px;
-    height: 25px;
-    margin-top: 5px; 
-    padding: 0px;
-    box-shadow: 0 0 3px -1px;
-}
-.sidebar-window{
-    height: 40px;
-}
+

@@ -220,6 +220,21 @@ public class ForumBean implements Serializable {
 //                    Integer.toString((pageTopics + 1) * amountString));
 //        }
 //    }
+    
+    public ResultSet getTopicsFromSect() {
+        connect();
+        Map<String, String> parameters = Helper.getQueryMap();
+        if (parameters != null) {
+            section_id = parameters.get("section_id");
+        }
+        if (itSearch && !textSearch.trim().equals("") && getUrl().contains("topics")) {
+            return resultSet("TFSS", section_id, Integer.toString(pageTopics * amountString),
+                    Integer.toString((pageTopics + 1) * amountString),textSearch.toLowerCase());
+        } else {
+            return resultSet("TFS", section_id, Integer.toString(pageTopics * amountString),
+                    Integer.toString((pageTopics + 1) * amountString));
+        }
+    }
 
     public ResultSet getMessageFromTop() {
         connect();
@@ -227,7 +242,7 @@ public class ForumBean implements Serializable {
         if (parameters != null) {
             topic_id = parameters.get("topic_id");
         }
-        if (itSearch && getUrl().contains("messages")) {
+        if (itSearch && !textSearch.trim().equals("") && getUrl().contains("messages")) {
             return resultSet("MFTS", topic_id, Integer.toString(pageMessages * amountString),
                     Integer.toString((pageMessages + 1) * amountString),textSearch);
         } else {
