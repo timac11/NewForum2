@@ -17,7 +17,7 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 public class MessageDAOimpl implements MessagesDAO {
 
-    public void addMessage(Message message) throws SQLException {
+    public boolean addMessage(Message message) throws SQLException {
         Session session;
         session = null;
             try {
@@ -25,8 +25,10 @@ public class MessageDAOimpl implements MessagesDAO {
                 session.beginTransaction();
                 session.save(message);
                 session.getTransaction().commit();
+                return true;
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка I/O", JOptionPane.OK_OPTION);
+                return false;
             } finally {
                 if (session != null && session.isOpen()) {
                     session.close();

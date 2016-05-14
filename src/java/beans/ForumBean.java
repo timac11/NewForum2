@@ -7,7 +7,9 @@ package beans;
 
 import DAOimpl.UsersDAOimpl;
 import DAO.Factory;
+import DAO.Factory_mess;
 import DAO.Factory_sect;
+import DAO.Factory_topic;
 import DAOimpl.SectionDAOimpl;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
@@ -26,7 +28,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import logic.Message;
 import logic.Section;
+import logic.Topic;
 import logic.User;
 import static logic.hash_password.md5Apache;
 
@@ -53,7 +57,26 @@ public class ForumBean implements Serializable {
     private boolean lastPageMess = false;
     private boolean itSearch = false;
     private String textSearch;
-
+    private String message;
+    private String nameNewTopic;
+    
+    
+    public String getNameNewTopic(){
+        return this.nameNewTopic;
+    }
+    
+    public void setNameNewTopic(String name){
+        this.nameNewTopic = name;
+    }
+    
+    public String getMessage(){
+        return this.message;
+    }
+    
+    public void setMessage(String mess){
+    this.message = mess;
+    }
+    
     public String getTextSearch() {
         return textSearch;
     }
@@ -134,6 +157,45 @@ public class ForumBean implements Serializable {
             Date d = new Date(System.currentTimeMillis());
             sect.setDate(d);
             if (!Factory_sect.getInstance().getSectionDAO().addSection(sect)) {
+                FacesMessage msg = new FacesMessage("Sorry, system error. Try again");
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(mybutton.getClientId(context), msg);
+            }
+        }
+
+    }
+    
+        public void addNewMessage(long user_id) throws SQLException {
+        Locale.setDefault(Locale.ENGLISH);
+            Message mess = new Message();
+            mess.setMessage(this.message);
+            mess.setUser_id(user_id);
+            long val = new Long(this.getCurrentTopicID()); 
+            mess.setTop_id(val);
+            Date d = new Date(System.currentTimeMillis());
+            mess.setDate(d);
+            if (!Factory_mess.getInstance().getMessageDAO().addMessage(mess)) {
+                FacesMessage msg = new FacesMessage("Sorry, system error. Try again");
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(mybutton.getClientId(context), msg);
+            }
+        }
+
+     public void addNewTopic (long user_id) throws SQLException {
+        Locale.setDefault(Locale.ENGLISH);
+        if (!((Factory_topic.getInstance().getTopicDAO().getTopicByName(this.nameNewTopic)).getName().equals(""))) {
+            FacesMessage msg = new FacesMessage("Sorry, this topic there is. Try again");
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(mybutton.getClientId(context), msg);
+        } else {
+            Topic top = new Topic();
+            top.setName(this.nameNewTopic);
+            top.setUser_id(user_id);
+            long val = new Long(this.getCurrentSectionID()); 
+            top.setSection_id(val);
+            Date d = new Date(System.currentTimeMillis());
+            top.setDate(d);
+            if (!Factory_topic.getInstance().getTopicDAO().addTopic(top)) {
                 FacesMessage msg = new FacesMessage("Sorry, system error. Try again");
                 FacesContext context = FacesContext.getCurrentInstance();
                 context.addMessage(mybutton.getClientId(context), msg);

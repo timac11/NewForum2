@@ -14,7 +14,7 @@ import logic.Message;
  * @author aser 2014
  */
 public interface MessagesDAO {
-     public void addMessage(Message message) throws SQLException;   //добавить 
+     public boolean addMessage(Message message) throws SQLException;   //добавить 
     //public void updateUser(Users user) throws SQLException;//обновить 
     public Message getMessageById(long id) throws SQLException;    //получить по id
     public List getMessageByUserId (long id) throws SQLException;

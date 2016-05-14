@@ -6,11 +6,14 @@ import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table( name = "MESSAGES")
 public class Message {
    @Id    
+   @GeneratedValue(generator="increment")
+   @GenericGenerator(name="increment", strategy = "increment")
    @Column(name="MESSAGE_ID")    
    private long  id;
    @Column(name = "TOPIC_ID")    
@@ -19,7 +22,7 @@ public class Message {
    private String message;
    @Column (name = "USER_ID")  
    private long user_id;
-   @Column (name = "DATE")
+   @Column (name = "DATE_T")
    private Date date;
 public Message (long id, long top_id, String message, long user_id, Date date){
 this.id= id;
@@ -28,6 +31,10 @@ this.message = message;
 this.user_id = user_id;
 this.date = date;
 }
+
+    public Message() {
+    this.message = "";
+    }
 public long getId(){
         return this.id;
     }
@@ -37,6 +44,9 @@ public void setId(long id){
     
 public long getTop_id(){
         return this.top_id;
+    }
+public void  setTop_id(long id){
+        this.top_id = id;
     }
 public void setName(long top_id){
         this.top_id = top_id;

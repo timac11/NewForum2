@@ -10,7 +10,7 @@
         <title>Forum</title>
     </h:head>
     <h:body>
-        <ui:composition template="/resources/templates/commonLayout.xhtml">
+        <ui:composition template="/resources/templates/commonLayout3.xhtml">
             <ui:define name="feed">
                 
                 <h:link outcome="/index.xhtml?faces-redirect=true">
@@ -43,14 +43,7 @@
                     </h:form> 
                 </div>
                 
-                <div class="bottom">     
-                    <p>
-                     <h:outputLabel value="Please, enter new section"/>
-                     <h:inputText value="#{forumBean.nameNewSection}" requiredMessage="Please, fill this field"/>
-                     <h:commandButton styleClass="bottom-add" value="ADD" action="#{forumBean.addNewSection(loginBean.id)}" id="mybutton" binding="#{forumBean.mybutton}" />
-                     <p><h:message for="mybutton" styleClass="page-body"/> </p>
-                    </p>
-                </div>
+                
                 
             </ui:define>    	
         </ui:composition>

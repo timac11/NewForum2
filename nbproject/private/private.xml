@@ -3,17 +3,27 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/resources/templates/commonHeader2.xhtml</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/secured/messages.xhtml</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/beans/ForumBean.java</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/resources/templates/commonLayout2.xhtml</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/secured/forum.xhtml</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/beans/UserBean.java</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/hibernate.cfg.xml</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/logic/QueryStore.java</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/secured/topics.xhtml</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/beans/LoginBean.java</file>
-            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/helpers/WorkDB.java</file>
+            <file>file:/E:/Git_directory/NewForum2/src/java/DAO/SectionsDAO.java</file>
+            <file>file:/E:/Git_directory/NewForum2/src/java/logic/Topic.java</file>
+            <file>file:/E:/Git_directory/NewForum2/web/resources/templates/commonBottom3.xhtml</file>
+            <file>file:/E:/Git_directory/NewForum2/web/resources/templates/commonLayout4.xhtml</file>
+            <file>file:/E:/Git_directory/NewForum2/web/resources/templates/commonLayout3.xhtml</file>
+            <file>file:/E:/Git_directory/NewForum2/web/resources/templates/commonBottom2.xhtml</file>
+            <file>file:/E:/Git_directory/NewForum2/web/secured/messages.xhtml</file>
+            <file>file:/E:/Git_directory/NewForum2/web/resources/templates/commonLayout.xhtml</file>
+            <file>file:/E:/Git_directory/NewForum2/src/java/DAOimpl/TopicDAOimpl.java</file>
+            <file>file:/E:/Git_directory/NewForum2/web/resources/templates/commonLayout2.xhtml</file>
+            <file>file:/E:/Git_directory/NewForum2/web/resources/templates/commonLayout5.xhtml</file>
+            <file>file:/E:/Git_directory/NewForum2/src/java/DAO/TopicsDAO.java</file>
+            <file>file:/E:/Git_directory/NewForum2/web/secured/topics.xhtml</file>
+            <file>file:/E:/Git_directory/NewForum2/web/secured/forum.xhtml</file>
+            <file>file:/E:/Git_directory/NewForum2/web/resources/templates/commonBottom.xhtml</file>
+            <file>file:/E:/Git_directory/NewForum2/src/java/DAOimpl/SectionDAOimpl.java</file>
+            <file>file:/E:/Git_directory/NewForum2/src/java/beans/ForumBean.java</file>
+            <file>file:/E:/Git_directory/NewForum2/web/index.xhtml</file>
+            <file>file:/E:/Git_directory/NewForum2/src/java/logic/User.java</file>
+            <file>file:/E:/Git_directory/NewForum2/src/java/logic/Section.java</file>
+            <file>file:/E:/Git_directory/NewForum2/src/java/logic/Message.java</file>
         </group>
     </open-files>
 </project-private>

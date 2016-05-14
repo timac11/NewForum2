@@ -1,7 +1,10 @@
+package beans;
+
 
 import DAO.Factory;
 import java.io.Serializable;
 import java.sql.SQLException;
+import javax.annotation.PreDestroy;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -14,6 +17,11 @@ import static logic.hash_password.md5Apache;
 @ManagedBean(name = "userBean")
 @SessionScoped
 public class UserBean implements Serializable {
+@PreDestroy
+public void shutdown(){
+equa=false;
+check=false;    
+}    
     private String nick;
     private String name;
     private String sname;
@@ -33,6 +41,8 @@ public class UserBean implements Serializable {
    // static final User user = cn.getUserByName(s);
    // user = UsersDAOimpl.getUserByName(s);
    // }
+
+    
     public void setCheck(){
         this.check = true;
     }
@@ -95,6 +105,7 @@ public class UserBean implements Serializable {
   // return "/secured/profile.xhtml";
    ;
     }
+
    
    public String getRpassword(){
        return this.rpassword;
