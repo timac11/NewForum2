@@ -12,11 +12,18 @@
         <ui:composition template="/resources/templates/commonLayout.xhtml">
             <ui:define name="feed">
                     <h:form>
+                        
+                        <h:link outcome="/index.xhtml?faces-redirect=true">    
+                        <h:graphicImage value="/resources/images/home3.png" styleClass="navigation-img"/>
+                        </h:link>
+                        <div class="navigation-block">
+                            <div class="navigation-div">
+                                <h:link value="/ main page" outcome="/index.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
+                            </div>
+                        </div>
+                        
                        <div class="login-div1">
                             
-                            <div  class="navigation-div">
-                                <h:link value=" /main page" outcome="/index.xhtml?faces-redirect=true" styleClass="navigation-ref"/> 
-                            </div>
                             <h:outputText value="Create a new user. Enter your login and password"/>
                             <p>
                                 <h:outputLabel value="Username  "/>
@@ -40,7 +47,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                <h:commandButton value="Create acount" action="#{signUpBean.sendEmailMess()}" id="mybutton" binding="#{signUpBean.mybutton}"/>
+                                <h:commandButton value="Create acount" action="#{signUpBean.sendEmailMess()}" id="mybutton" binding="#{signUpBean.mybutton}" styleClass="index-button-big"/>
                                 </td>
                             </tr>
                             <tr>
@@ -49,7 +56,7 @@
                              </tr>
                         </table>
                         <p>
-                            <h:commandButton value="Verification" action="#{signUpBean.verification()}" rendered="#{signUpBean.isSended==true}"/>
+                            <h:commandButton value="Verification" action="#{signUpBean.verification()}" rendered="#{signUpBean.isSended==true}" styleClass="index-button-big"/>
                             <p><h:message for="mybutton" styleClass="page-body"/> </p>
                         </p>
                             </div>

@@ -13,26 +13,31 @@
        <ui:composition template="/resources/templates/commonProfile.xhtml">
             <ui:define name="feed">
                                     
-                <div class="navigation-div">
-                    <h:link value="/main page" outcome="/index.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
-                    <h:link value=" /forum" outcome="forum.xhtml?faces-redirect=true" styleClass="navigation-ref"/> 
-                </div>
-
-                <div class ="profile-head">
-                    <p>
-                         Profile of user 
-                    </p>
-                </div>
-               
-                <div class="profile-inform">
-
-                    <p>
-                    <div class="ava">
-                        <img src="resources/Avatars/#{userBean.name}.jpg" alt="image" height="100%" width="100%" />
+                <h:link outcome="/index.xhtml?faces-redirect=true">
+                    <h:graphicImage value="/resources/images/home3.png" styleClass="navigation-img"/>
+                </h:link>                
+                <div class="navigation-block">
+                    <div  class="navigation-div">
+                       <h:link value="/ main page" outcome="/index.xhtml?faces-redirect=true" styleClass="navigation-ref"/> 
                     </div>
+                </div>
+                <div  class="clear"/>
+
+                
+               
+                <div class="profile-block">
+                    
+                    <div class ="profile-head"> Profile of user </div>
+
+                    <p>
+                    <div class="profile-avatar">
+                        <img src="resources/Avatars/#{userBean.name}.jpg" alt=""/>
+                    </div>
+                    </p>
+                    
                     <h:outputLabel value="Username:"/>
                     <h:outputText styleClass="profile-inform1" value="#{userBean.name}"/>
-                     </p>
+                     
                     <p>
                         <h:outputLabel  value ="Email:"/>
                     <h:outputText styleClass="profile-inform1" value = "#{userBean.email}"/>
@@ -45,9 +50,7 @@
                     <h:outputLabel value ="Security:   "/>
                     <h:commandButton  value="Change password " action ="#{userBean.inspectCheck()}" styleClass="profile-inform2"/>    
                     </p>
-                </div> 
- 
-               
+                
                     <div class="change-pas">
                     <h:outputText value="Repeat password" rendered="#{userBean.check==true}" />
                     <h:inputText value ="#{userBean.rpassword}" rendered="#{userBean.check==true}" />     
@@ -62,7 +65,8 @@
                          <h:commandButton value="Change password" action="#{userBean.inspection2()}" rendered="#{userBean.equa==true}"/>
                          <p><h:message for="mybutton" styleClass="page-body"/> </p>
                      </p>
-                </div>
+                    </div>
+                 </div>
                
           </ui:define>    	
         </ui:composition>

@@ -9,7 +9,7 @@
         <title>Topics</title>
     </h:head>
     <h:body>
-        <ui:composition template="/resources/templates/commonLayout4.xhtml">
+        <ui:composition template="/resources/templates/commonLayout2.xhtml">
             <ui:define name="feed">
                 
                 <h:link outcome="/index.xhtml?faces-redirect=true">
@@ -20,12 +20,18 @@
                         <h:link value="/ main page" outcome="/index.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
                     </div>
                     <div class="navigation-div">
-                        <h:link value="/ forum" outcome="forum.xhtml?faces-redirect=true" styleClass="navigation-ref"/>    
+                        <h:link value="/ #{forumBean.currentSectionName}" outcome="forum.xhtml?faces-redirect=true" styleClass="navigation-ref"/>    
                     </div>
                 </div>
                
-                <h3 align="center"> Section: #{forumBean.currentSectionName}</h3>
-                <div class="forum-text" align="center">Select an existing topic or start a new one</div>
+                <h3 class="headline"><span> Section: #{forumBean.currentSectionName} </span></h3>
+                
+                <h:panelGroup layout="block" styleClass="forum-adding-section">
+                            <h:outputLabel value="Enter the name of new topic: "/>
+                            <h:inputText value="#{forumBean.nameNewTopic}" requiredMessage="Please, fill this field"/>
+                            <h:commandButton value="ADD" action="#{forumBean.addNewTopic(loginBean.id)}" id="mybutton" binding="#{forumBean.mybutton}" />
+                            <p><h:message for="mybutton" styleClass="page-body"/> </p>               
+                </h:panelGroup>
                 
                 <h:form id="main">
                     <div class="forum-sections">
@@ -44,19 +50,20 @@
                             </h:column>
                              
                         </h:dataTable>
-                        <p><h:message for="mybutton" styleClass="page-body"/> </p>
+                        
                     </div>
+                        <div align="left">  <h:outputText value="Page #{forumBean.pageTopics + 1}"/> </div>    
+                            
+                        <h:commandButton rendered="#{forumBean.pageTopics>0}" value="Previous" styleClass="index-button" 
+                                    action="#{forumBean.previousPage(forumBean.isTopics())}"/>
+                            
+                        <h:commandButton rendered="#{forumBean.lastPageTop==false}" value="Next" styleClass="index-button"
+                                    action="#{forumBean.nextPage(forumBean.isTopics())}"/>
+                        
+              
                                 
-                        <h:panelGrid columns="3">
-                            <h:commandButton rendered="#{forumBean.pageTopics>0}" value="Previous" 
-                                         action="#{forumBean.previousPage(forumBean.isTopics())}"/>
-                            <h:outputText value="Page #{forumBean.pageTopics + 1}"/>
-                            <h:commandButton rendered="#{forumBean.lastPageTop==false}" value="Next" 
-                                         action="#{forumBean.nextPage(forumBean.isTopics())}"/>
-                        </h:panelGrid>
-                                
-                </h:form>
-                    
+                </h:form>                
+                
                 
             </ui:define>    	
         </ui:composition>

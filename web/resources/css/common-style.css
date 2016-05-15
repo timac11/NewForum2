@@ -15,6 +15,7 @@ and open the template in the editor.
 
 *{
     font-family: Areal;
+    color: #464646;
 }
 
 html{
@@ -22,42 +23,25 @@ html{
 }
 
 .page-body{
-    background-color: #D7EFE8; 
+    background-color: #F7F7F7;
+    /*background-image:  url("../resources/images/background2.png");*/
+    background-repeat: repeat;
     height: 100%;
 }
 /* background-color: #669BBA; */
 .header{
-    background-color: cadetblue;
+    /*background-color: #00B4CC;*/
+    background-color: rgba(0, 155, 175, 0.7);
     position: fixed;
+    z-index: 1;
     top: 0px;
     right: 0px;
     left: 0px;
     height: 60px;
     padding-left: 10%;
-    box-shadow: 0 0 10px -1px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
     border: 0px solid black;
 } 
-.bottom{
-    background-color: cadetblue;
-    text-align: center;
-    position: fixed;
-    bottom:0px;
-    right: 0px;
-    left: 0px;
-    height: 50px;
-    padding-left: 10%;
-    box-shadow: 0 0 5px -1px;
-    border: 0px solid black;
-    margin-top: 5px;
-} 
-.bottom-add{
-    background-color: #68ACAD;
-    color: cornsilk;
-    height: 30px;
-    width: 60px;
-    border: 0px solid black;
-    box-shadow: 0 0 6px -1px #588182;
-}
 .title{
     /* font-family: 'Roboto Slab', sans-serif; font-weight: 700; */
     font-size: larger;
@@ -72,7 +56,8 @@ html{
     float: left;  
 }
 .header-button{
-    background-color: #68ACAD;
+    /*background-color: #68ACAD;*/
+    background-color: #0EBCD3;
     color: cornsilk;
     float: right;
     height: 60px;
@@ -83,22 +68,24 @@ html{
     box-shadow: 0 0 3px -1px #588182;
 }
 .header-button:hover{
-    background-color: #6FB7B7;
-    box-shadow: 0 0 5px 2px #588182;
+    /*background-color: #6FB7B7;*/
+    box-shadow: 0 0 5px 0px #707070;
 }
 
 .header-button1{
-    background-color: #68ACAD;
+    /*background-color: #68ACAD;*/
     color: cornsilk;
     float: right;
     height: 60px;
     width: 100px;
     margin-right:0px;
     border: 0px solid black;
+    border-radius: 10px;
     box-shadow: 0 0 6px -1px #588182;
 }
 .header-button-search{
-    background-color: #68ACAD;
+    /*background-color: #68ACAD;*/
+    background-color: #0EBCD3;
     color: cornsilk;
     float: right;
     height: 25px;
@@ -109,7 +96,9 @@ html{
     border: 0px solid black;
     box-shadow: 0 0 6px -1px #588182;
 }
-
+.header-button-search:hover{
+    box-shadow: 0 0 5px 0px #707070;
+}
 .header-search{
     float: right;
     margin-top:20px;
@@ -118,9 +107,8 @@ html{
     border: 0px solid black;
     box-shadow: 0 0 6px -1px #588182;
 }
-
 .navigation{
-    background-color: #68ACAD;
+    /*background-color: #68ACAD;*/
     color: cornsilk;
     float: right;
     height: 60px;
@@ -141,7 +129,33 @@ html{
     padding-left: 40px;
     padding-right: 40px;
     padding-bottom: 60px;
-    box-shadow: 0 0 3px -1px;
+    /*box-shadow: 0 0 3px -1px;*/
+    box-shadow: 1px 1px 0 rgba(235,235,235,1), 2px 2px 0 rgba(240,240,240,1), 3px 3px 0 rgba(243,243,243,1);
+}
+
+.headline{
+    position: relative;
+    text-align: center;
+    margin-top: 30px;
+}
+.headline span {
+    display: inline-block;
+    padding: 0 20px;
+    background: white;
+    position: relative;
+    z-index: 2;
+    color: #464646;
+}
+.headline:before {
+  content: "";
+  border-top: 1px  double #E5E5E5;
+  border-bottom: 1px  double #E5E5E5;
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  z-index: 0;
 }
 
 .clear {

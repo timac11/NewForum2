@@ -163,6 +163,11 @@ check=false;
    public void setNewpassword2 (String word){
        this.newpassword2 = word;
    }
+   
+   public boolean isAdmin(String name) throws SQLException{
+       UsFromDb = Factory.getInstance().getUserDAO().getUserByName(name);
+       return UsFromDb.getRights().contentEquals("Admin");      
+   }
 
 
 

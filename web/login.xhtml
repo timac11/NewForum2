@@ -10,11 +10,16 @@
         <ui:composition template="/resources/templates/commonLayout.xhtml">
             <ui:define name="feed">
                 
-                <div class="login-div1">
-                    
-                    <div  class="navigation-div">
-                        <h:link value=" /main page" outcome="/index.xhtml?faces-redirect=true" styleClass="navigation-ref"/> 
+                <h:link outcome="/index.xhtml?faces-redirect=true">    
+                        <h:graphicImage value="/resources/images/home3.png" styleClass="navigation-img"/>
+                    </h:link>
+                    <div class="navigation-block">
+                        <div class="navigation-div">
+                            <h:link value="/ main page" outcome="/index.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
+                        </div>
                     </div>
+                
+                <div class="login-div1">    
                     
                     <h:outputText value="Enter your login and password"/>
                     <p>

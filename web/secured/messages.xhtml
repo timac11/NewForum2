@@ -7,7 +7,7 @@
     <h:head>
         <h:outputStylesheet library="css" name="table-style.css"  />
         <h:outputStylesheet library="css" name="common-style.css"  />
-        <title>Conversation</title>
+        <title> #{forumBean.currentTopicName} </title>
     </h:head>
     <h:body>
         <ui:composition template="/resources/templates/commonLayout5.xhtml">
@@ -22,53 +22,49 @@
                             <h:link value="/ main page" outcome="/index.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
                         </div>
                         <div class="navigation-div">
-                            <h:link value="/ forum" outcome="forum.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
+                            <h:link value="/ #{forumBean.currentSectionName}" outcome="forum.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
                         </div>
                         <div class="navigation-div">
-                            <h:link value="/ topics" outcome="topics.xhtml?section_id=#{forumBean.currentSectionID}" styleClass="navigation-ref"/>
+                            <h:link value="/ #{forumBean.currentTopicName}" outcome="topics.xhtml?section_id=#{forumBean.currentSectionID}" styleClass="navigation-ref"/>
                         </div>
                     </div>
                     
-                    <h3 align="center"> Topic: #{forumBean.currentTopicName}</h3>
+                    <h3 class="headline"><span> Topic: #{forumBean.currentTopicName}</span></h3>
                     
-                    <div class="messages-sections">
+                    <div class="messages-block">
                         
                         <h:dataTable value="#{forumBean.messageFromTop}" var="message"
-                                     styleClass="order-table"
-                                     headerClass="order-table-header"
-                                     rowClasses="order-table-odd-row,order-table-even-row">
-                            <div class="messages-sections">
+                                     width="100%"
+                                     styleClass="message-table" 
+                                     columnClasses="messages-column1, messages-column2"
+                                     rowClasses="messages-row">
                             
-                            <h:column class="messages-cell1">
-                                    <div class="messages-cell1">
-                                    <!-- column header -->
-                                    <f:facet name="header">Author</f:facet>
-                                    <!-- row record --> 
-                                    #{message.USER_NAME}
-                                    </div>
-                            </h:column>
-                            <h:column class="messages-cell2">
-                                    <div class="messages-cell">
-                                    <!-- column header -->
-                                    <f:facet name="header">Message</f:facet>
-                                    <!-- row record --> 
-                                    #{message.MESSAGE}
-                                    </div>
-                            </h:column>
-                            </div>
+                                <h:column>
+                                    <img src="" class="messages-avatar"/>                                
+                                            <div class="messages-cell-user">
+                                                #{message.USER_NAME}
+                                            </div>     
+                                </h:column>
+                                <h:column>
+                                        <!-- column header -->
+                                        <!--<f:facet name="header">Message</f:facet>-->
+                                        <div class="messages-cell-message">
+                                            #{message.MESSAGE}
+                                        </div>
+                                </h:column>
+                                
                             
-
                         </h:dataTable>
                         
                     </div>
 
-                    <h:panelGrid columns="3">
-                        <h:commandButton rendered="#{forumBean.pageMessages>0}" value="Previous" 
-                                         action="#{forumBean.previousPage(forumBean.isMessag())}"/>
-                        <h:outputText value="Page #{forumBean.pageMessages + 1}"/>
-                        <h:commandButton rendered="#{forumBean.lastPageMess==false}" value="Next" 
-                                         action="#{forumBean.nextPage(forumBean.isMessag())}"/>
-                    </h:panelGrid>
+                   <div align="left" >  <h:outputText value="Page #{forumBean.pageTopics + 1}"/> </div>    
+                            
+                        <h:commandButton rendered="#{forumBean.pageTopics>0}" value="Previous" styleClass="index-button" 
+                                    action="#{forumBean.previousPage(forumBean.isTopics())}"/>
+                            
+                        <h:commandButton rendered="#{forumBean.lastPageTop==false}" value="Next" styleClass="index-button"
+                                    action="#{forumBean.nextPage(forumBean.isTopics())}"/>
 
                 </h:form>
             </ui:define>    	

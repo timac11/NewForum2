@@ -10,7 +10,7 @@
         <title>Forum</title>
     </h:head>
     <h:body>
-        <ui:composition template="/resources/templates/commonLayout3.xhtml">
+        <ui:composition template="/resources/templates/commonLayout2.xhtml">
             <ui:define name="feed">
                 
                 <h:link outcome="/index.xhtml?faces-redirect=true">
@@ -23,13 +23,24 @@
                 </div>
                 <div  class="clear"/>
                 
-                <h3 align="center"> List of forum sections: </h3>
+                <h3 class="headline"><span>List of sections: </span></h3>
+                
+                <h:panelGroup layout="block" rendered="#{userBean.isAdmin(loginBean.name)}" styleClass="forum-adding-section">
+                     <h:outputLabel value="Введите название нового раздела: "/>
+                     <h:inputText value="#{forumBean.nameNewSection}" requiredMessage="Пожалуйста, заполните поле"/>
+                     <h:commandButton styleClass="index-button2" value="ADD" 
+                                         action="#{forumBean.addNewSection(loginBean.id)}" id="mybutton" 
+                                         binding="#{forumBean.mybutton}" />
+                     <p><h:message for="mybutton" styleClass="page-body"/> </p>
+                </h:panelGroup>
+                
                 
                 <div class="forum-sections">
                     <h:form>
                         <h:dataTable value="#{forumBean.sectionsInfo}" var="section" styleClass="forum-table">
 
                             <h:column>
+                                <div class="forum-line"/>
                                 <div class="forum-cell">
                                     <div class="forum-decoration"/>
                                     <h:outputLink styleClass="forum-ref" value="topics.xhtml?section_id=#{section.SECTION_ID}">
@@ -43,7 +54,7 @@
                     </h:form> 
                 </div>
                 
-                
+
                 
             </ui:define>    	
         </ui:composition>
