@@ -33,7 +33,7 @@ html{
     /*background-color: #00B4CC;*/
     background-color: rgba(0, 155, 175, 0.7);
     position: fixed;
-    z-index: 1;
+    z-index: 3;
     top: 0px;
     right: 0px;
     left: 0px;

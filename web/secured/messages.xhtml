@@ -10,7 +10,7 @@
         <title> #{forumBean.currentTopicName} </title>
     </h:head>
     <h:body>
-        <ui:composition template="/resources/templates/commonLayout5.xhtml">
+        <ui:composition template="/resources/templates/commonLayout2.xhtml">
             <ui:define name="feed">
                 <h:form>
 
@@ -39,8 +39,8 @@
                                      columnClasses="messages-column1, messages-column2"
                                      rowClasses="messages-row">
                             
-                                <h:column>
-                                    <img src="" class="messages-avatar"/>                                
+                                <h:column>                                   
+                                    <h:graphicImage value="/resources/images/user_icon-512.png" styleClass="messages-avatar"/>
                                             <div class="messages-cell-user">
                                                 #{message.USER_NAME}
                                             </div>     
@@ -52,12 +52,25 @@
                                             #{message.MESSAGE}
                                         </div>
                                 </h:column>
-                                
-                            
                         </h:dataTable>
                         
+                        <div class="messages-line" />
+                        <div class="messages-sending-block">
+                            <h:graphicImage value="/resources/images/skifcha.jpg" styleClass="messages-sending-avatar"/>
+                            
+                            <h:inputTextarea value="#{forumBean.message}" requiredMessage="Please, fill this field" 
+                                             styleClass="messages-sending-input"/>
+                            
+                            <p align="center"> <h:commandButton styleClass="messages-button" value="ANSWER" action="#{forumBean.addNewMessage(loginBean.id)}" 
+                                                 id="mybutton" binding="#{forumBean.mybutton}" />
+                            </p>
+                                
+                                <p><h:message for="mybutton" styleClass="page-body "/> </p>
+                        </div>
+                           
                     </div>
-
+                            
+ 
                    <div align="left" >  <h:outputText value="Page #{forumBean.pageTopics + 1}"/> </div>    
                             
                         <h:commandButton rendered="#{forumBean.pageTopics>0}" value="Previous" styleClass="index-button" 
@@ -65,10 +78,11 @@
                             
                         <h:commandButton rendered="#{forumBean.lastPageTop==false}" value="Next" styleClass="index-button"
                                     action="#{forumBean.nextPage(forumBean.isTopics())}"/>
-
+ 
                 </h:form>
             </ui:define>    	
         </ui:composition>
-    </h:body>
+    </h:body>   
 </html>
 
+    

@@ -161,6 +161,7 @@ public class ForumBean implements Serializable {
                 FacesContext context = FacesContext.getCurrentInstance();
                 context.addMessage(mybutton.getClientId(context), msg);
             }
+        this.nameNewSection = "";
         }
 
     }
@@ -179,6 +180,7 @@ public class ForumBean implements Serializable {
                 FacesContext context = FacesContext.getCurrentInstance();
                 context.addMessage(mybutton.getClientId(context), msg);
             }
+            this.message = "";
         }
 
      public void addNewTopic (long user_id) throws SQLException {
@@ -201,6 +203,8 @@ public class ForumBean implements Serializable {
                 context.addMessage(mybutton.getClientId(context), msg);
             }
         }
+        this.nameNewTopic = "";
+        
 
     }
 

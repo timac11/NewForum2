@@ -116,28 +116,36 @@ check=false;
    }
    
    public void inspection(){
-   if(UsFromDb.getPassword().equals(md5Apache(this.rpassword,UsFromDb.getName(),UsFromDb.getEmail()))){
-       this.equa = true ;
-       this.check = false;
-   }
-  else {
-   this.equa = false ; 
-   FacesMessage msg = new FacesMessage("Invalid old password. Try again.");
-   FacesContext context = FacesContext.getCurrentInstance();
-   context.addMessage(mybutton.getClientId(context), msg);}
+        if(UsFromDb.getPassword().equals(md5Apache(this.rpassword,UsFromDb.getName(),UsFromDb.getEmail()))){
+            this.equa = true ;
+            this.check = false;
+        }
+       else {
+        this.equa = false ; 
+        FacesMessage msg = new FacesMessage("Invalid old password. Try again.");
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(mybutton.getClientId(context), msg);
+        }
+        
    }
   
    public void inspection2() throws SQLException{
-   if(this.newpassword1.equals(this.newpassword2)){
-       equa = false ;
-       this.UsFromDb.setPassword(md5Apache(this.newpassword1,UsFromDb.getName(),UsFromDb.getEmail()));
-       Factory.getInstance().getUserDAO().updateUser(this.UsFromDb);
-   }
-   else {
-   equa = false ; 
-   FacesMessage msg = new FacesMessage("Password are not similar. Try again.");
-   FacesContext context = FacesContext.getCurrentInstance();
-   context.addMessage(mybutton.getClientId(context), msg);}
+        if(this.newpassword1.equals(this.newpassword2)){
+            equa = false ;
+            this.UsFromDb.setPassword(md5Apache(this.newpassword1,UsFromDb.getName(),UsFromDb.getEmail()));
+            Factory.getInstance().getUserDAO().updateUser(this.UsFromDb);
+        }
+        else {
+        equa = false ; 
+        FacesMessage msg = new FacesMessage("Password are not similar. Try again.");
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(mybutton.getClientId(context), msg);
+        }
+        this.equa = false ;
+        this.check = false;
+        this.newpassword2 = "";
+        this.newpassword1 = "";
+        this.rpassword = "";
    }
    
    public void setMybutton(UIComponent mybutton) {

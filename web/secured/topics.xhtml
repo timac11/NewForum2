@@ -29,7 +29,8 @@
                 <h:panelGroup layout="block" styleClass="forum-adding-section">
                             <h:outputLabel value="Enter the name of new topic: "/>
                             <h:inputText value="#{forumBean.nameNewTopic}" requiredMessage="Please, fill this field"/>
-                            <h:commandButton value="ADD" action="#{forumBean.addNewTopic(loginBean.id)}" id="mybutton" binding="#{forumBean.mybutton}" />
+                            <h:commandButton value="ADD" action="#{forumBean.addNewTopic(loginBean.id)}" 
+                                             id="mybutton" binding="#{forumBean.mybutton}" styleClass="forum-button-small" />
                             <p><h:message for="mybutton" styleClass="page-body"/> </p>               
                 </h:panelGroup>
                 

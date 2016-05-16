@@ -26,9 +26,9 @@
                 <h3 class="headline"><span>List of sections: </span></h3>
                 
                 <h:panelGroup layout="block" rendered="#{userBean.isAdmin(loginBean.name)}" styleClass="forum-adding-section">
-                     <h:outputLabel value="Введите название нового раздела: "/>
+                     <h:outputLabel value="Enter the name of new section: "/>
                      <h:inputText value="#{forumBean.nameNewSection}" requiredMessage="Пожалуйста, заполните поле"/>
-                     <h:commandButton styleClass="index-button2" value="ADD" 
+                     <h:commandButton styleClass="forum-button-small" value="ADD" 
                                          action="#{forumBean.addNewSection(loginBean.id)}" id="mybutton" 
                                          binding="#{forumBean.mybutton}" />
                      <p><h:message for="mybutton" styleClass="page-body"/> </p>
