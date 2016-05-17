@@ -1,56 +1,50 @@
-
-import java.io.BufferedOutputStream;
+import beans.LoginBean;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.util.logging.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Serializable;
+import java.nio.file.Files;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
-@Controller
-public class FileController {
+
+@ManagedBean
+@ViewScoped
+public class FileController implements Serializable {
+        private Part file;
+        
+// private String fileContent;
+
+public String upload(String name) {
+       // LoginBean session = (LoginBean) req.getSession().getAttribute("loginBean");
+    try (InputStream input = file.getInputStream()) {
+       // String name = "";
+        //name = session.getName();
+        File f = new File("E:\\Git_directory\\NewForum2\\web\\resources\\Avatars\\" + name + ".jpg");
+        if(f.exists()){
+        f.delete();
+        }
+        Files.copy(input, new File("E:\\Git_directory\\NewForum2\\web\\resources\\Avatars\\" +name + ".jpg").toPath());
+        return "/avatar.xhtml";
+    }
+    catch (IOException e) {
+    return "/avatar.xhtml";
+    }
+}
+
+    public Part getFile() {
+        return file;
+    }
+
+    public void setFile(Part file) {
+        this.file = file;
+    }
  
-	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(FileController.class);
- 
-	@RequestMapping(value = "uploadFile", method = RequestMethod.POST)
-	@ResponseBody
-	public String uploadFile(@RequestParam("file") MultipartFile file) {// имена параметров (тут - "file") - из формы JSP.
-            String name = null;
-                if (!file.isEmpty()) {
-			try {
-				byte[] bytes = file.getBytes();
- 
-				name = file.getOriginalFilename();
- 
-				String rootPath;
-                            rootPath = "C:\\path\\";
-				File dir = new File(rootPath + File.separator + "loadFiles");
- 
-				if (!dir.exists()) {
-					dir.mkdirs();
-				}
- 
-				File uploadedFile = new File(dir.getAbsolutePath() + File.separator + name);
- 
-				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(uploadedFile));
-				stream.write(bytes);
-				stream.flush();
-				stream.close();
- 
-				logger.info("uploaded: " + uploadedFile.getAbsolutePath());
- 
-				return "You successfully uploaded file=" + name;
- 
-			} catch (Exception e) {
-				return "You failed to upload " + name + " => " + e.getMessage();
-			}
-		} else {
-			return "You failed to upload " + name + " because the file was empty.";
-		}
-	}
  
 }

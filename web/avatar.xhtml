@@ -14,14 +14,15 @@ and open the template in the editor.
         <title>Main Page</title>
     </h:head>
     <h:body>
-        <ui:composition template="/resources/templates/commonProfile.xhtml">
+        <ui:composition template="/resources/templates/commonLayout.xhtml">
             <ui:define name="feed">
-                
-                
-        
-                
-            <div class="clear"/>
-                
+                <div class="index-div2">
+                 <p>
+                    Image is successfully uploaded!
+                 </p>
+                </div>  
+                <h:commandButton value="Return" 
+                action="/secured/profile.xhtml" styleClass="index-button"/><br/>  
             </ui:define>    	
         </ui:composition>    	
     </h:body>

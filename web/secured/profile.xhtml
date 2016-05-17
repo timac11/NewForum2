@@ -11,7 +11,7 @@
          <h:outputStylesheet library="css" name="special-style.css"  />
     </h:head>
     <h:body>
-       <ui:composition template="/resources/templates/commonLayout.xhtml">
+       <ui:composition template="/resources/templates/commonProfile.xhtml">
             <ui:define name="feed">
                                     
                 <h:link outcome="/index.xhtml?faces-redirect=true">
@@ -31,7 +31,7 @@
 
                     <p>
                     <div class="profile-avatar">
-                        <img src="resources/Avatars/#{userBean.name}.jpg" alt=""/>
+                        <img src="resources/Avatars/#{userBean.name}.jpg" height="200" width="200"  alt=""/>
                     </div>
                     </p>
                     
@@ -64,14 +64,7 @@
                     </table>
                     <div   class="profile-line"/> 
                     <table class="profile-table"> 
-                        <form method="POST" action="FileTr" enctype="multipart/form-data">
-                            <tr><td>  Avatar image: </td> 
-                                <td> <input type="file" name="file" accept="image/png,image/jpeg"/> </td>
-                            </tr>
-                            <tr><td>   </td>
-                                <td>   <input type="submit" value="Upload"/> </td>
-                            </tr>                               
-                        </form> 
+                             
                     </table>
                     <div   class="profile-line"/>
                     <table class="profile-table">
@@ -126,8 +119,8 @@
                         </tr>
                     </table>
                     
-                </div>
-          </ui:define>    	
+                </div>       
+            </ui:define>    	
         </ui:composition>
     </h:body>
 </html>

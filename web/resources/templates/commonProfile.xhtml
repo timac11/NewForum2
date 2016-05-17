@@ -30,6 +30,17 @@ and open the template in the editor.
         <h:form styleClass="footer">
             <ui:include src="commonFeed.xhtml"/>
         </h:form>
-    
+        <div class="bottom">         
+<!--        <form method="POST" action="FileTr" enctype="multipart/form-data">
+		File to upload: <input type="file" name="file"></input> 
+                <input type="submit" value="Upload"></input>
+		Press here to upload the file!
+	</form>-->
+            <h:form enctype="multipart/form-data">
+                <h:inputFile title="Select File:"  value="#{fileController.file}"/>
+                <h:commandButton value="upload" action="#{fileController.upload(loginBean.name)}"/>   
+            </h:form>
+        </div>
+      
     </h:body>
 </html>
