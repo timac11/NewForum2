@@ -19,13 +19,13 @@
                     </h:link>
                     <div class="navigation-block">
                         <div class="navigation-div">
-                            <h:link value="/ main page" outcome="/index.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
+                            <h:link value="/ forum" outcome="forum.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
                         </div>
                         <div class="navigation-div">
-                            <h:link value="/ #{forumBean.currentSectionName}" outcome="forum.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
+                            <h:link value="/ #{forumBean.currentSectionName}" outcome="topics.xhtml?section_id=#{forumBean.currentSectionID}" styleClass="navigation-ref"/>
                         </div>
                         <div class="navigation-div">
-                            <h:link value="/ #{forumBean.currentTopicName}" outcome="topics.xhtml?section_id=#{forumBean.currentSectionID}" styleClass="navigation-ref"/>
+                            <h:link value="/ #{forumBean.currentTopicName}" styleClass="navigation-ref"/>
                         </div>
                     </div>
                     
@@ -40,7 +40,7 @@
                                      rowClasses="messages-row">
                             
                                 <h:column>                                   
-                                    <h:graphicImage value="/resources/images/user_icon-512.png" styleClass="messages-avatar"/>
+                                    <h:graphicImage value="/resources/Avatars/#{loginBean.name}.jpg" styleClass="messages-avatar"/>
                                             <div class="messages-cell-user">
                                                 #{message.USER_NAME}
                                             </div>     
@@ -73,11 +73,11 @@
  
                    <div align="left" >  <h:outputText value="Page #{forumBean.pageTopics + 1}"/> </div>    
                             
-                        <h:commandButton rendered="#{forumBean.pageTopics>0}" value="Previous" styleClass="index-button" 
-                                    action="#{forumBean.previousPage(forumBean.isTopics())}"/>
+                   <h:commandButton rendered="#{forumBean.pageMessages>0}" value="Previous" styleClass="index-button" 
+                                         action="#{forumBean.previousPage(forumBean.isMessag())}"/>
                             
-                        <h:commandButton rendered="#{forumBean.lastPageTop==false}" value="Next" styleClass="index-button"
-                                    action="#{forumBean.nextPage(forumBean.isTopics())}"/>
+                   <h:commandButton rendered="#{forumBean.lastPageMess==false}" value="Next" styleClass="index-button"
+                                    action="#{forumBean.nextPage(forumBean.isMessag())}"/>
  
                 </h:form>
             </ui:define>    	

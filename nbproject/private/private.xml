@@ -3,15 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Git_directory/NewForum2/src/java/filters/LoginFilter.java</file>
-            <file>file:/E:/Git_directory/NewForum2/src/java/hibernate.cfg.xml</file>
-            <file>file:/E:/Git_directory/NewForum2/src/java/FileTransfer.java</file>
-            <file>file:/E:/Git_directory/NewForum2/web/resources/Avatars/aza1.jpg</file>
-            <file>file:/E:/Git_directory/NewForum2/src/java/FileTr.java</file>
-            <file>file:/E:/Git_directory/NewForum2/web/secured/profile.xhtml</file>
-            <file>file:/E:/Git_directory/NewForum2/src/java/FileController.java</file>
-            <file>file:/E:/Git_directory/NewForum2/web/resources/templates/commonProfile.xhtml</file>
-            <file>file:/E:/Git_directory/NewForum2/web/resources/Avatars/aza.jpg</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/resources/templates/commonHeader2.xhtml</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/secured/messages.xhtml</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/beans/ForumBean.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/resources/templates/commonLayout2.xhtml</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/secured/forum.xhtml</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/beans/UserBean.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/logic/QueryStore.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/web/secured/topics.xhtml</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/beans/LoginBean.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/NewForum2/src/java/helpers/WorkDB.java</file>
         </group>
     </open-files>
 </project-private>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <body>
+        <ui:composition>
+                          
+                <p>
+                     <h:outputLabel value="Please, enter new section"/>
+                     <h:inputText value="#{forumBean.nameNewSection}" requiredMessage="Please, fill this field"/>
+                     <h:commandButton styleClass="bottom-add" value="ADD" action="#{forumBean.addNewSection(loginBean.id)}" id="mybutton" binding="#{forumBean.mybutton}" />
+                     <p><h:message for="mybutton" styleClass="page-body"/> </p>
+                </p> 
+        </ui:composition>
+    </body>
+</html>

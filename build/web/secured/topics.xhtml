@@ -17,15 +17,22 @@
                 </h:link>
                 <div class="navigation-block">
                     <div class="navigation-div">
-                        <h:link value="/ main page" outcome="/index.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
+                        <h:link value="/ forum" outcome="forum.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
                     </div>
                     <div class="navigation-div">
-                        <h:link value="/ forum" outcome="forum.xhtml?faces-redirect=true" styleClass="navigation-ref"/>    
-                    </div>
+                            <h:link value="/ #{forumBean.currentSectionName}" outcome="topics.xhtml?section_id=#{forumBean.currentSectionID}" styleClass="navigation-ref"/>
+                        </div>
                 </div>
                
-                <h3 align="center"> Section: #{forumBean.currentSectionName}</h3>
-                <div class="forum-text" align="center">Select an existing topic or start a new one</div>
+                <h3 class="headline"><span> Section: #{forumBean.currentSectionName} </span></h3>
+                
+                <h:panelGroup layout="block" styleClass="forum-adding-section">
+                            <h:outputLabel value="Enter the name of new topic: "/>
+                            <h:inputText value="#{forumBean.nameNewTopic}" requiredMessage="Please, fill this field"/>
+                            <h:commandButton value="ADD" action="#{forumBean.addNewTopic(loginBean.id)}" 
+                                             id="mybutton" binding="#{forumBean.mybutton}" styleClass="forum-button-small" />
+                            <p><h:message for="mybutton" styleClass="page-body"/> </p>               
+                </h:panelGroup>
                 
                 <h:form id="main">
                     <div class="forum-sections">
@@ -46,27 +53,18 @@
                         </h:dataTable>
                         
                     </div>
+                        <div align="left">  <h:outputText value="Page #{forumBean.pageTopics + 1}"/> </div>    
+                            
+                        <h:commandButton rendered="#{forumBean.pageTopics>0}" value="Previous" styleClass="index-button" 
+                                    action="#{forumBean.previousPage(forumBean.isTopics())}"/>
+                            
+                        <h:commandButton rendered="#{forumBean.lastPageTop==false}" value="Next" styleClass="index-button"
+                                    action="#{forumBean.nextPage(forumBean.isTopics())}"/>
+                        
+              
                                 
-                        <h:panelGrid columns="3">
-                            <h:commandButton rendered="#{forumBean.pageTopics>0}" value="Previous" 
-                                         action="#{forumBean.previousPage(forumBean.isTopics())}"/>
-                            <h:outputText value="Page #{forumBean.pageTopics + 1}"/>
-                            <h:commandButton rendered="#{forumBean.lastPageTop==false}" value="Next" 
-                                         action="#{forumBean.nextPage(forumBean.isTopics())}"/>
-                        </h:panelGrid>
-                                
-                </h:form>
-                    
+                </h:form>                
                 
-                
-                <div class="bottom">     
-                    <p>
-                        <h:outputLabel value="Please, enter new topic"/>
-                        <h:inputText value="#{forumBean.nameNewSection}" requiredMessage="Please, fill this field"/>
-                        <h:commandButton styleClass="bottom-add" value="ADD" action="#{forumBean.addNewSection(loginBean.id)}" id="mybutton" binding="#{forumBean.mybutton}" />
-                        <p><h:message for="mybutton" styleClass="page-body"/> </p>
-                    </p>
-                </div>
                 
             </ui:define>    	
         </ui:composition>

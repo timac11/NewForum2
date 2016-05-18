@@ -1,12 +1,16 @@
-import beans.LoginBean;
+import beans.ForumBean;
 import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.nio.file.Files;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
@@ -26,11 +30,12 @@ public String upload(String name) {
     try (InputStream input = file.getInputStream()) {
        // String name = "";
         //name = session.getName();
-        File f = new File("E:\\Git_directory\\NewForum2\\web\\resources\\Avatars\\" + name + ".jpg");
+        File f = new File("C:\\Users\\User\\Documents\\GitHub\\NewForum2\\web\\resources\\Avatars\\" + name + ".jpg");
+        //File f = new File("E:\\Git_directory\\NewForum2\\web\\resources\\Avatars\\" + name + ".jpg");
         if(f.exists()){
         f.delete();
         }
-        Files.copy(input, new File("E:\\Git_directory\\NewForum2\\web\\resources\\Avatars\\" +name + ".jpg").toPath());
+        Files.copy(input, new File("C:\\Users\\User\\Documents\\GitHub\\NewForum2\\web\\resources\\Avatars\\" +name + ".jpg").toPath());
         return "/avatar.xhtml";
     }
     catch (IOException e) {
@@ -46,5 +51,13 @@ public String upload(String name) {
         this.file = file;
     }
  
+    private void redirect() {
+        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+        try {
+            ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
+        } catch (IOException ex) {
+            Logger.getLogger(ForumBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
  
 }

@@ -33,19 +33,73 @@ and open the template in the editor.
     border: 0px solid black;
 }
 
+
+@-webkit-keyframes active {
+    from {background-color: #FFDD32;}
+    to {background-color:  coral;}
+}
+@-moz-keyframes active {
+    from {background-color: #FFDD32;}
+    to {background-color: coral;}
+}
+@-o-keyframes active {
+    from {background-color: #FFDD32;}
+    to {background-color: coral;}
+}
+@keyframes active {
+    from {background-color: #FFDD32;}
+    to {background-color:  coral;}
+}
+
 .index-button{
-    background-color: gold;
+    background-color: #FFDD32;
     text-align: center;
     border: 1px black;
-    width: 70px;
-    height: 25px;
+    border-radius: 7px;
+    width: 80px;
+    height: 30px;
     margin-top: 20px; 
     padding: 0px;
-    box-shadow: 0 0 3px -1px; 
+    /*box-shadow: 0 0 3px -1px;*/
+    /*box-shadow: 1px 1px 0 rgba(204,176,40,1), 2px 2px 0 rgba(204,176,40,1), 3px 3px 0 rgba(204,176,40,1);*/
 }
 .index-button:hover{
+/*    background-color: #FFDD32;
+    box-shadow: 1px 1px 0 rgba(204,176,40,1), 2px 2px 0 rgba(204,176,40,1);*/
+    -webkit-animation: active  1s;
+    -moz-keyframes-animation: active  1s;
+    -o-keyframes-animation: active  1s;
+    animation: active  1s;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards; 
+    -o-animation-fill-mode: forwards; 
+    animation-fill-mode: forwards;
+}
+.index-button:focus {
+    outline: none;
+}
+.index-button-big{
     background-color: #FFDD32;
-    box-shadow: 0 0 8px -1px;
+    text-align: center;
+    border: 1px black;
+    border-radius: 7px;
+    width: 100px;
+    height: 30px;
+    margin-top: 20px; 
+    padding: 0px;
+}
+.index-button-big:hover{
+    -webkit-animation: active  1s;
+    -moz-keyframes-animation: active  1s;
+    -o-keyframes-animation: active  1s;
+    animation: active  1s;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards; 
+    -o-animation-fill-mode: forwards; 
+    animation-fill-mode: forwards;
+}
+.index-button-big:focus {
+    outline: none;
 }
 .index-imagebox{
     position: static;
@@ -64,46 +118,51 @@ and open the template in the editor.
        text-align: left;       
    }
 /*----------------------- User's profile page style ------------------------- */  
+.profile-block{
+    /*background-image: url("../resources/images/paper1.jpg");*/
+    margin: auto;
+    width: 520px;
+    border-left: 1px solid  #E5E5E5;
+    box-shadow: 1px 1px 0 rgba(220,211,212,0.7), 2px 2px 0 rgba(220,211,212,0.7);
+}
 .profile-head{
-    float: right;
-    text-align: center;
-    height: 40px;
-    width: 450px;
+    background-color: #7ECB3F;
     background-color: gold;
-    margin-top: 20px; 
-    margin-right: 40px;
-}
-.profile-inform{
-    float: right;
-    text-align: right;
-    height: 40px;
-    width: 450px;
-    margin-top: 40px; 
-    margin-right: 30px;
-    margin-bottom: 80px;
-}
-.profile-inform1{
-    float: right;
-    display: inline-block;
-    width: 220px;
-    font-weight: bold;
-    text-align: left;
-    padding-left: 10px;
-    margin-left: 20px;
-}
-.profile-inform2{
-    float: right;
-    display: inline-block;
-    width: 120px;
-    font-weight: bold;
-    text-align: left;
-    margin-right: 100px;
-    margin-left: 30px;
-}
-.change-pas{
-    margin-top: 300px;
     text-align: center;
-    font-size: 14px;
+    margin-top: 0px;
+    padding-top: 10px;
+    height: 30px;
+    width: 520px;   
+}
+.profile-avatar{
+    background-image: url("../resources/images/skifcha.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: auto;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+.profile-line{
+    width: 100%;
+    height: 3px;
+    border-top: 3px dotted #E5E5E5;
+}
+.profile-table{
+    width: 100%;
+    border-spacing: 30px 5px;
+}
+.profile-table td:first-child{
+    text-align: left;
+    width: 40%;    
+}
+.profile-table td:last-child{
+    text-align: left;
+    width: 60%;    
+}
+
+.profile-inform1{
+    font-weight: bold;
 }
 /*---------------------------- Navigation style ----------------------------- */
 .navigation-ref{
@@ -128,7 +187,6 @@ and open the template in the editor.
     padding-right: 5px;
     display: inline-block;
     vertical-align:  middle;
-    border: 0px solid cadetblue;
 }
 .navigation-block{
     background-color: #F8F8F6;
@@ -137,29 +195,62 @@ and open the template in the editor.
     margin-left: 5px;
     padding-left: 15px;
     padding-right: 15px;
-    box-shadow: 0 0 4px -2px;
+    /*box-shadow: 0 0 4px -2px;*/
     border: 0px solid black;
+    box-shadow: 1px 1px 0 rgba(220,211,212,0.7), 2px 2px 0 rgba(220,211,212,0.7);
 }
 .navigation-img{
     float: left;
     border: 0px solid black;
 }
 /*---------------------------- Forum page style ----------------------------- */
+
+.forum-button-small{
+    background-color: #FFDD32;
+    text-align: center;
+    border: 0px solid #FFDD32;
+    border-radius: 3px;
+    width: 50px;
+    height: 23px;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 0px;
+}
+.forum-button-small:hover{
+    -webkit-animation: active  1s;
+    -moz-keyframes-animation: active  1s;
+    -o-keyframes-animation: active  1s;
+    animation: active  1s;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards; 
+    -o-animation-fill-mode: forwards; 
+    animation-fill-mode: forwards;
+}
+.forum-button-small:focus {
+    outline: none;
+}
+.forum-adding-section{
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-top: 10px;
+    padding-left: 20px;
+    border: 1px solid #E5E5E5;
+}
 .forum-ref{
     text-decoration: none;
     font-weight: bold;
     font-size: larger;
     color:  steelblue;
     position: absolute;
-    top: 5px;
+    top: 15px;
     left: 60px;
 }
 .forum-ref:visited{
     color:  steelblue;
 }
-.forum-ref:hover{
+/*.forum-ref:hover{
     text-decoration: underline;
-}
+}*/
 .forum-note{
     position: absolute;
     bottom: 3px;
@@ -174,8 +265,9 @@ and open the template in the editor.
 }
 .forum-sections{
     margin: 30px;
-    padding-bottom: 50px;
-    border: 1px solid  #E5E5E5;    
+    padding-bottom: 5px;
+    border: 0px solid  #E5E5E5;
+    box-shadow: 1px 1px 0 rgba(240,240,240,1), 2px 2px 0 rgba(243,243,243,1);
 }
 .forum-table{
     width: 100%;
@@ -183,21 +275,36 @@ and open the template in the editor.
     padding-bottom: 20px;
 }
 .forum-cell{
-    background-color: #F8F8F6;
+    /*background-color: #F8F8F6;*/
     position: relative;
     width: auto;
-    height: 70px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border: 1px solid  #E5E5E5;   
+    height: 90px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 0px solid  #E5E5E5;   
 }
 .forum-decoration{
-    background-color: lavender;
     float: left;
     display: inline-block;
-    width: 40px;
-    height: 70px;
+    width: 10px;
+    height: 90px;
     border: 0px solid  black;    
+}
+
+.forum-cell:hover{
+    background-color: #F9F9F9;
+}
+.forum-cell:hover .forum-decoration{
+    background-color: steelblue;
+}
+.forum-cell:hover .forum-ref{
+}
+
+.forum-line{
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid  #E5E5E5;
+    border-top: 1px solid  #E5E5E5;
 }
 /*---------------------------- Topics page style ----------------------------- */
 .topics-ref{
@@ -211,76 +318,139 @@ and open the template in the editor.
 .topics-ref:visited{
     color:  steelblue;
 }
-.topics-ref:hover{
+/*.topics-ref:hover{
     text-decoration: underline;
-}
+}*/
 .topics-decoration{
-    background-color: lavender;
     float: left;
     display: inline-block;
-    width: 40px;
+    width: 10px;
     height: 60px;
     border: 0px solid  black;    
 }
 .topics-cell{
-    background-color: #F8F8F6;
     position: relative;
     width: auto;
     height: 60px;
     margin-top: 0px;
-    border: 1px solid  #E5E5E5;   
+    margin-bottom: 2px;
+    border-top: 1px solid  #E5E5E5; 
+    border-bottom: 1px solid  #E5E5E5;
+}
+.topics-cell:hover{
+    background-color: #F9F9F9;
+}
+.topics-cell:hover .topics-decoration{
+    background-color: steelblue;
 }
 /*---------------------------- Messages page style -------------------------- */
-.messages-sections{
+.messages-block{
     padding-bottom: 10px;
-    border: 1px solid  #E5E5E5;     
+    border: 0px solid  #E5E5E5;
+    font-size: 89%;
 }
-.messages-cell1{
-    background-color: #F8F8F6;
-    position: relative;
-    width: auto;
-    height: 60px;
-    margin-top: 0px;
-    border: 1px solid  #E5E5E5;   
+.message-table{   
+    border-collapse: collapse;
 }
-.messages-cell2{
-    background-color: #F9F9F9;
-    position: relative;
-    width: auto;
-    height: 60px;
-    margin-top: 0px;
-    border: 1px solid  #E5E5E5;   
+.messages-column1{
+    width: 200px;
+    padding: 0px;
+    /*background-color: #0EBCD3;*/
+    background-color: lavender;
 }
-
-
-/*---------------------------- Sidebar page style --------------------------- */
-.sidebar {
- background: cadetblue; 
- width: 180px; 
- font-size:12px;
- text-align: center;
- height: 200px;
- position: fixed; /* Фиксированное положение */
- right: 10px; /* Расстояние от правого края окна браузера */
- top: 13%; /* Расстояние сверху */
- padding: 10px; /* Поля вокруг текста */
- box-shadow: 0 0 10px -1px;
- border: 0px solid black;
+.messages-column2{
+    width:600px;
+    padding: 0px;
+    /*background-color:  #F7F7F7;*/
 }
-.sidebar-button{
-    position: fixed;
-    right: 70px; /* Расстояние от правого края окна браузера */
-    top: 33%; /* Расстояние сверху */
-    padding: 10px; /* Поля вокруг текста */
-    background-color: gold;
+.messages-row{
+    display: block;
+    height: fit-content ;
+    margin-bottom: 30px;
+    border: 1px  solid #E9E9E9;
+    box-shadow: 1px 1px 0 rgba(240,240,240,1), 2px 2px 0 rgba(243,243,243,1);
+}
+.messages-avatar{
+    /*background-image: url("../resources/images/user_icon-512.png");*/
+    /*background-image: url("../resources/images/skifcha.jpg");*/
+/*    background-size: contain;
+    background-repeat: no-repeat;*/
+    width: 80px;
+    height: 80px;
+    margin-left: 60px;
+    margin-top: 8px;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+         
+}
+.messages-cell-user{
+    text-align: center;
+    width: 200px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    border: 0px solid  red;   
+}
+.messages-cell-message{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 5px;
+    margin-right: 25px;
+    border: 0px solid  #E5E5E5;   
+}
+.messages-line{
+    width: 100%;
+    height: 3px;
+    border-top: 1px solid #E5E5E5;
+    border-bottom: 1px solid #E5E5E5;
+}
+.messages-sending-block{
+    width: 650px;
+    margin: auto;
+    margin-top: 20px;
+    border: 2px dotted #E5E5E5;
+}
+.messages-sending-avatar{
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin-right: 60px;
+    margin-left: 60px;    
+    margin-top: 30px;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+}
+.messages-sending-input{
+    resize: none;
+    width: 400px;
+    margin-top: 20px;
+    min-height: 100px;
+    max-height: fit-content;
+    border: 1px solid #E5E5E5;
+}
+.messages-button{
+    background-color: #FFDD32;
     text-align: center;
     border: 1px black;
-    width: 70px;
-    height: 25px;
-    margin-top: 5px; 
+    border-radius: 7px;
+    width: 80px;
+    height: 30px;
+    margin-top: 20px;
     padding: 0px;
-    box-shadow: 0 0 3px -1px;
 }
-.sidebar-window{
-    height: 40px;
+.messages-button:hover{
+    -webkit-animation: active  1s;
+    -moz-keyframes-animation: active  1s;
+    -o-keyframes-animation: active  1s;
+    animation: active  1s;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards; 
+    -o-animation-fill-mode: forwards; 
+    animation-fill-mode: forwards;
+}
+.messages-button:focus {
+    outline: none;
 }

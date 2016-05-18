@@ -16,5 +16,7 @@
     <property name="current_session_context_class">thread</property>
     <mapping class="logic.User"/>
     <mapping class="logic.Section"/> 
+    <mapping class="logic.Topic"/>
+    <mapping class="logic.Message"/>
   </session-factory>
 </hibernate-configuration>

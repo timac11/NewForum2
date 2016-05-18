@@ -17,11 +17,11 @@
                 </h:link>
                 <div class="navigation-block">
                     <div class="navigation-div">
-                        <h:link value="/ main page" outcome="/index.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
+                        <h:link value="/ forum" outcome="forum.xhtml?faces-redirect=true" styleClass="navigation-ref"/>
                     </div>
                     <div class="navigation-div">
-                        <h:link value="/ #{forumBean.currentSectionName}" outcome="forum.xhtml?faces-redirect=true" styleClass="navigation-ref"/>    
-                    </div>
+                            <h:link value="/ #{forumBean.currentSectionName}" outcome="topics.xhtml?section_id=#{forumBean.currentSectionID}" styleClass="navigation-ref"/>
+                        </div>
                 </div>
                
                 <h3 class="headline"><span> Section: #{forumBean.currentSectionName} </span></h3>
