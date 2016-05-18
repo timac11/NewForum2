@@ -40,7 +40,7 @@
                                      rowClasses="messages-row">
                             
                                 <h:column>                                   
-                                    <h:graphicImage value="/resources/Avatars/#{loginBean.name}.jpg" styleClass="messages-avatar"/>
+                                    <h:graphicImage value="/resources/Avatars/#{message.USER_NAME}.jpg" styleClass="messages-avatar"/>
                                             <div class="messages-cell-user">
                                                 #{message.USER_NAME}
                                             </div>     
@@ -56,7 +56,7 @@
                         
                         <div class="messages-line" />
                         <div class="messages-sending-block">
-                            <h:graphicImage value="/resources/images/skifcha.jpg" styleClass="messages-sending-avatar"/>
+                            <h:graphicImage value="/resources/Avatars/#{loginBean.name}.jpg" styleClass="messages-sending-avatar"/>
                             
                             <h:inputTextarea value="#{forumBean.message}" requiredMessage="Please, fill this field" 
                                              styleClass="messages-sending-input"/>

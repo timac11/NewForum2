@@ -135,9 +135,9 @@ and open the template in the editor.
     width: 520px;   
 }
 .profile-avatar{
-    background-image: url("../resources/images/skifcha.jpg");
+/*    background-image: url("../resources/images/skifcha.jpg");
     background-size: contain;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;*/
     margin: auto;
     height: 200px;
     width: 200px;
