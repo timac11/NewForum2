@@ -22,21 +22,24 @@
                             </div>
                         </div>
                         
+                        <h3 class="headline"><span> Sign up </span></h3>
                        <div class="login-div1">
                             
-                            <h:outputText value="Create a new user. Enter your login and password"/>
-                            <p>
-                                <h:outputLabel value="Username  "/>
-                                <h:inputText value="#{signUpBean.name}" title="Username" tabindex="1" required="true" requiredMessage="Username is required"/>
-                            </p>
-                            <p>
-                                <h:outputLabel value="Password  "/>
-                                <h:inputText value="#{signUpBean.password}" />
-                            </p>
-                            <p>
-                            <h:outputLabel value="Repeat password  "/>
-                            <h:inputText value="#{signUpBean.repeatPassword}"/>
-                            </p>
+                        <table class="login-table">
+                            <h:outputText value="Create a new user. Enter your login and password:"/>
+                            <tr>
+                                <td> <h:outputLabel value="Username  "/> </td>
+                                <td> <h:inputText value="#{signUpBean.name}" title="Username" tabindex="1" required="true" requiredMessage="Username is required"/> </td>
+                            </tr>
+                            <tr>
+                                <td> <h:outputLabel value="Password  "/> </td>
+                                <td> <h:inputText value="#{signUpBean.password}" /> </td>
+                            </tr>
+                            <tr>
+                                <td> <h:outputLabel value="Repeat password  "/> </td>
+                                <td> <h:inputText value="#{signUpBean.repeatPassword}"/> </td>
+                            </tr>
+                        </table>
                         
                         <table>
                             <tr>

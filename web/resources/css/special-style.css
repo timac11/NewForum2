@@ -114,9 +114,28 @@ and open the template in the editor.
    }
 /*----------------------- Login page style ---------------------------------- */
 .login-div1{
-       margin: 40px;
-       text-align: left;       
+    margin: 40px;
+    text-align: left;       
    }
+.login-label{
+    margin-right: 20px;
+   }
+.login-label1{
+    margin-right: 23px;
+   }
+   
+.login-table{
+    width: 80%;
+    border-spacing: 30px 5px;
+}
+.login-table td:first-child{
+    text-align: left;
+    width: 40%;    
+}
+.login-table td:last-child{
+    text-align: left;
+    width: 60%;    
+}
 /*----------------------- User's profile page style ------------------------- */  
 .profile-block{
     /*background-image: url("../resources/images/paper1.jpg");*/
@@ -135,9 +154,9 @@ and open the template in the editor.
     width: 520px;   
 }
 .profile-avatar{
-/*    background-image: url("../resources/images/skifcha.jpg");
+    background-image: url("../resources/images/user_icon-512.png");
     background-size: contain;
-    background-repeat: no-repeat;*/
+    background-repeat: no-repeat;
     margin: auto;
     height: 200px;
     width: 200px;
@@ -364,6 +383,7 @@ and open the template in the editor.
     /*background-color:  #F7F7F7;*/
 }
 .messages-row{
+    position: relative;
     display: block;
     height: fit-content ;
     margin-bottom: 30px;
@@ -371,10 +391,10 @@ and open the template in the editor.
     box-shadow: 1px 1px 0 rgba(240,240,240,1), 2px 2px 0 rgba(243,243,243,1);
 }
 .messages-avatar{
-    /*background-image: url("../resources/images/user_icon-512.png");*/
+    background-image: url("../resources/images/user_icon-512.png");
     /*background-image: url("../resources/images/skifcha.jpg");*/
-/*    background-size: contain;
-    background-repeat: no-repeat;*/
+    background-size: contain;
+    background-repeat: no-repeat;
     width: 80px;
     height: 80px;
     margin-left: 60px;
@@ -395,7 +415,7 @@ and open the template in the editor.
 .messages-cell-message{
     margin-top: 10px;
     margin-bottom: 20px;
-    margin-left: 5px;
+    margin-left: 20px;
     margin-right: 25px;
     border: 0px solid  #E5E5E5;   
 }
@@ -404,6 +424,13 @@ and open the template in the editor.
     height: 3px;
     border-top: 1px solid #E5E5E5;
     border-bottom: 1px solid #E5E5E5;
+}
+.messages-note{
+    position: absolute;
+    bottom: 3px;
+    right: 60px;
+    color: #666666;
+    font-family: monospace;
 }
 .messages-sending-block{
     width: 650px;

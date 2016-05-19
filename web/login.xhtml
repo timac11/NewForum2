@@ -23,12 +23,12 @@
                     
                     <h:outputText value="Enter your login and password"/>
                     <p>
-                        <h:outputLabel value="Username"/>
+                        <h:outputLabel value="Username   " styleClass="login-label"/>
                         <h:inputText value="#{loginBean.name}" requiredMessage="Please, fill this field"/>
                         <h:message for="username" class="error_message"/>
                     </p>
                     <p>
-                        <h:outputLabel value="Password"/>
+                        <h:outputLabel value="Password   " styleClass="login-label1"/>
                         <h:inputSecret value="#{loginBean.password}" id="password" requiredMessage="Please, fill this field"/>
                         <h:message for="password" class="error_message"/>
                     </p>

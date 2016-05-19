@@ -40,7 +40,7 @@
                                      rowClasses="messages-row">
                             
                                 <h:column>                                   
-                                    <h:graphicImage value="/resources/Avatars/#{message.USER_NAME}.jpg" styleClass="messages-avatar"/>
+                                    <h:graphicImage value="/resources/Avatars/#{message.USER_NAME}.jpg" alt="" styleClass="messages-avatar"/>
                                             <div class="messages-cell-user">
                                                 #{message.USER_NAME}
                                             </div>     
@@ -50,7 +50,11 @@
                                         <!--<f:facet name="header">Message</f:facet>-->
                                         <div class="messages-cell-message">
                                             #{message.MESSAGE}
+                                            
                                         </div>
+                                        <div class="messages-line1"/>
+                                        <div class="messages-note"> date:#{message.DATE_T} </div>
+                                        
                                 </h:column>
                         </h:dataTable>
                         
