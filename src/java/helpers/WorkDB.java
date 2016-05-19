@@ -43,7 +43,7 @@ public class WorkDB {
     private final String DB_URL = "jdbc:oracle:thin:@localhost:1521:xe";
     //  Database credentials
     private final String USER = "SYSTEM";
-    private final String PASS = "jhfg51";
+    private final String PASS = "52415";
     Connection conn;
     PreparedStatement selectSection;
     PreparedStatement selectTopicFromSect;

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.nio.file.Files;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
@@ -21,8 +22,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ManagedBean
 @ViewScoped
 public class FileController implements Serializable {
-        private Part file;
-        
+        private Part file;  
+        private String ch;
 // private String fileContent;
 
 public String upload(String name) {
@@ -30,12 +31,14 @@ public String upload(String name) {
     try (InputStream input = file.getInputStream()) {
        // String name = "";
         //name = session.getName();
-        File f = new File("C:\\Users\\User\\Documents\\GitHub\\NewForum2\\web\\resources\\Avatars\\" + name + ".jpg");
+        File f = new File("E:\\Git_directory\\NewForum2\\web\\resources\\Avatars\\" + name + ".jpg");
         //File f = new File("E:\\Git_directory\\NewForum2\\web\\resources\\Avatars\\" + name + ".jpg");
         if(f.exists()){
         f.delete();
         }
-        Files.copy(input, new File("C:\\Users\\User\\Documents\\GitHub\\NewForum2\\web\\resources\\Avatars\\" +name + ".jpg").toPath());
+        Files.copy(input, new File("E:\\Git_directory\\NewForum2\\web\\resources\\Avatars\\" +name + ".jpg").toPath());
+//        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+//        ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
         return "/avatar.xhtml";
     }
     catch (IOException e) {
@@ -50,7 +53,16 @@ public String upload(String name) {
     public void setFile(Part file) {
         this.file = file;
     }
- 
+    
+    public String getCh(){
+        final Random random = new Random();
+        this.ch = String.valueOf(random.nextInt(120000));
+        return ch;
+    }
+    
+    public void setCh(String ch){
+        this.ch = ch;
+    }
     private void redirect() {
         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
         try {

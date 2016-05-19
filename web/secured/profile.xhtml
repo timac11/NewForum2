@@ -31,10 +31,11 @@
 
                     <p>
                         <div class="profile-avatar">
-                            <h:graphicImage id="avatar" value="resources/Avatars/#{loginBean.name}.jpg" height="200" width="200"  alt=""/>
+                            <h:graphicImage id="avatar" value="/resources/Avatars/#{loginBean.name}.jpg?nocache=#{fileController.ch}" height="200" width="200"  alt=""/>
                         </div>
                     </p>
-<!--                    <h:commandButton value="render">
+                    <!--                   
+                    <h:commandButton value="render">
                         <f:ajax render="avatar"/>
                     </h:commandButton>-->
 
